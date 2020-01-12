@@ -1,2 +1,187 @@
-#define ALC_EXT_disconnect 1
-#define ALC_CONNECTED                            0x313
+ Name
+   ALC_EXT_disconnect
+
+ Contributors
+   Ryan C. Gordon
+   Stephen J. Baker
+   Bob Aron
+   Jason Daly
+   Adam D. Moss
+   Chris Robinson
+   Eric Wing
+
+ Contact
+   Ryan C. Gordon (icculus 'at' icculus.org)
+
+ Status
+   Complete.
+
+ Dependencies
+   Written based on the OpenAL 1.0 specification
+   ALC_ENUMERATION_EXT affects the definition of this extension.
+   ALC_ENUMERATE_ALL_EXT affects the definition of this extension.
+   ALC_EXT_capture affects the definition of this extension.
+
+ Overview
+   In OpenAL, there is no way to know if a device has been lost,
+   nor is there a spec-approved means to deal with this properly.
+   While most people are using either PCI audio cards or a chip
+   welded to their motherboard, there are many devices that are
+   more dynamic in nature, such as USB and Firewire based-units.
+   Such units may lose external power seperate from the system,
+   or may have their cables unplugged at runtime. The OS may
+   reassign the hardware to a higher-priority process. If nothing
+   else, a user may unplug the hardware without a proper shutdown
+   (or properly shut them down at the OS level and not within the
+   application).
+
+   Other audio "devices" may vanish, too, such as the network
+   connection that hosts a remote audio device like esound,
+   nas, or arts.
+
+   In these cases, the OpenAL spec says nothing, which we must
+   assume means that all resulting behaviour is totally undefined,
+   including everything from continued function without audio
+   output to a crash within the AL.
+
+   This extension, ALC_EXT_disconnect, strives to define AL
+   behaviour in these cases and give the application a means to
+   discover and deal with total device failure.
+
+ Issues
+
+   1. Should we make promises about buffer data post-disconnect?
+
+      RESOLVED:  No.
+
+      The AL currently supplies no means to recover buffer data,
+      and all contexts sharing buffers must be on the same device.
+      As such, all buffer data is lost in the event of a disconnect.
+      The application will be required to reupload all their buffer
+      data after opening a new device. If a future extension exposes
+      a means to recover buffer data from the AL, it should amend
+      this specification.
+
+   2. What happens to queued buffers when a device is disconnected?
+      Are they all considered "processed"?
+
+      RESOLVED:  Yes and no.
+
+      No, but all playing sources will be stopped on disconnect,
+      which will cause their buffers to become processed. Newly
+      started sources immediately stop, too. However, a source that
+      has buffers queued but is not playing (PAUSED or INITIAL) will
+      not have its queue altered unless the app attempts to start
+      it with alSourcePlay(). This prevents apps from hanging while
+      waiting for a sound to finish playback, and avoids the
+      implementation needing further knowledge of buffer data once
+      the device possibly containing it vanishes. On the other hand,
+      time-sensitive programs may now run too quickly, but that seems
+      to be a preferable situation.
+
+   3. What should the AL do in the case of meta devices
+      (generic device targets that doesn't cover specific
+      hardware, such as "software mixer")?
+
+      RESOLVED:  Platform-defined behaviour.
+
+      This extension only cares about what to do with the AL when
+      a device becomes disconnected, but we leave the definition of
+      "disconnected" to the implementation. If it is possible to
+      switch to another hardware device seamlessly and it would seem
+      reasonable to the platform's users, then the implementation can
+      feel free to do so without alerting the application in any way.
+      This spec does not make any promises about disconnects of
+      specific device names, or the default NULL device. These
+      behaviours are only applicable once the implementation decides
+      to set the ALC_CONNECTED attribute to zero.
+
+   4. What promises should we make about the stability of the enumeration
+      strings?
+
+      RESOLVED:  Valid between enumeration requests.
+
+      Device enumeration data should remain valid until the next 
+      enumeration request. This prevents race conditions and allows a 
+      well-defined point for device redetection. Most current
+      implementations already do this, or at least do a detect on the
+      first query.
+
+ New procedures and functions
+   None
+
+ New tokens
+   ALC_CONNECTED, 0x313.
+
+ Additions to the 1.0 spec:
+
+   Section 6.3.8, "Integer Query"
+
+    Addition to table 6-4:
+
+      ALC_CONNECTED
+        Non-zero ALint if device is connected and functional.
+        NULL is an invalid device.
+
+   Section 6.4.3, "Device disconnect":
+
+    If a device is unplugged, lost or otherwise damaged beyond
+    functioning, the device is flagged as "disconnected" and
+    the ALCdevice handle is considered a "zombie" device.
+
+    When a device is disconnected, the implementation will, in
+    most respects, keep processing as normal. For example, even
+    though there is no longer any output when a USB audio
+    device is removed, setting and querying state on the Listener
+    should keep functioning as expected.
+
+    All sources in the PLAYING state will immediately progress to
+    STOPPED upon disconnect of their containing device. Any source
+    started after the disconnect will immediately progress to 
+    STOPPED. As in any stopped source, this also means that queued
+    buffers all go to PROCESSED as well. Sources that are in the 
+    PAUSED or INITIAL state do not change on disconnect, but will
+    follow this behaviour if the application later tries to promote
+    them to the PLAYING state.
+
+    Zombie devices may not have new contexts created on them; 
+    alcCreateContext() will fail, returning a NULL pointer, if
+    the specified device has been disconnected.
+
+    The application may determine if a device has been disconnected
+    by using the ALC_CONNECTED token with alcGetIntegerv(). When a
+    device has been disconnected, the application is permitted to
+    close the zombie device's handle in the normal way, and may choose
+    to open a new device.
+
+    Applications that use ALC_CONNECTED are encouraged to query it with
+    relative frequency. A game, for example, should call it once per
+    rendering frame, per device. A device may become disconnected at
+    any time without warning.
+
+    Once a device is disconnected, it will never become reconnected.
+    Even if the user plugs the device back in, the application must
+    close the existing zombie device handle and reopen it with
+    alc*OpenDevice().
+
+    If device enumeration is available via ALC_ENUMERATION_EXT,
+    ALC_ENUMERATE_ALL_EXT, or AL 1.1, the list of devices may change
+    between calls as devices become disconnected and reconnected. 
+    To prevent race conditions, the pointer to device list strings
+    provided to the application will remain valid until the next call
+    to alcGetString(). The implementation may either cache the result
+    of the previous request or perform a complete device redetection 
+    during the alcGetString() call. As such, enumeration may not be a
+    "fast call" and should not be called in time-sensitive code.
+
+    If capture devices are available via ALC_EXT_capture or AL 1.1,
+    disconnection management can be used with both output and capture
+    devices. A disconnected capture device will continue to function,
+    but will not report a larger number in the ALC_CAPTURE_SAMPLES
+    query. If the capture device had reported some number of samples
+    were available but the samples were not transferred from the
+    device to the AL at the time of disconnect, the AL should feed the
+    application that amount of silence in the alcCaptureSamples() call.
+    Future queries of ALC_CAPTURE_SAMPLES should report zero samples
+    available.
+
