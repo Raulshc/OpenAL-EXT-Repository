@@ -156,7 +156,7 @@ AL_EXT_double                          | https://github.com/FrictionalGames/OALW
 AL_EXT_float32                         | http://icculus.org/alextreg/wiki/AL_EXT_float32
 AL_EXT_sample_buffer_object            | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_EXT_source_distance_model           | http://kcat.strangesoft.net/openal-extensions/
-AL_EXT_vorbis                          | http://icculus.org/alextreg/wiki/AL_EXT_vorbis
+AL_EXT_vorbis                          | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_vorbis
 AL_LOKI_IMA_ADPCM_format               | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_LOKI_WAVE_format                    | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_LOKI_quadriphonic                   | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
