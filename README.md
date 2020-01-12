@@ -121,7 +121,7 @@ ALC_EXT_DEDICATED                      | http://icculus.org/alextreg/wiki/ALC_EX
 ALC_EXT_EFX                            | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 ALC_EXT_MAC_OSX                        | https://opensource.apple.com/source/OpenAL/OpenAL-48.7/Source/OpenAL/READ_ME?txt
 ALC_EXT_OUTPUT_CAPTURER                | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
-ALC_EXT_disconnect                     | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
+ALC_EXT_disconnect                     | http://icculus.org/alextreg/wiki/action=printer&id=ALC_EXT_Disconnect
 ALC_EXT_thread_local_context           | http://kcat.strangesoft.net/openal-extensions/ 
 ALC_LOKI_audio_channel                 | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING  | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
