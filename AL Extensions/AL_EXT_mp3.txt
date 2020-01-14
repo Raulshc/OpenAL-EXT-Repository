@@ -1,0 +1,5 @@
+#define AL_FORMAT_MP3_EXT 0x10020
+
+AL_EXT_mp3 works just like AL EXT vorbis, but uses AL_FORMAT_MP3_EXT for the
+format token instead of AL_FORMAT_VORBIS_EXT, and obviously expects MP3 data
+instead of Ogg Vorbis packets. 

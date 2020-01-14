@@ -154,6 +154,7 @@ AL_EXT_STEREO_ANGLES                   | http://icculus.org/alextreg/wiki/action
 AL_EXT_buffer_sub_data                 | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_double                          | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_float32                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_Float32
+AL_EXT_mp3                             | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_mp3
 AL_EXT_sample_buffer_object            | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_source_distance_model           | http://kcat.strangesoft.net/openal-extensions/
 AL_EXT_vorbis                          | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_vorbis
