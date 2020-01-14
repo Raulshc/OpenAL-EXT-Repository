@@ -139,7 +139,7 @@ Extension | Source
 AL_EXT_ALAW                            | https://github.com/ioquake/ioq3/blob/master/code/AL/alext.h
 AL_EXT_BFORMAT                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_BFORMAT
 AL_EXT_EXPONENT_DISTANCE               | http://openal.org/documentation/openal-1.1-specification.pdf
-AL_EXT_IMA4                            | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
+AL_EXT_IMA4                            | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_LINEAR_DISTANCE                 | http://openal.org/documentation/openal-1.1-specification.pdf
 AL_EXT_MCFORMATS                       | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_EXT_MULAW                           | https://github.com/ioquake/ioq3/blob/master/code/AL/alext.h
