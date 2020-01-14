@@ -153,7 +153,7 @@ AL_EXT_STATIC_BUFFER                   | https://github.com/FrictionalGames/OALW
 AL_EXT_STEREO_ANGLES                   | http://icculus.org/alextreg/wiki/AL_EXT_STEREO_ANGLES
 AL_EXT_buffer_sub_data                 | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_EXT_double                          | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
-AL_EXT_float32                         | http://icculus.org/alextreg/wiki/AL_EXT_float32
+AL_EXT_float32                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_Float32
 AL_EXT_sample_buffer_object            | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_EXT_source_distance_model           | http://kcat.strangesoft.net/openal-extensions/
 AL_EXT_vorbis                          | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_vorbis
