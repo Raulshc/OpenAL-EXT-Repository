@@ -150,7 +150,7 @@ AL_EXT_SOURCE_NOTIFICATIONS            | https://opensource.apple.com/source/Ope
 AL_EXT_SOURCE_RADIUS                   | http://icculus.org/alextreg/index.php?operation=op_showext&extname=AL_EXT_SOURCE_RADIUS
 AL_EXT_SOURCE_SPATIALIZATION           | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
 AL_EXT_STATIC_BUFFER                   | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
-AL_EXT_STEREO_ANGLES                   | http://icculus.org/alextreg/wiki/AL_EXT_STEREO_ANGLES
+AL_EXT_STEREO_ANGLES                   | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_STEREO_ANGLES
 AL_EXT_buffer_sub_data                 | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_EXT_double                          | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_EXT_float32                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_Float32
