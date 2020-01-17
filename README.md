@@ -159,7 +159,7 @@ AL_EXT_sample_buffer_object            | https://github.com/kcat/openal-soft/blo
 AL_EXT_source_distance_model           | http://kcat.strangesoft.net/openal-extensions/
 AL_EXT_vorbis                          | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_vorbis
 AL_LOKI_IMA_ADPCM_format               | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_IMA_ADPCM_format
-AL_LOKI_WAVE_format                    | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
+AL_LOKI_WAVE_format                    | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_WAVE_format
 AL_LOKI_quadriphonic                   | https://github.com/FrictionalGames/OALWrapper/blob/master/include/AL/alext.h
 AL_SOFT_MSADPCM                        | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_block_alignment                | http://kcat.strangesoft.net/openal-extensions/
