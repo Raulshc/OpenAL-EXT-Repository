@@ -174,3 +174,10 @@ AL_SOFT_source_latency                 | http://kcat.strangesoft.net/openal-exte
 AL_SOFT_source_length                  | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_source_resampler               | https://www.openal-soft.org/openal-extensions/
 AL_SOFT_source_spatialize              | https://www.openal-soft.org/openal-extensions/
+
+ALUT Extensions
+--------------
+
+Extension | Source
+--------- | ------
+ALUT_LOKI_buffer_convert_data          | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_buffer_convert_data
