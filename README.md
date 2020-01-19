@@ -178,6 +178,7 @@ AL_SOFT_source_spatialize              | https://www.openal-soft.org/openal-exte
 EAX-RAM                                | https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 EAX                                    | http://icculus.org/alextreg/wiki/action=printer&id=EAX
 EAX2.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX2.0
+EAX3.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX3.0
 
 ALUT Extensions
 --------------
