@@ -176,6 +176,7 @@ AL_SOFT_source_length                  | http://kcat.strangesoft.net/openal-exte
 AL_SOFT_source_resampler               | https://www.openal-soft.org/openal-extensions/
 AL_SOFT_source_spatialize              | https://www.openal-soft.org/openal-extensions/
 EAX-RAM                                | https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
+EAX                                    | http://icculus.org/alextreg/wiki/action=printer&id=EAX
 
 ALUT Extensions
 --------------
