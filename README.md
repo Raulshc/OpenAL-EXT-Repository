@@ -139,6 +139,7 @@ Extension | Source
 AL_EXT_ALAW                            | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_BFORMAT                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_BFORMAT
 AL_EXT_EXPONENT_DISTANCE               | http://openal.org/documentation/openal-1.1-specification.pdf
+AL_EXT_FOLDBACK                        | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_FOLDBACK
 AL_EXT_IMA4                            | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_LINEAR_DISTANCE                 | http://openal.org/documentation/openal-1.1-specification.pdf
 AL_EXT_MCFORMATS                       | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
