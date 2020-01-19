@@ -179,6 +179,7 @@ EAX-RAM                                | https://www.openal.org/documentation/Op
 EAX                                    | http://icculus.org/alextreg/wiki/action=printer&id=EAX
 EAX2.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX2.0
 EAX3.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX3.0
+EAX4.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX4.0
 
 ALUT Extensions
 --------------
