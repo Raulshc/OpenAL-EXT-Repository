@@ -180,6 +180,7 @@ EAX                                    | http://icculus.org/alextreg/wiki/action
 EAX2.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX2.0
 EAX3.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX3.0
 EAX4.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX4.0
+EAX5.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX5.0
 
 ALUT Extensions
 --------------
