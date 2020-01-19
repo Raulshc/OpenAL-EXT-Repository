@@ -1,0 +1,14 @@
+XRAM extension for some Creative cards.
+
+/*********** X-RAM Function pointer definitions ****************/
+
+typedef ALboolean (__cdecl *EAXSetBufferMode)(ALsizei n, ALuint *buffers, ALint value);
+typedef ALenum    (__cdecl *EAXGetBufferMode)(ALuint buffer, ALint *value);
+
+ /********** X-RAM enum names **************/
+
+ AL_EAX_RAM_SIZE
+ AL_EAX_RAM_FREE
+ AL_STORAGE_AUTOMATIC
+ AL_STORAGE_HARDWARE
+ AL_STORAGE_ACCESSIBLE
