@@ -163,7 +163,7 @@ AL_LOKI_IMA_ADPCM_format               | https://github.com/Raulshc/openal-svn-m
 AL_LOKI_WAVE_format                    | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_WAVE_format
 AL_LOKI_attenuation_scale              | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_attenuation_scale
 AL_LOKI_buffer_data_callback           | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_buffer_data_callback
-AL_LOKI_play_position                  | 
+AL_LOKI_play_position                  | http://scp.indiegames.us/fsodoc/ds_8cpp_source.html
 AL_LOKI_quadriphonic                   | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_quadriphonic
 AL_SOFT_MSADPCM                        | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_block_alignment                | http://kcat.strangesoft.net/openal-extensions/
