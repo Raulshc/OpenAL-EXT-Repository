@@ -1,0 +1,1 @@
+Started as ALC_EXT_STATIC_BUFFER, the extension was renamed as AL_EXT_STATIC_BUFFER.
