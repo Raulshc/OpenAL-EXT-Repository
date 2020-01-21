@@ -103,6 +103,24 @@ OpenAL (native), iOS 9.0
 * ALC_EXT_MAC_OSX
 * ALC_EXT_OUTPUT_CAPTURER
 
+OpenAL (native, Creative SB X-Fi), Windows
+------------------------------------------
+
+* AL_EXT_EXPONENT_DISTANCE
+* AL_EXT_LINEAR_DISTANCE
+* AL_EXT_OFFSET
+* EAX
+* EAX1.0
+* EAX2.0
+* EAX3.0
+* EAX4.0
+* EAX5.0
+* EAX-RAM
+* ALC_EXT_CAPTURE
+* ALC_EXT_EFX
+* ALC_ENUMERATE_ALL_EXT
+* ALC_ENUMERATION_EXT
+
 Sources
 =======
 
