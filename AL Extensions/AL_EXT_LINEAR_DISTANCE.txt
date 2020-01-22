@@ -2,4 +2,5 @@
 An OpenAL 1.1 implementation will always support the AL_EXT_LINEAR_DISTANCE extension. This allows an application written to the OpenAL 1.0 specification to access the offset abilities expressed in sections 3.4.3 and 3.4.4.
 
 Tokens:
-AL_LINEAR_DIST ANCE AL_LINEAR_DISTANCE_CLAMPED
+AL_LINEAR_DISTANCE            0xD003
+AL_LINEAR_DISTANCE_CLAMPED    0xD004
