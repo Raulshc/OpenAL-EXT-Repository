@@ -190,7 +190,7 @@ AL_EXT_LINEAR_DISTANCE                 | http://openal.org/documentation/openal-
 AL_EXT_MCFORMATS                       | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_MULAW                           | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_MULAW_BFORMAT                   | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
-AL_EXT_MULAW_MCFORMATS                 | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
+AL_EXT_MULAW_MCFORMATS                 | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_MULAW_MCFORMATS
 AL_EXT_OFFSET                          | http://openal.org/documentation/openal-1.1-specification.pdf
 AL_EXT_SOURCE_NOTIFICATIONS            | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
 AL_EXT_SOURCE_RADIUS                   | http://icculus.org/alextreg/index.php?operation=op_showext&extname=AL_EXT_SOURCE_RADIUS
