@@ -1,0 +1,156 @@
+Name
+
+    AL_SOFT_bformat_ex
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete
+
+Dependancies
+
+    This extension is written against the OpenAL 1.1 specification.
+    This extension depends on AL_EXT_BFORMAT.
+
+Overview
+
+    This extension allows B-Format buffers to be interpreted according to the
+    ACN (Ambisonic Channel Number), SN3D (Semi-Normalized), and N3D (fully
+    Normalized) standards. The AL_EXT_BFORMAT extension provides support for
+    B-Format buffers using the FuMa standard for channel ordering and scaling,
+    however much of the ambisonic content being produced today is using a more
+    formalized ACN ordering and SN3D scaling, some even using N3D scaling. The
+    option to interpret B-Format buffers using these standards makes them
+    easier to use since an application won't need to manually convert them
+    before loading.
+
+Issues
+
+    Q: Should these be defined as new formats, buffer properties, or source
+       properties?
+    A: Buffer properties. It would unnecessarily bloat the format list to make
+       each potential order and scale pairing as a new option, and source
+       properties would create unnecessary bookkeeping to ensure the source is
+       properly configured for the buffer it's going to play.
+
+    Q: Is it allowed to queue buffers with different layout or scaling values
+       onto a source?
+    A: Not when they contain B-Format data. If the buffers being queued do not
+       hold B-Format data, the layout and scaling properties are ignored and
+       may be queued together regardless of the value for these properties. But
+       if they do hold B-Format data, they are effectively part of the buffer
+       format and must match other queued buffers.
+
+    Q: Does changing the layout and scaling after B-Format data has been
+       buffered affect how the data is interpreted?
+    A: Yes. The layout and scaling do not influence the needed data size, and
+       it should not be needed for an implementation to convert the data for
+       this purpose when loading it. As long as the buffer is not currently
+       attached to a source, there should be no issue with modifying these
+       properties without requiring the data to be reloaded.
+
+New Procedures and Functions
+
+    None.
+
+New Tokens
+
+    Accepted as the <paramName> parameter of alBufferi, alBufferiv,
+    alGetBufferi, and alGetBufferiv:
+
+        AL_AMBISONIC_LAYOUT_SOFT                 0x1997
+        AL_AMBISONIC_SCALING_SOFT                0x1998
+
+    Accepted as the <value> parameter of alBufferi and alBufferiv for the
+    AL_AMBISONIC_LAYOUT_SOFT and AL_AMBISONIC_SCALING_SOFT properties:
+
+        AL_FUMA_SOFT                             0x0000
+
+    Accepted as the <value> parameter of alBufferi and alBufferiv for the
+    AL_AMBISONIC_LAYOUT_SOFT property:
+
+        AL_ACN_SOFT                              0x0001
+
+    Accepted as the <value> parameter of alBufferi and alBufferiv for the
+    AL_AMBISONIC_SCALING_SOFT property:
+
+        AL_SN3D_SOFT                             0x0001
+        AL_N3D_SOFT                              0x0002
+
+Additions to Specification
+
+    Append to Section 5.3.1, Buffer Attributes
+
+    Table 5.x. Buffer AL_AMBISONIC_LAYOUT_SOFT Attribute
+
+    Name                        Signature  Values           Default
+    --------------------------  ---------  ---------------  --------------
+    AL_AMBISONIC_LAYOUT_SOFT    i,iv       AL_FUMA_SOFT,    AL_FUMA_SOFT
+                                           AL_ACN_SOFT
+
+    Specifies the channel layout used by B-Format buffer data. The default,
+    AL_FUMA_SOFT, is the traditional layout for first-order B-Format and was
+    adopted by the FuMa format (and subsequently extended for higher orders,
+    although the significance of which is not currently applicable here). For
+    3D B-Format, this correlates to Ambisonic axis order WXYZ (note that these
+    axes do not correspond to OpenAL's, e.g. Ambisonic's +X is not OpenAL's
+    +X). For 2D B-Format, this correlates to Ambisonic axis order WXY.
+
+    The value AL_ACN_SOFT causes the B-Format channel layout to be interpreted
+    as having an incrementing Ambisonic Channel Number (ACN) index, which is
+    used by a large portion of modern ambisonic content. For 3D B-Format, this
+    correlates to ACN indices 0123 (WYZX in FuMa). For 2D B-Format, this
+    correlates to ACN indices 013 (WYX in FuMa).
+
+    An attempt to change the layout value while the buffer is attached or
+    queued to a source will generate an AL_INVALID_OPERATION error. When
+    containing B-Format format data and being queued onto a source, the layout
+    value must match the layout of any other buffers queued on the source, or
+    an AL_INVALID_OPERATION will be generated.
+
+
+    Table 5.x. Buffer AL_AMBISONIC_SCALING_SOFT Attribute
+
+    Name                         Signature  Values           Default
+    ---------------------------  ---------  ---------------  --------------
+    AL_AMBISONIC_SCALING_SOFT    i,iv       AL_FUMA_SOFT,    AL_FUMA_SOFT
+                                            AL_SN3D_SOFT,
+                                            AL_N3D_SOFT
+
+    Specifies the channel scaling used by B-Format buffer data. The default,
+    AL_FUMA_SOFT, is the traditional scaling for first-order B-Format and was
+    adopted by the FuMa format. Buffer data using this scaling is expected to
+    have normalized each channel according to its maximum associated Legendre
+    polynomial value, along with an extra -3dB adjustment on W (ACN 0).
+
+    The value AL_SN3D_SOFT is for Schmidt semi-normalization, which is used by
+    a large portion of modern ambisonic content. This normalization can be
+    expressed as:
+
+                    _____________________
+                   /           (l - |m|)!         { 1  if m == 0
+    SN3D(l,m) =   / (2 - d(m)) ----------, d(m) = {
+                \/             (l + |m|)!         { 0  if m != 0
+
+    Where l is the Ambisonic order and m is the Ambisonic index for the given
+    channel.
+
+    The value AL_N3D_SOFT is for full normalization (as in, the orthonormal
+    basis for 3D decomposition, not keeping the signal between -1...+1). This
+    has seen some use with ambisonic content, and can be expressed in relation
+    to SN3D as:
+
+    N3D(l,m) = SN3D(l,m) * sqrt(l*2 + 1)
+
+    An attempt to change the scaling value while the buffer is attached or
+    queued to a source will generate an AL_INVALID_OPERATION error. When
+    containing B-Format format data and being queued onto a source, the scaling
+    value must match the scaling of any other buffers queued on the source, or
+    an AL_INVALID_OPERATION will be generated.

@@ -1,0 +1,73 @@
+Name
+
+    AL_SOFT_direct_channels_remix
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete
+
+Dependancies
+
+    This extension is written against the OpenAL 1.1 specification.
+    This extension depends on AL_SOFT_direct_channels.
+    This extension interacts with AL_EXT_BFORMAT.
+
+Overview
+
+    This extension adds the ability to remix channels to the
+    AL_SOFT_direct_channels extension. By default, that extension drops input
+    buffer channels that don't have a matching output channel. This really only
+    works well for controlled setups where the input and output are known, but
+    problems arise when these become variable. An option to remix input
+    channels to the closest output channels will ensure the sound will still be
+    audible with as little virtualization as possible.
+
+Issues
+
+    Q: How does this extension maintain compatibility with
+       AL_SOFT_direct_channels?
+    A: Originally, the AL_DIRECT_CHANNELS_SOFT property accepted AL_FALSE and
+       AL_TRUE, which are 0 and 1 respectively. This extension supplies the
+       new AL_DROP_UNMATCHED_SOFT enum name with the same value as AL_TRUE,
+       providing the same behavior as the original extension, while the other
+       new enum name, AL_REMIX_UNMATCHED_SOFT, has the value 2 which would
+       previously cause an error, but now enables the new behavior.
+
+New Procedures and Functions
+
+    None.
+
+New Tokens
+
+    Accepted as the <value> parameter of alSourcei and alSourceiv for the
+    AL_DIRECT_CHANNELS_SOFT property:
+
+        AL_DROP_UNMATCHED_SOFT                   0x0001 /* same as AL_TRUE */
+        AL_REMIX_UNMATCHED_SOFT                  0x0002
+
+Additions to Specification
+
+    Modify Table 4.x, Channel Virtualization
+
+    Name                       Signature  Values                    Default
+    -------------------------  ---------  ------------------------  ----------
+    AL_DIRECT_CHANNELS_SOFT    i, iv      AL_REMIX_UNMATCHED_SOFT,  AL_FALSE
+                                          AL_DROP_UNMATCHED_SOFT,
+                                          AL_FALSE
+
+    Description:
+    AL_DIRECT_CHANNELS_SOFT set to AL_DROP_UNMATCHED_SOFT indicates the audio
+    channels are not virtualized and play directly on the matching output
+    channels if they exist, otherwise they are dropped. When set to
+    AL_REMIX_UNMATCHED_SOFT, the audio channels are not virtualized and play
+    directly on the matching output channels if they exist, otherwise they are
+    remixed to the closest available channels. Applies only when playing non-
+    mono and non-B-Format buffers.

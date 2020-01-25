@@ -10,7 +10,7 @@ list of extensions available on a specific platform), please issue a pull reques
 Extensions available on specific platforms
 ==========================================
 
-OpenAL Soft 1.20.0
+OpenAL Soft 1.20.1
 ------------------
 
 * AL_EXT_ALAW
@@ -29,9 +29,11 @@ OpenAL Soft 1.20.0
 * AL_EXT_SOURCE_RADIUS
 * AL_EXT_STEREO_ANGLES
 * AL_LOKI_quadriphonic
+* AL_SOFT_bformat_ex
 * AL_SOFT_block_alignment
 * AL_SOFT_deferred_updates
 * AL_SOFT_direct_channels
+* AL_SOFT_direct_channels_remix
 * AL_SOFTX_events
 * AL_SOFTX_filter_gain_ex
 * AL_SOFT_gain_clamp_ex
@@ -211,11 +213,13 @@ AL_LOKI_buffer_data_callback           | https://github.com/Raulshc/openal-svn-m
 AL_LOKI_play_position                  | http://scp.indiegames.us/fsodoc/ds_8cpp_source.html
 AL_LOKI_quadriphonic                   | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_quadriphonic
 AL_SOFT_MSADPCM                        | http://kcat.strangesoft.net/openal-extensions/
+AL_SOFT_bformat_ex                     | https://www.openal-soft.org/openal-extensions/SOFT_bformat_ex.txt
 AL_SOFT_block_alignment                | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_buffer_samples                 | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_buffer_sub_data                | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_deferred_updates               | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_direct_channels                | http://kcat.strangesoft.net/openal-extensions/
+AL_SOFT_direct_channels_remix          | https://www.openal-soft.org/openal-extensions/SOFT_direct_channels_remix.txt
 AL_SOFT_gain_clamp_ex                  | https://www.openal-soft.org/openal-extensions/
 AL_SOFT_loop_points                    | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_source_latency                 | http://kcat.strangesoft.net/openal-extensions/
