@@ -34,6 +34,7 @@ OpenAL Soft 1.20.1
 * AL_SOFT_deferred_updates
 * AL_SOFT_direct_channels
 * AL_SOFT_direct_channels_remix
+* AL_SOFTX_effect_chain
 * AL_SOFTX_events
 * AL_SOFTX_filter_gain_ex
 * AL_SOFT_gain_clamp_ex
