@@ -1,1 +1,4 @@
-The "EAX" extension is equivalent to asking for EAX 1.0 support -- developers are not encouraged to use it any more. 
+EAX
+
+The "EAX" extension is equivalent to asking for EAX 1.0 support
+-- developers are not encouraged to use it any more. 

@@ -1,3 +1,5 @@
+EAX-RAM
+
 XRAM extension for some Creative cards.
 
 /*********** X-RAM Function pointer definitions ****************/

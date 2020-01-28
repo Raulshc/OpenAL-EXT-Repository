@@ -1,1 +1,4 @@
-This was an extension allowing AC3 playback through OpenAL -- it is no longer being maintained. 
+EAX-AC3
+
+This was an extension allowing AC3 playback through OpenAL.
+-- it is no longer being maintained. 

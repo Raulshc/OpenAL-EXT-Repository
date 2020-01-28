@@ -1,1 +1,5 @@
-Supports EAX 4.0 calls on any sound card supporting this standard. Go to http://developer.creative.com/landing.asp?cat=1&sbcat=31 for more information. 
+EAX4.0
+
+Supports EAX 4.0 calls on any sound card supporting this standard.
+Go to http://developer.creative.com/landing.asp?cat=1&sbcat=31
+for more information. 
