@@ -1,9 +1,12 @@
- /* byte offset into source (in canon format).  -1 if source 
-  * is not playing.  Don't set this, get this. 
-  * 
-  * Type:  ALint 
-  * Range: -1 - +inf 
-  */
+
+AL_LOKI_play_position
+
+`AL_BYTE_LOKI' is used as a getter to `alGetSourcei', and reports
+a source's position, in bytes, into the buffer, or -1 in the case
+of a non playing source.  There are no guarentees about the
+internal representation of data so the value returned using this
+token may not correspond with the equivilant offset in the user
+supplied data.
 
 #define AL_LOKI_play_position 1
 #define AL_BYTE_LOKI                             0x100C
