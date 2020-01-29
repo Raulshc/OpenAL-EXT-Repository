@@ -157,7 +157,7 @@ ALC Extensions
 
 Extension | Source
 --------- | ------
-ALC_ENUMERATE_ALL_EXT                  | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
+ALC_ENUMERATE_ALL_EXT                  | https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 ALC_ENUMERATION_EXT                    | http://openal.org/documentation/openal-1.1-specification.pdf
 ALC_EXT_ASA                            | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
 ALC_EXT_ASA_DISTORTION                 | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
