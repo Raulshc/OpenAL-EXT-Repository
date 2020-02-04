@@ -1,3 +1,7 @@
+AL_EXT_MULAW
+
+Support for PCM with u-law mono and stereo buffers.
+
 #define AL_EXT_MULAW 1
 #define AL_FORMAT_MONO_MULAW_EXT                 0x10014
 #define AL_FORMAT_STEREO_MULAW_EXT               0x10015
