@@ -1,3 +1,5 @@
+AL_EXT_IMA4
+
 Support for IMA4 ADPCM mono and stereo buffers. 
 
 #define AL_EXT_IMA4 1
