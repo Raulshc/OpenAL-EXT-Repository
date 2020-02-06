@@ -175,7 +175,7 @@ ALC_LOKI_audio_channel                 | https://github.com/Raulshc/openal-svn-m
 ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING  | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
 ALC_SOFT_device_clock                  | https://www.openal-soft.org/openal-extensions/SOFT_device_clock.txt
 ALC_SOFT_HRTF                          | https://www.openal-soft.org/openal-extensions/SOFT_HRTF.txt
-ALC_SOFT_loopback                      | http://kcat.strangesoft.net/openal-extensions/
+ALC_SOFT_loopback                      | https://www.openal-soft.org/openal-extensions/SOFT_loopback.txt
 ALC_SOFT_output_limiter                | https://www.openal-soft.org/openal-extensions/
 ALC_SOFT_pause_device                  | http://kcat.strangesoft.net/openal-extensions/
 
