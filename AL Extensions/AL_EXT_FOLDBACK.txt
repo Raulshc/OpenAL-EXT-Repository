@@ -1,3 +1,5 @@
+AL_EXT_FOLDBACK
+
 OVERVIEW
 
 This OpenAL extension provides a "foldback" facility to OpenAL, allowing a mono 
