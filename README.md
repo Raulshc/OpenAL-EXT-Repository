@@ -177,7 +177,7 @@ ALC_SOFT_device_clock                  | https://www.openal-soft.org/openal-exte
 ALC_SOFT_HRTF                          | https://www.openal-soft.org/openal-extensions/SOFT_HRTF.txt
 ALC_SOFT_loopback                      | https://www.openal-soft.org/openal-extensions/SOFT_loopback.txt
 ALC_SOFT_output_limiter                | https://www.openal-soft.org/openal-extensions/SOFT_output_limiter.txt
-ALC_SOFT_pause_device                  | http://kcat.strangesoft.net/openal-extensions/
+ALC_SOFT_pause_device                  | https://www.openal-soft.org/openal-extensions/SOFT_pause_device.txt
 
 AL Extensions
 --------------
