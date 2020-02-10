@@ -211,7 +211,7 @@ AL_LOKI_attenuation_scale              | https://github.com/Raulshc/openal-svn-m
 AL_LOKI_buffer_data_callback           | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_buffer_data_callback
 AL_LOKI_play_position                  | http://www.fifi.org/cgi-bin/info2www?(openal)Loki+specific+tokens
 AL_LOKI_quadriphonic                   | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_quadriphonic
-AL_SOFT_MSADPCM                        | http://kcat.strangesoft.net/openal-extensions/
+AL_SOFT_MSADPCM                        | https://www.openal-soft.org/openal-extensions/SOFT_MSADPCM.txt
 AL_SOFT_bformat_ex                     | https://www.openal-soft.org/openal-extensions/SOFT_bformat_ex.txt
 AL_SOFT_block_alignment                | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_buffer_samples                 | http://kcat.strangesoft.net/openal-extensions/
