@@ -214,7 +214,7 @@ AL_LOKI_quadriphonic                   | https://github.com/Raulshc/openal-svn-m
 AL_SOFT_MSADPCM                        | https://www.openal-soft.org/openal-extensions/SOFT_MSADPCM.txt
 AL_SOFT_bformat_ex                     | https://www.openal-soft.org/openal-extensions/SOFT_bformat_ex.txt
 AL_SOFT_block_alignment                | https://www.openal-soft.org/openal-extensions/SOFT_block_alignment.txt
-AL_SOFT_buffer_samples                 | http://kcat.strangesoft.net/openal-extensions/
+AL_SOFT_buffer_samples                 | https://www.openal-soft.org/openal-extensions/SOFT_buffer_samples.txt
 AL_SOFT_buffer_sub_data                | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_deferred_updates               | http://kcat.strangesoft.net/openal-extensions/
 AL_SOFT_direct_channels                | http://kcat.strangesoft.net/openal-extensions/
