@@ -217,7 +217,7 @@ AL_SOFT_block_alignment                | https://www.openal-soft.org/openal-exte
 AL_SOFT_buffer_samples                 | https://www.openal-soft.org/openal-extensions/SOFT_buffer_samples.txt
 AL_SOFT_buffer_sub_data                | https://www.openal-soft.org/openal-extensions/SOFT_buffer_sub_data.txt
 AL_SOFT_deferred_updates               | https://www.openal-soft.org/openal-extensions/SOFT_deferred_updates.txt
-AL_SOFT_direct_channels                | http://kcat.strangesoft.net/openal-extensions/
+AL_SOFT_direct_channels                | https://www.openal-soft.org/openal-extensions/SOFT_direct_channels.txt
 AL_SOFT_direct_channels_remix          | https://www.openal-soft.org/openal-extensions/SOFT_direct_channels_remix.txt
 AL_SOFT_gain_clamp_ex                  | https://www.openal-soft.org/openal-extensions/
 AL_SOFT_loop_points                    | http://kcat.strangesoft.net/openal-extensions/
