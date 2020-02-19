@@ -222,7 +222,7 @@ AL_SOFT_direct_channels_remix          | https://www.openal-soft.org/openal-exte
 AL_SOFT_gain_clamp_ex                  | https://www.openal-soft.org/openal-extensions/SOFT_gain_clamp_ex.txt
 AL_SOFT_loop_points                    | https://www.openal-soft.org/openal-extensions/SOFT_loop_points.txt
 AL_SOFT_source_latency                 | https://www.openal-soft.org/openal-extensions/SOFT_source_latency.txt
-AL_SOFT_source_length                  | http://kcat.strangesoft.net/openal-extensions/
+AL_SOFT_source_length                  | https://www.openal-soft.org/openal-extensions/SOFT_source_length.txt
 AL_SOFT_source_resampler               | https://www.openal-soft.org/openal-extensions/
 AL_SOFT_source_spatialize              | https://www.openal-soft.org/openal-extensions/
 EAX-RAM                                | https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
