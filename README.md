@@ -224,7 +224,7 @@ AL_SOFT_loop_points                    | https://www.openal-soft.org/openal-exte
 AL_SOFT_source_latency                 | https://www.openal-soft.org/openal-extensions/SOFT_source_latency.txt
 AL_SOFT_source_length                  | https://www.openal-soft.org/openal-extensions/SOFT_source_length.txt
 AL_SOFT_source_resampler               | https://www.openal-soft.org/openal-extensions/SOFT_source_resampler.txt
-AL_SOFT_source_spatialize              | https://www.openal-soft.org/openal-extensions/
+AL_SOFT_source_spatialize              | https://www.openal-soft.org/openal-extensions/SOFT_source_spatialize.txt
 EAX-RAM                                | https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 EAX                                    | http://icculus.org/alextreg/wiki/action=printer&id=EAX
 EAX1.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX
