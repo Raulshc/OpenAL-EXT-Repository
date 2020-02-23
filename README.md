@@ -203,7 +203,7 @@ AL_EXT_STEREO_ANGLES                   | http://icculus.org/alextreg/wiki/action
 AL_EXT_double                          | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_float32                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_Float32
 AL_EXT_mp3                             | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_mp3
-AL_EXT_source_distance_model           | http://kcat.strangesoft.net/openal-extensions/
+AL_EXT_source_distance_model           | https://www.openal-soft.org/openal-extensions/EXT_source_distance_model.txt
 AL_EXT_vorbis                          | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_vorbis
 AL_LOKI_IMA_ADPCM_format               | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_IMA_ADPCM_format
 AL_LOKI_WAVE_format                    | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_WAVE_format
