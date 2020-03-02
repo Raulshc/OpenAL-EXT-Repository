@@ -1,4 +1,3 @@
-
 ALC_EXT_DEFAULT_FILTER_ORDER
 
 This extension allows the default filter order (i.e. slope) to be

@@ -1,4 +1,3 @@
-
 ALC_ENUMERATE_ALL_EXT
 
 The Enumerate All Extension enables the application developer to retrieve

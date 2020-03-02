@@ -1,4 +1,3 @@
-
 AL_LOKI_play_position
 
 `AL_BYTE_LOKI' is used as a getter to `alGetSourcei', and reports
@@ -8,5 +7,4 @@ internal representation of data so the value returned using this
 token may not correspond with the equivilant offset in the user
 supplied data.
 
-#define AL_LOKI_play_position 1
-#define AL_BYTE_LOKI                             0x100C
+AL_BYTE_LOKI                             0x100C

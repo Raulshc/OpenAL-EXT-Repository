@@ -4,6 +4,5 @@ This extension implies two MULAW formats are available, based on 2D and 3D Ambis
 
 See AL_EXT_BFORMAT for a discussion of the channel numberings and meanings. 
 
-#define AL_EXT_MULAW_BFORMAT 1
-#define AL_FORMAT_BFORMAT2D_MULAW                0x10031
-#define AL_FORMAT_BFORMAT3D_MULAW                0x10032
+AL_FORMAT_BFORMAT2D_MULAW                0x10031
+AL_FORMAT_BFORMAT3D_MULAW                0x10032

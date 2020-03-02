@@ -1,4 +1,3 @@
-
 9.5. ALC_ENUMERATION_EXT
 
 An OpenAL 1.1 implementation will always support the ALC_ENUMERATION_EXT extension.

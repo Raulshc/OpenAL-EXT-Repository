@@ -2,6 +2,5 @@ AL_EXT_IMA4
 
 Support for IMA4 ADPCM mono and stereo buffers. 
 
-#define AL_EXT_IMA4 1
-#define AL_FORMAT_MONO_IMA4                      0x1300
-#define AL_FORMAT_STEREO_IMA4                    0x1301
+AL_FORMAT_MONO_IMA4                      0x1300
+AL_FORMAT_STEREO_IMA4                    0x1301
