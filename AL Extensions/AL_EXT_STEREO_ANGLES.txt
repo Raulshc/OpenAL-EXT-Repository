@@ -1,20 +1,59 @@
-AL_EXT_STEREO_ANGLES
+Name
 
-This extension allows any stereo source to be "steered" by setting 
-the angles at which the left and right channels should play. Angles 
-are always specified in radians, anticlockwise relative to the real 
-front (AL_SOURCE_RELATIVE is not supported).
+        EXT_STEREO_ANGLES
 
-The AL_STEREO_ANGLES tag can be used with alSourcefv() and two angles. 
-The angles are specified anticlockwise relative to the real front, so 
-a normal 60degree front stage is specified with:
+Name Strings
 
-alSourcefv(sid,AL_STEREO_ANGLES,+M_PI/6,-M_PI/6).
+        AL_EXT_STEREO_ANGLES
 
-Tokens:
+Version
 
-AL_STEREO_ANGLES (0x1030)
+        1.0
 
-Entry points:
+Number
 
-(no entry points.)
+        ??
+
+Dependencies
+
+        None
+
+Overview
+
+        This extension allows any stereo source to be "steered" by setting 
+        the angles at which the left and right channels should play. Angles 
+        are always specified in radians, anticlockwise relative to the real 
+        front (AL_SOURCE_RELATIVE is not supported).
+
+Issues
+
+        The AL_STEREO_ANGLES tag can be used with alSourcefv() and two angles. 
+        The angles are specified anticlockwise relative to the real front, so 
+        a normal 60degree front stage is specified with:
+
+        alSourcefv(sid,AL_STEREO_ANGLES,+M_PI/6,-M_PI/6).
+
+New Procedures and Functions
+
+        None.
+
+New Tokens
+
+        AL_STEREO_ANGLES                          0x1030
+
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
