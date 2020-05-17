@@ -1,6 +1,52 @@
-AL_EXT_IMA4
+Name
 
-Support for IMA4 ADPCM mono and stereo buffers. 
+        EXT_IMA4
 
-AL_FORMAT_MONO_IMA4                      0x1300
-AL_FORMAT_STEREO_IMA4                    0x1301
+Name Strings
+
+        AL_EXT_IMA4
+
+Version
+
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        None
+
+Overview
+
+        Support for IMA4 ADPCM mono and stereo buffers.
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        None.
+
+New Tokens
+
+        AL_FORMAT_MONO_IMA4                       0x1300
+        AL_FORMAT_STEREO_IMA4                     0x1301
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
