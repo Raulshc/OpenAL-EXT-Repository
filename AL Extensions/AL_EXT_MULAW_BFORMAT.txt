@@ -1,8 +1,55 @@
-AL_EXT_MULAW_BFORMAT
+Name
 
-This extension implies two MULAW formats are available, based on 2D and 3D Ambisonic B-Format.
+        EXT_MULAW_BFORMAT
 
-See AL_EXT_BFORMAT for a discussion of the channel numberings and meanings. 
+Name Strings
 
-AL_FORMAT_BFORMAT2D_MULAW                0x10031
-AL_FORMAT_BFORMAT3D_MULAW                0x10032
+        AL_EXT_MULAW_BFORMAT
+
+Version
+
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        EXT_BFORMAT
+        EXT_MULAW
+
+Overview
+
+        This extension implies two MULAW formats are available, based on 2D
+        and 3D Ambisonic B-Format.
+
+Issues
+
+        See AL_EXT_BFORMAT for a discussion of the channel numberings and
+        meanings.
+
+New Procedures and Functions
+
+        None.
+
+New Tokens
+
+        AL_FORMAT_BFORMAT2D_MULAW                 0x10031
+        AL_FORMAT_BFORMAT3D_MULAW                 0x10032
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
