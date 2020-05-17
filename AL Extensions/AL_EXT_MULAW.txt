@@ -1,6 +1,52 @@
-AL_EXT_MULAW
+Name
 
-Support for PCM with u-law mono and stereo buffers.
+        EXT_MULAW
 
-AL_FORMAT_MONO_MULAW_EXT                 0x10014
-AL_FORMAT_STEREO_MULAW_EXT               0x10015
+Name Strings
+
+        AL_EXT_MULAW
+
+Version
+
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        None
+
+Overview
+
+        Support for PCM with u-law mono and stereo buffers.
+
+Issues
+
+        ?
+
+New Procedures and Functions
+
+        None
+
+New Tokens
+
+        AL_FORMAT_MONO_MULAW_EXT                  0x10014
+        AL_FORMAT_STEREO_MULAW_EXT                0x10015
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
