@@ -1,10 +1,55 @@
-AL_LOKI_play_position
+Name
 
-`AL_BYTE_LOKI' is used as a getter to `alGetSourcei', and reports
-a source's position, in bytes, into the buffer, or -1 in the case
-of a non playing source.  There are no guarentees about the
-internal representation of data so the value returned using this
-token may not correspond with the equivilant offset in the user
-supplied data.
+        LOKI_play_position
 
-AL_BYTE_LOKI                             0x100C
+Name Strings
+
+        AL_LOKI_play_position
+
+Version
+
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        None
+
+Overview
+
+        AL_BYTE_LOKI is used as a getter to alGetSourcei, and reports
+        a source's position, in bytes, into the buffer, or -1 in the case
+        of a non playing source.
+
+Issues
+
+        There are no guarentees about the internal representation of data
+        so the value returned using this token may not correspond with the
+        equivilant offset in the user supplied data.
+
+New Procedures and Functions
+
+        None.
+
+New Tokens
+
+        AL_BYTE_LOKI                              0x100C
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
