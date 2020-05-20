@@ -1,7 +1,62 @@
-AL_EXT_mp3
+Name
 
-AL_EXT_mp3 works just like AL EXT vorbis, but uses AL_FORMAT_MP3_EXT for the
-format token instead of AL_FORMAT_VORBIS_EXT, and obviously expects MP3 data
-instead of Ogg Vorbis packets.
+        EXT_mp3
 
-AL_FORMAT_MP3_EXT                0x10020
+Name Strings
+
+        AL_EXT_mp3
+
+Version
+
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        Linux implementation -- LOKI_buffer_data_callback
+        MacOS implementation -- None
+        Windows implementation -- must have libvorbisfile.dll installed separately
+
+Overview
+
+        AL_EXT_mp3 works just like AL EXT vorbis, but uses AL_FORMAT_MP3_EXT
+        for the format token instead of AL_FORMAT_VORBIS_EXT, and obviously
+        expects MP3 data instead of Ogg Vorbis packets.
+
+Issues
+
+        The caveats and restrictions that relate to all formats supported
+        via the callback mechanism apply.  Namely, certain filters that
+        rely on having all data present to operate (like the pitch operation)
+        may result in NOP.  This format tag is invalid as an internalFormat
+        hint to functions that accept them.
+
+        This extension can be fully utilized by using the extended token
+        in conjunction with BufferData.
+
+New Procedures and Functions
+
+        None.
+
+New Tokens
+
+        AL_FORMAT_MP3_EXT                         0x10020
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
