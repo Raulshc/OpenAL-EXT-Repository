@@ -10,7 +10,7 @@ list of extensions available on a specific platform), please issue a pull reques
 Extensions available on specific platforms
 ==========================================
 
-OpenAL Soft 1.20.1
+OpenAL Soft 1.21.0
 ------------------
 
 * AL_EXT_ALAW
@@ -30,17 +30,20 @@ OpenAL Soft 1.20.1
 * AL_EXT_STEREO_ANGLES
 * AL_LOKI_quadriphonic
 * AL_SOFT_bformat_ex
+* AL_SOFTX_bformat_hoa
 * AL_SOFT_block_alignment
+* AL_SOFTX_callback_buffer
+* AL_SOFTX_convolution_reverb
 * AL_SOFT_deferred_updates
 * AL_SOFT_direct_channels
 * AL_SOFT_direct_channels_remix
-* AL_SOFTX_effect_chain
-* AL_SOFTX_events
+* AL_SOFT_effect_target
+* AL_SOFT_events
 * AL_SOFTX_filter_gain_ex
 * AL_SOFT_gain_clamp_ex
 * AL_SOFT_loop_points
-* AL_SOFT_MSADPCM
 * AL_SOFTX_map_buffer
+* AL_SOFT_MSADPCM
 * AL_SOFT_source_latency
 * AL_SOFT_source_length
 * AL_SOFT_source_resampler
@@ -55,6 +58,7 @@ OpenAL Soft 1.20.1
 * ALC_SOFT_device_clock
 * ALC_SOFT_HRTF
 * ALC_SOFT_loopback
+* ALC_SOFT_loopback_bformat
 * ALC_SOFT_output_limiter
 * ALC_SOFT_pause_device
 
@@ -176,6 +180,7 @@ ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING  | https://opensource.apple.com/source/Ope
 ALC_SOFT_device_clock                  | https://www.openal-soft.org/openal-extensions/SOFT_device_clock.txt
 ALC_SOFT_HRTF                          | https://www.openal-soft.org/openal-extensions/SOFT_HRTF.txt
 ALC_SOFT_loopback                      | https://www.openal-soft.org/openal-extensions/SOFT_loopback.txt
+ALC_SOFT_loopback_bformat              | https://www.openal-soft.org/openal-extensions/SOFT_loopback_bformat.txt
 ALC_SOFT_output_limiter                | https://www.openal-soft.org/openal-extensions/SOFT_output_limiter.txt
 ALC_SOFT_pause_device                  | https://www.openal-soft.org/openal-extensions/SOFT_pause_device.txt
 
@@ -219,6 +224,8 @@ AL_SOFT_buffer_sub_data                | https://www.openal-soft.org/openal-exte
 AL_SOFT_deferred_updates               | https://www.openal-soft.org/openal-extensions/SOFT_deferred_updates.txt
 AL_SOFT_direct_channels                | https://www.openal-soft.org/openal-extensions/SOFT_direct_channels.txt
 AL_SOFT_direct_channels_remix          | https://www.openal-soft.org/openal-extensions/SOFT_direct_channels_remix.txt
+AL_SOFT_effect_target                  | https://www.openal-soft.org/openal-extensions/SOFT_effect_target.txt
+AL_SOFT_events                         | https://www.openal-soft.org/openal-extensions/SOFT_events.txt
 AL_SOFT_gain_clamp_ex                  | https://www.openal-soft.org/openal-extensions/SOFT_gain_clamp_ex.txt
 AL_SOFT_loop_points                    | https://www.openal-soft.org/openal-extensions/SOFT_loop_points.txt
 AL_SOFT_source_latency                 | https://www.openal-soft.org/openal-extensions/SOFT_source_latency.txt

@@ -1,0 +1,151 @@
+Name
+
+    ALC_SOFT_loopback_bformat
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete
+
+Dependencies
+
+    This extension is for OpenAL 1.1.
+    This extension depends on ALC_SOFT_loopback.
+
+Overview
+
+    This extension allows a loopback device to render B-Format audio channels.
+    The base loopback extension provides for discrete channel mixes, while
+    sometimes a non-discrete soundfield mix may be desirable, for instance if
+    recording a 3D video or passing the output to an external ambisonic
+    decoder.
+
+Issues
+
+    Q: What ambisonic orders are supported?
+    A: Implementation defined. The maximum order supported by a given loopback
+       device can be queried by a call to alcGetIntegerv with
+       ALC_MAX_AMBISONIC_ORDER_SOFT, or ALC_ALL_ATTRIBUTES (and subseqeuntly
+       searching the returned values for ALC_MAX_AMBISONIC_ORDER_SOFT). An
+       implementation will support orders 1...ALC_MAX_AMBISONIC_ORDER_SOFT
+       inclusively.
+
+    Q: What ambisonic channel layouts and normalization schemes should be
+       supported?
+    A: An implementation must support FuMa and ACN layouts, as well as FuMa,
+       SN3D, and N3D scalings. Note that when using FuMa layout or scaling,
+       there's a limit of third-order rendering even if the implementation
+       supports higher orders, due to FuMa having no formal definition for
+       fourth-order and higher.
+
+New Procedures and Functions
+
+
+New Tokens
+
+    Accepted as parameters for ALC_FORMAT_CHANNELS_SOFT in the <attrList>
+    parameter of alcCreateContext, and by the <channels> parameter of
+    alcIsRenderFormatSupportedSOFT:
+
+        ALC_BFORMAT3D_SOFT                       0x1507
+
+    Accepted as part of the <attrList> parameter of alcCreateContext:
+
+        ALC_AMBISONIC_LAYOUT_SOFT                0x1997
+        ALC_AMBISONIC_SCALING_SOFT               0x1998
+        ALC_AMBISONIC_ORDER_SOFT                 0x1999
+
+    Accepted as parameters for ALC_AMBISONIC_LAYOUT_SOFT in the <attrList>
+    parameter of alcCreateContext:
+
+        ALC_FUMA_SOFT                            0x0000
+        ALC_ACN_SOFT                             0x0001
+
+    Accepted as parameters for ALC_AMBISONIC_SCALING_SOFT in the <attrList>
+    parameter of alcCreateContext:
+
+        ALC_FUMA_SOFT                            /* Same as above */
+        ALC_SN3D_SOFT                            0x0001
+        ALC_N3D_SOFT                             0x0002
+
+    Accepted as the <paramName> parameter of alcGetIntegerv:
+
+        ALC_MAX_AMBISONIC_ORDER_SOFT             0x199B
+
+Additions to Specification
+
+    Addendum for "Loopback Devices"
+
+    When creating contexts, the attribute list must specify the format used
+    for rendering. This is done with the ALC_FORMAT_CHANNELS_SOFT,
+    ALC_FORMAT_TYPE_SOFT, and ALC_FREQUENCY attributes. This controls the
+    format of the audio subsequently rendered by the device.
+
+    If the ALC_FORMAT_CHANNELS_SOFT attribute specifies ALC_BFORMAT3D_SOFT,
+    the attribute list must also specify the ALC_AMBISONIC_LAYOUT_SOFT,
+    ALC_AMBISONIC_SCALING_SOFT, and ALC_AMBISONIC_ORDER_SOFT attributes.
+
+    Supported ambisonic layouts for ALC_AMBISONIC_LAYOUT_SOFT are given in
+    Table 1.2. Supported ambisonic scalings for ALC_AMBISONIC_SCALING_SOFT are
+    given in Table 1.3.
+
+    The minimum integer value for ALC_AMBISONIC_ORDER_SOFT is 1. The maximum
+    integer value is an implementation-defined value greater than 0, and can
+    be queried by calling alcGetIntegerv with ALC_MAX_AMBISONIC_ORDER_SOFT on
+    a valid loopback device handle. If either ALC_AMBISONIC_LAYOUT_SOFT or
+    ALC_AMBISONIC_SCALING_SOFT are set to ALC_FUMA_SOFT, the maximum allowed
+    value is further limited to 3.
+
+    The ambisonic order dictates the number of channels in with an ambisonic
+    format. The number of channels is equal to (order+1) * (order+1).
+
+
+    Add to Table 1.0. Channel configurations
+
+    Channels             Configuration  Order
+    -------------------  -------------  --------------------------------------
+    ALC_BFORMAT3D_SOFT   3D B-Format    Dependent on
+                                        ALC_AMBISONIC_LAYOUT_SOFT. See Table
+                                        1.2. The number of channels is
+                                        dependent on the ambisonic order.
+
+    Table 1.2. Ambisonic layouts
+
+    Layout          Channel arrangement
+    --------------  ----------------------------------------------------------
+    ALC_FUMA_SOFT   One channel per ambisonic axis, arranged as W, X, Y, Z, R,
+                    S, T, U, V, K, L, M, N, O, P, and Q.
+    ALC_ACN_SOFT    Incrementing ambisonic channel number index (first channel
+                    is ACN 0, second channel is ACN 1, etc).
+
+    Table 1.3. Ambisonic scaling
+
+    Scaling         Normalization scheme
+    --------------  ----------------------------------------------------------
+    ALC_FUMA_SOFT   Each component is normalized to not amplify a signal over
+                    the original input when panned, and W is attenuated by
+                    -3dB.
+    ALC_SN3D_SOFT   Schmidt semi-normalisation.
+    ALC_N3D_SOFT    Full 3D normalization, the "orthonormal basis for 3D
+                    decomposition."
+
+Errors
+
+    An ALC_INVALID_VALUE error is generated if alcCreateContext is called
+    without a valid ambisonic layout specified when the format
+    ALC_BFORMAT3D_SOFT is specified.
+
+    An ALC_INVALID_VALUE error is generated if alcCreateContext is called
+    without a valid ambisonic scaling specified when the format
+    ALC_BFORMAT3D_SOFT is specified.
+
+    An ALC_INVALID_VALUE error is generated if alcCreateContext is called
+    without a valid ambisonic order specified when the format
+    ALC_BFORMAT3D_SOFT is specified.
