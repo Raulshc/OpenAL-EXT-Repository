@@ -1,0 +1,65 @@
+Name
+
+    ALC_SOFT_reopen_device
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete
+
+Dependencies
+
+    This extension is for OpenAL 1.1.
+    This extension interacts with ALC_EXT_disconnect.
+
+Overview
+
+    This extension provides a mechanism for applications to move the output of
+    a device from one endpoint to another. Standard OpenAL devices are
+    associated with an output on the system upon being opened, but if the
+    endpoint should no longer be the desired output, there is no method for
+    the application to easily change it. The only option for the application
+    is to delete all AL objects, destroy the context, close the device handle,
+    open a new device, and reload/recreate the necessary resources. A method
+    to more simply move the device with its existing resources to a different
+    output is easier, requiring less management from the application.
+
+Issues
+
+
+New Procedures and Functions
+
+    ALCboolean ALC_APIENTRY alcReopenDeviceSOFT(ALCdevice *device,
+        const ALCchar *deviceName, const ALCint *attribs);
+
+Additions to Specification
+
+    Reopening a Device
+
+    Once a playback device is opened, it becomes associated with a particular
+    output endpoint. When this output is no longer the desired output, the
+    playback device can be reopened to re-associate it with a potentially
+    different output endpoint using alcReopenDeviceSOFT.
+
+        ALCboolean alcReopenDeviceSOFT(ALCdevice *device,
+            const ALCchar *deviceName, const ALCint *attribs);
+
+    The <device> handle must be a non-NULL handle for an existing device.
+    <deviceName> is the device name to open, or NULL for the default (same as
+    would be passed to alcOpenDevice). <attribs> is an attribute list to
+    configure the device with, with the same attribute list that would be
+    passed to alcCreateContext.
+
+    Returns ALC_TRUE on success, with output now on the requested device name.
+    If the device was in a disconnected state with the device's ALC_CONNECTED
+    attribute being ALC_FALSE, the device is also restored to a connected
+    state. On failure, the device remains associated with the previous output,
+    ALC_FALSE is returned and an error is generated that can be queried with
+    alcGetError using the device handle.
