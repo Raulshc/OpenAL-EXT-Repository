@@ -10,7 +10,7 @@ list of extensions available on a specific platform), please issue a pull reques
 Extensions available on specific platforms
 ==========================================
 
-OpenAL Soft 1.21.1
+OpenAL Soft 1.22.0
 ------------------
 
 * AL_EXT_ALAW
@@ -32,15 +32,15 @@ OpenAL Soft 1.21.1
 * AL_SOFT_bformat_ex
 * AL_SOFTX_bformat_hoa
 * AL_SOFT_block_alignment
-* AL_SOFTX_callback_buffer
+* AL_SOFT_callback_buffer
 * AL_SOFTX_convolution_reverb
 * AL_SOFT_deferred_updates
 * AL_SOFT_direct_channels
 * AL_SOFT_direct_channels_remix
 * AL_SOFT_effect_target
 * AL_SOFT_events
-* AL_SOFTX_filter_gain_ex
 * AL_SOFT_gain_clamp_ex
+* AL_SOFTX_hold_on_disconnect
 * AL_SOFT_loop_points
 * AL_SOFTX_map_buffer
 * AL_SOFT_MSADPCM
@@ -48,6 +48,7 @@ OpenAL Soft 1.21.1
 * AL_SOFT_source_length
 * AL_SOFT_source_resampler
 * AL_SOFT_source_spatialize
+* AL_SOFT_UHJ
 * ALC_ENUMERATE_ALL_EXT
 * ALC_ENUMERATION_EXT
 * ALC_EXT_CAPTURE
@@ -60,7 +61,19 @@ OpenAL Soft 1.21.1
 * ALC_SOFT_loopback
 * ALC_SOFT_loopback_bformat
 * ALC_SOFT_output_limiter
+* ALC_SOFT_output_mode
 * ALC_SOFT_pause_device
+* ALC_SOFT_reopen_device
+
+If is compiled with ALSOFT_EAX flag:
+
+* EAX
+* EAX1.0
+* EAX2.0
+* EAX3.0
+* EAX4.0
+* EAX5.0
+* EAX-RAM
 
 Rapture3D v12.9.5
 -----------------
@@ -182,7 +195,9 @@ ALC_SOFT_HRTF                          | https://www.openal-soft.org/openal-exte
 ALC_SOFT_loopback                      | https://www.openal-soft.org/openal-extensions/SOFT_loopback.txt
 ALC_SOFT_loopback_bformat              | https://www.openal-soft.org/openal-extensions/SOFT_loopback_bformat.txt
 ALC_SOFT_output_limiter                | https://www.openal-soft.org/openal-extensions/SOFT_output_limiter.txt
+ALC_SOFT_output_mode                   | https://www.openal-soft.org/openal-extensions/SOFT_output_mode.txt
 ALC_SOFT_pause_device                  | https://www.openal-soft.org/openal-extensions/SOFT_pause_device.txt
+ALC_SOFT_reopen_device                 | https://www.openal-soft.org/openal-extensions/SOFT_reopen_device.txt
 
 AL Extensions
 --------------
@@ -217,10 +232,12 @@ AL_LOKI_buffer_data_callback           | https://github.com/Raulshc/openal-svn-m
 AL_LOKI_play_position                  | http://www.fifi.org/cgi-bin/info2www?(openal)Loki+specific+tokens
 AL_LOKI_quadriphonic                   | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_quadriphonic
 AL_SOFT_MSADPCM                        | https://www.openal-soft.org/openal-extensions/SOFT_MSADPCM.txt
+AL_SOFT_UHJ                            | https://www.openal-soft.org/openal-extensions/SOFT_UHJ.txt
 AL_SOFT_bformat_ex                     | https://www.openal-soft.org/openal-extensions/SOFT_bformat_ex.txt
 AL_SOFT_block_alignment                | https://www.openal-soft.org/openal-extensions/SOFT_block_alignment.txt
 AL_SOFT_buffer_samples                 | https://www.openal-soft.org/openal-extensions/SOFT_buffer_samples.txt
 AL_SOFT_buffer_sub_data                | https://www.openal-soft.org/openal-extensions/SOFT_buffer_sub_data.txt
+AL_SOFT_callback_buffer                | https://www.openal-soft.org/openal-extensions/SOFT_callback_buffer.txt
 AL_SOFT_deferred_updates               | https://www.openal-soft.org/openal-extensions/SOFT_deferred_updates.txt
 AL_SOFT_direct_channels                | https://www.openal-soft.org/openal-extensions/SOFT_direct_channels.txt
 AL_SOFT_direct_channels_remix          | https://www.openal-soft.org/openal-extensions/SOFT_direct_channels_remix.txt
