@@ -65,7 +65,7 @@ OpenAL Soft 1.22.0
 * ALC_SOFT_pause_device
 * ALC_SOFT_reopen_device
 
-If is compiled with ALSOFT_EAX flag:
+**If is compiled with** `ALSOFT_EAX` **flag**:
 
 * EAX
 * EAX1.0
