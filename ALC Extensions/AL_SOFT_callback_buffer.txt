@@ -1,0 +1,157 @@
+Name
+
+    AL_SOFT_callback_buffer
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete
+
+Dependencies
+
+    This extension is for OpenAL 1.1.
+
+Overview
+
+    This extension provides a mechanism for applications to provide sample
+    data to the audio device in real-time. Standard OpenAL sources can read
+    samples from a pre-loaded static buffer, or from a queue of prepared
+    buffers that can be fed in over time. In both cases, an application needs
+    to prepare all or some of the audio samples ahead of time to ensure proper
+    continuous playback. A callback mechanism allows applications to generate
+    audio as needed, without having to prepare samples ahead of time, and to
+    implement their own streaming interface instead of having to fill, queue,
+    and manage multiple OpenAL buffers per stream.
+
+Issues
+
+    Q: What restrictions are there on the callback?
+    A: The callback *MUST* be real-time safe! This means it can't block, do
+       file I/O, allocate or free memory, or call any function that may do
+       similar (this includes most external decoders). The function must
+       complete in a bounded amount of time, as it's invoked when the audio
+       device needs more samples to avoid underrunning. Some systems may be
+       less sensitive to this, but to ensure proper compatibility, avoid
+       calling anything that can stall the callback even temporarily.
+
+    Q: How should the callback be supplied?
+    A: Through a buffer object. The buffer gets a new function to prepare it
+       with the callback and format, replacing any buffered samples it may
+       have (and similarly, calling alBufferData to fill the buffer with
+       samples will replace/remove the callback). When the buffer is set onto
+       a source and that source is played, the callback will be invoked as
+       samples are needed for mixing.
+
+    Q: What happens when a buffer with a callback is set on multiple sources,
+       or queued onto a source?
+    A: An error is generated. A buffer with a callback can only be set onto
+       one static source (using alSourcei(sid, AL_BUFFER, bid)). Trying to
+       queue it onto a source with alSourceQueueBuffers or set onto a second
+       source will result in an AL_INVALID_OPERATION error.
+
+New Types
+
+    typedef ALsizei (AL_APIENTRY *ALBUFFERCALLBACKTYPESOFT)(ALvoid *userptr,
+        ALvoid *sampledata, ALsizei numbytes);
+
+New Procedures and Functions
+
+    void AL_APIENTRY alBufferCallbackSOFT(ALuint buffer, ALenum format,
+        ALsizei freq, ALBUFFERCALLBACKTYPESOFT callback, ALvoid *userptr);
+
+    void AL_APIENTRY alGetBufferPtrSOFT(ALuint buffer, ALenum param,
+        ALvoid **ptr);
+
+    void AL_APIENTRY alGetBuffer3PtrSOFT(ALuint buffer, ALenum param,
+        ALvoid **ptr0, ALvoid **ptr1, ALvoid **ptr2);
+
+    void AL_APIENTRY alGetBufferPtrvSOFT(ALuint buffer, ALenum param,
+        ALvoid **ptr);
+
+New Tokens
+
+    Accepted as the <param> parameter of alGetBufferPtrSOFT and
+    alGetBufferPtrvSOFT:
+
+        AL_BUFFER_CALLBACK_FUNCTION_SOFT         0x19A0
+        AL_BUFFER_CALLBACK_USER_PARAM_SOFT       0x19A1
+
+Additions to Specification
+
+    Callback Buffers
+
+    Instead of storing sample data, a buffer may be given a callback function
+    which will be invoked when the source it's attached to needs more samples
+    to mix. To specify a callback for a buffer, use alBufferCallbackSOFT.
+
+        void alBufferCallbackSOFT(ALuint buffer, ALenum format, ALsizei freq,
+            ALBUFFERCALLBACKTYPESOFT callback, ALvoid *userptr);
+
+    After a successful call, any sample data that was stored in the buffer is
+    removed. The specified <format> is the sample format that will be expected
+    from the callback, with <freq> being the base sample rate the samples will
+    play at. NULL is an invalid pointer value for <callback>. The <userptr>
+    pointer is stored with the <callback> pointer. Any data it references is
+    not copied.
+
+    A buffer with a callback cannot be queued onto a streaming source, and it
+    can only be set on one static source at a time. Attempting to queue such a
+    buffer on a source, or attempting to set it on a source while it's already
+    on one, will generate an AL_INVALID_OPERATION error.
+
+    A subsequent successful call to alBufferData will remove the callback from
+    the buffer, and make it a normal non-callback buffer.
+
+
+    The callback should follow the prototype
+
+        typedef ALsizei (AL_APIENTRY *ALBUFFERCALLBACKTYPESOFT)(
+            ALvoid *userptr, ALvoid *sampledata, ALsizei numbytes);
+
+    When invoked, the <userptr> pointer is the same as was provided to
+    alBufferCallbackSOFT. <sampledata> is a pointer to the sample data buffer
+    that should be filled in by the function, and <numbytes> is the number of
+    bytes needed to fill the sample data buffer for this invocation.
+    <numbytes> is guaranteed to be greater than 0 and a multiple of the frame
+    size for the format. The return value of the callback is the number of
+    bytes actually written, which must be equal to or less than <numbytes>. If
+    the return value is less than <numbytes>, it's treated as the end of the
+    buffer and the source will play any complete samples before stopping.
+
+
+    The new alGetBuffer{3}Ptr{v}SOFT functions can be used to query the
+    pointer attributes stored in the buffer.
+
+    void alGetBufferPtrSOFT(ALuint buffer, ALenum param, ALvoid **ptr);
+
+    void alGetBuffer3PtrSOFT(ALuint buffer, ALenum param, ALvoid **ptr0,
+        ALvoid **ptr1, ALvoid **ptr2);
+
+    void alGetBufferPtrvSOFT(ALuint buffer, ALenum param, ALvoid **ptr);
+
+    Buffer AL_BUFFER_CALLBACK_FUNCTION_SOFT Attribute
+
+    Name                               Signature   Values   Default
+    ---------------------------------  ----------  -------  --------
+    AL_BUFFER_CALLBACK_FUNCTION_SOFT   Ptr,Ptrv    Any      NULL
+
+    Description: Query only. The function address for the callback currently
+    set on the buffer, from the last call to alBufferCallbackSOFT. A call to
+    alBufferData will reset this to NULL.
+
+    Buffer AL_BUFFER_CALLBACK_USER_PARAM_SOFT Attribute
+
+    Name                                 Signature   Values   Default
+    -----------------------------------  ----------  -------  --------
+    AL_BUFFER_CALLBACK_USER_PARAM_SOFT   Ptr,Ptrv    Any      NULL
+
+    Description: Query only. The user data pointer that will be passed to the
+    callback, from the last call to alBufferCallbackSOFT. A call to
+    alBufferData will reset this to NULL.

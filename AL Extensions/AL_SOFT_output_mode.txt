@@ -1,0 +1,134 @@
+Name
+
+    ALC_SOFT_output_mode
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete.
+
+Dependencies
+
+    This extension is written against the OpenAL 1.1 specification.
+    This extension interacts with ALC_SOFT_loopback.
+    This extension trivially interacts with ALC_SOFT_HRTF.
+    This extension trivially interacts with ALC_SOFT_output_limiter.
+
+Overview
+
+    This extension provides a method for applications to request a particular
+    output mode for playback devices, and query what's in use. With standard
+    OpenAL, the output mode is at the sole discretion of the library, with the
+    application having no way to know what's being used. While this works fine
+    most of the time (typically the library will be able to query the system
+    configuration and auto-select a mode to match, and the app handles sounds
+    as being in 3D space), this is sometimes not possible or the most ideal
+    option for all use-cases. There are also cases where a desirable output
+    mode isn't distinguishable by the device configuration, for example with
+    stereo vs UHJ vs HRTF.
+
+Issues
+
+    Q: OpenAL has historically kept the channel configuration hidden from the
+       app, as it allows more flexibility to support additional and future
+       formats. Is it a problem to expose it here?
+    A: Should be fine. It is designed in a way to minimize potential problems.
+       To begin with, the format list includes an "any" catch-all that can be
+       returned in the event that the output can't be represented with one of
+       the formats. Secondly, the format list is fixed, so there won't be a
+       risk of apps getting confused with new enums in the future. So esoteric
+       or future configurations can still work by reporting "any". More
+       formats can also be added with a future extension using a different
+       query enum (e.g. ALC_OUTPUT_MODE2_SOFT).
+
+    Q: Why expose the output mode?
+    A: There are occasions where it's useful to know the output mode for
+       optimal behavior. For example, when an app wants to play multi-channel
+       content directly on speakers (using AL_DIRECT_CHANNELS_SOFT=on/remix),
+       ensuring the output mode matches or is a superset of the format being
+       played is preferrable. When the output mode is a mismatching speaker
+       configuration (e.g. 5.1 buffer on quad, HRTF, or UHJ output), using
+       virtual speaker panning (AL_DIRECT_CHANNELS_SOFT=off) might be better.
+       This extension is also adding an option to request UHJ rendering like
+       how ALC_SOFT_HRTF allows requesting HRTF rendering, in a more generic
+       way.
+
+New Procedures and Functions
+
+    None.
+
+New Tokens
+
+    Accepted as part of the <attrList> parameter of alcCreateContext and as
+    the <paramName> parameter of alcGetIntegerv:
+
+        ALC_OUTPUT_MODE_SOFT                     0x19AC
+
+    Accepted as part of the <attrList> parameter of alcCreateContext, for the
+    ALC_OUTPUT_MODE_SOFT attribute:
+
+        ALC_ANY_SOFT                             0x19AD
+        ALC_MONO_SOFT                            0x1500
+        ALC_STEREO_SOFT                          0x1501
+        ALC_STEREO_BASIC_SOFT                    0x19AE
+        ALC_STEREO_UHJ_SOFT                      0x19AF
+        ALC_STEREO_HRTF_SOFT                     0x19B2
+        ALC_QUAD_SOFT                            0x1503
+        ALC_SURROUND_5_1_SOFT                    0x1504
+        ALC_SURROUND_6_1_SOFT                    0x1505
+        ALC_SURROUND_7_1_SOFT                    0x1506
+
+Additions to Specification
+
+    Output Mode Selection
+
+    An application may request a desired output mode by specifying the
+    ALC_OUTPUT_MODE_SOFT attribute to alcCreateContext (or alcResetDeviceSOFT
+    if ALC_SOFT_HRTF or ALC_SOFT_output_limiter are supported). The attribute
+    value may be one of:
+
+    Value                 | Meaning
+    ==========================================================================
+    ALC_ANY_SOFT          | Any (default). Autodetect from the system when
+                          | possible.
+    --------------------------------------------------------------------------
+    ALC_MONO_SOFT         | Monaural.
+    --------------------------------------------------------------------------
+    ALC_STEREO_SOFT       | 2-channel stereophonic. An umbrella mode covering
+                          | the other stereo modes.
+    --------------------------------------------------------------------------
+    ALC_STEREO_BASIC_SOFT | Basic 2-channel mixing (e.g. pan-pot).
+    --------------------------------------------------------------------------
+    ALC_STEREO_UHJ_SOFT   | Stereo-compatible 2-channel UHJ surround encoding.
+    --------------------------------------------------------------------------
+    ALC_STEREO_HRTF_SOFT  | 2-channel HRTF mixing.
+    --------------------------------------------------------------------------
+    ALC_QUAD_SOFT         | Quadraphonic.
+    --------------------------------------------------------------------------
+    ALC_SURROUND_5_1_SOFT | 5.1 Surround.
+    --------------------------------------------------------------------------
+    ALC_SURROUND_6_1_SOFT | 6.1 Surround.
+    --------------------------------------------------------------------------
+    ALC_SURROUND_7_1_SOFT | 7.1 Surround.
+
+    The output mode attribute is only a hint to the device. If the requested
+    mode can't be used, another one will be auto-selected.
+
+    For loopback devices, ALC_STEREO_BASIC_SOFT, ALC_STEREO_UHJ_SOFT, and
+    ALC_STEREO_HRTF_SOFT can be used to select basic, UHJ, or HRTF rendering
+    when ALC_FORMAT_CHANNELS_SOFT is ALC_STEREO_SOFT. Otherwise, it is ignored
+    and ALC_FORMAT_CHANNELS_SOFT determines the channel configuration.
+
+    The current output mode can be queried using alcGetIntegerv. The returned
+    mode may be ALC_ANY_SOFT when the device output can't be represented as
+    one of the other enumerations, in which case the application should not
+    assume any particular channel configuration or speaker layout.
+
+Errors
