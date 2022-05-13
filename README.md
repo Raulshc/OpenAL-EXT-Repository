@@ -68,7 +68,6 @@ OpenAL Soft 1.22.0
 **If is compiled with** `ALSOFT_EAX` **flag**:
 
 * EAX
-* EAX1.0
 * EAX2.0
 * EAX3.0
 * EAX4.0
