@@ -13,3 +13,30 @@ then use the standard Enumeration Extension.
 
 ALC_DEFAULT_ALL_DEVICES_SPECIFIER        0x1012
 ALC_ALL_DEVICES_SPECIFIER                0x1013
+
+
+Creative Implementations
+This alternative Enumeration Extension will enumerate all the OpenAL devices 
+on ***all*** the audio devices (including all the 'endpoints' on Windows Vista).
+The original Enumeration Extension would only enumerate generic devices on the
+Default playback device.
+
+For example, on a Windows XP system with an SB X-Fi card and a SoundMAX Digital Audio
+mother-board chip, the original Enumeration Extension provides a list like this: -
+
+SB X-Fi Audio [9000]
+Generic Hardware
+Generic Software
+
+The new 'Enumerate All' extension gives a complete list of all the possible output
+configurations, i.e: -
+
+SB X-Fi Audio [9000]
+Generic Hardware on SB X-Fi Audio [9000]
+Generic Software on SB X-Fi Audio [9000]
+Generic Hardware on SoundMAX Digital Audio
+Generic Software on SoundMAX Digital Audio
+
+Note, at the time of writting, the SoundMAX Digital Audio solution does not include 
+a 'native' AL component so the only options are the "Generic Hardware" and 
+"Generic Software" devices. 
