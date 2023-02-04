@@ -10,7 +10,7 @@ list of extensions available on a specific platform), please issue a pull reques
 Extensions available on specific platforms
 ==========================================
 
-OpenAL Soft 1.22.2
+OpenAL Soft 1.23.0
 ------------------
 
 * AL_EXT_ALAW
@@ -48,6 +48,7 @@ OpenAL Soft 1.22.2
 * AL_SOFT_source_length
 * AL_SOFT_source_resampler
 * AL_SOFT_source_spatialize
+* AL_SOFTX_source_start_delay
 * AL_SOFT_UHJ
 * ALC_ENUMERATE_ALL_EXT
 * ALC_ENUMERATION_EXT
