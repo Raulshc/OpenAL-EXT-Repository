@@ -233,8 +233,10 @@ AL_LOKI_play_position                  | http://www.fifi.org/cgi-bin/info2www?(o
 AL_LOKI_quadriphonic                   | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_quadriphonic
 AL_SOFT_MSADPCM                        | https://www.openal-soft.org/openal-extensions/SOFT_MSADPCM.txt
 AL_SOFT_UHJ                            | https://www.openal-soft.org/openal-extensions/SOFT_UHJ.txt
+AL_SOFT_UHJ_ex                         | https://www.openal-soft.org/openal-extensions/SOFT_UHJ_ex.txt
 AL_SOFT_bformat_ex                     | https://www.openal-soft.org/openal-extensions/SOFT_bformat_ex.txt
 AL_SOFT_block_alignment                | https://www.openal-soft.org/openal-extensions/SOFT_block_alignment.txt
+AL_SOFT_buffer_length_query            | https://www.openal-soft.org/openal-extensions/SOFT_buffer_length_query.txt
 AL_SOFT_buffer_samples                 | https://www.openal-soft.org/openal-extensions/SOFT_buffer_samples.txt
 AL_SOFT_buffer_sub_data                | https://www.openal-soft.org/openal-extensions/SOFT_buffer_sub_data.txt
 AL_SOFT_callback_buffer                | https://www.openal-soft.org/openal-extensions/SOFT_callback_buffer.txt
@@ -249,6 +251,7 @@ AL_SOFT_source_latency                 | https://www.openal-soft.org/openal-exte
 AL_SOFT_source_length                  | https://www.openal-soft.org/openal-extensions/SOFT_source_length.txt
 AL_SOFT_source_resampler               | https://www.openal-soft.org/openal-extensions/SOFT_source_resampler.txt
 AL_SOFT_source_spatialize              | https://www.openal-soft.org/openal-extensions/SOFT_source_spatialize.txt
+AL_SOFT_source_start_delay             | https://www.openal-soft.org/openal-extensions/SOFT_source_start_delay.txt
 EAX-RAM                                | https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 EAX                                    | http://icculus.org/alextreg/wiki/action=printer&id=EAX
 EAX1.0                                 | http://icculus.org/alextreg/wiki/action=printer&id=EAX

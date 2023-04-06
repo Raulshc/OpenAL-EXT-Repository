@@ -1,0 +1,91 @@
+Name
+
+    AL_SOFT_buffer_length_query
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete
+
+Dependencies
+
+    This extension is for OpenAL 1.1.
+
+Overview
+
+    This extension adds buffer queries to get the length in bytes, samples,
+    and seconds. Standard OpenAL only has queries for a buffer's storage size,
+    the bits per sample, channel count, and sample rate, where the application
+    needs to calculate what it wants from those. While this works alright for
+    standard formats and most extension formats, it won't work for certain
+    compressed formats like ADPCM. These extra queries ensure the application
+    can get information about the buffer it may need.
+
+Issues
+
+    Q: Why can't the length be calculated from the available attributes for
+       formats like ADPCM?
+    A: When a compressed format like ADPCM is stored natively, there isn't an
+       integer divisor that can get the sample frame count from the byte size.
+       ADPCM samples are primarily 4 bits per sample, but they're contained in
+       blocks that have extra data used for decompression (e.g. one or two
+       initial uncompressed samples and initial block predictor values),
+       resulting in a non-integer conversion factor. The AL_SAMPLE_LENGTH_SOFT
+       query ensures the app can retrieve the sample frame count regardless of
+       it being stored compressed or not.
+
+       If the data is stored decompressed instead, that creates a different
+       issue where the buffer size doesn't align with the source byte offset
+       when playing. The buffer's AL_SIZE indicates the storage size, while
+       the source's AL_BYTE_OFFSET represents the offset within the original
+       data. The AL_BYTE_LENGTH_SOFT query ensures the app can correctly
+       measure against the source's AL_BYTE_OFFSET property when played.
+
+New Procedures and Functions
+
+    None.
+
+New Tokens
+
+    Accepted by the <paramName> parameter of alGetBufferi and alGetBufferiv:
+
+        AL_BYTE_LENGTH_SOFT                      0x2009
+        AL_SAMPLE_LENGTH_SOFT                    0x200A
+
+    Accepted by the <paramName> parameter of alGetBufferf and alGetBufferfv:
+
+        AL_SEC_LENGTH_SOFT                       0x200B
+
+Additions to Specification
+
+    Buffer Length Attributes
+
+    Name                   Signature  Values        Default
+    ---------------------  ---------  ------------  -------
+    AL_BYTE_LENGTH_SOFT    i, iv      [0, INT_MAX]  0
+    AL_SAMPLE_LENGTH_SOFT  i, iv      [0, INT_MAX]  0
+    AL_SEC_LENGTH_SOFT     f, fv      [0.0f, Any]   0.0f
+
+    Query only. Queries the length of the buffer, in bytes, sample frames, or
+    seconds. The byte length is the size of the original data from the last
+    successful call to alBufferData, the sample length is the number of sample
+    frames stored in the buffer, and the length in seconds is the sample
+    length divided by the buffer's sample rate.
+
+    The lengths also represents the extents of a source offset when the buffer
+    is attached to a static source, or the sole buffer queued on a streaming
+    source. That is, the source's AL_BYTE_OFFSET will have the range
+    [0...AL_BYTE_LENGTH_SOFT), the source's AL_SAMPLE_OFFSET will have the
+    range [0...AL_SAMPLE_LENGTH_SOFT), and the source's AL_SEC_OFFSET will
+    have the range [0...AL_SEC_LENGTH_SOFT).
+
+Errors
+
+    None.

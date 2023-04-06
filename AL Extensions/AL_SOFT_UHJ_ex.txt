@@ -1,0 +1,99 @@
+Name
+
+    AL_SOFT_UHJ_ex
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete.
+
+Dependencies
+
+    This extension is for OpenAL 1.1.
+    This extension requires AL_SOFT_UHJ.
+    This extension requires one or more of AL_EXT_MULAW, AL_EXT_ALAW,
+    AL_EXT_IMA4, and AL_SOFT_MSADPCM.
+    This extension interacts with AL_SOFT_block_alignment.
+
+Overview
+
+    This extension supplements AL_SOFT_UHJ by adding muLaw, aLaw, IMA4, and
+    MSADPCM sample types to UHJ formats. The base AL_SOFT_UHJ extension could
+    already use these formats (when available) for Super Stereo processing,
+    and this extension allows them to be used for UHJ itself too.
+
+Issues
+
+    Q: Why are IMA4 and MSADPCM only available for 2-channel UHJ and not 3- or
+       4-channel?
+    A: IMA4 and MSADPCM only seem to supoort 1 and 2 channels. FFmpeg only
+       supports creating 1- and 2-channel IMA4 and MSADPCM files, and its
+       decoder behaves oddly when its given more than 2. And libsndfile only
+       handles 1 and 2 channels. I don't know why the data interleaving for 2
+       channels can't simply be extended to more channels, but if other
+       libraries are hesitant to do it, it's best to avoid making the
+       assumption.
+
+    Q: Are muLaw, aLaw, IMA4, and MSADPCM all required?
+    A: Not for implementations that don't already support them. If an
+       implementation supports AL_EXT_MULAW, then the added muLaw formats will
+       be supported, but if not, then they aren't. Same for aLaw/AL_EXT_ALAW,
+       IMA4/AL_EXT_IMA4, and MSADPCM/AL_SOFT_MSADPCM.
+
+New Procedures and Functions
+
+    None.
+
+New Tokens
+
+    Accepted by the <format> parameter of alBufferData if AL_EXT_MULAW is also
+    supported:
+
+        AL_FORMAT_UHJ2CHN_MULAW_SOFT             0x19B3
+        AL_FORMAT_UHJ3CHN_MULAW_SOFT             0x19B7
+        AL_FORMAT_UHJ4CHN_MULAW_SOFT             0x19B9
+
+    Accepted by the <format> parameter of alBufferData if AL_EXT_ALAW is also
+    supported:
+
+        AL_FORMAT_UHJ2CHN_ALAW_SOFT              0x19B4
+        AL_FORMAT_UHJ3CHN_ALAW_SOFT              0x19B8
+        AL_FORMAT_UHJ4CHN_ALAW_SOFT              0x19BA
+
+    Accepted by the <format> parameter of alBufferData if AL_EXT_IMA4 is also
+    supported:
+
+        AL_FORMAT_UHJ2CHN_IMA4_SOFT              0x19B5
+
+    Accepted by the <format> parameter of alBufferData if AL_SOFT_MSADPCM is
+    also supported:
+
+        AL_FORMAT_UHJ2CHN_MSADPCM_SOFT           0x19B6
+
+Additions to Specification
+
+    UHJ Buffer Formats
+
+    The formats AL_FORMAT_UHJ2CHN_MULAW_SOFT, AL_FORMAT_UHJ2CHN_ALAW_SOFT,
+    AL_FORMAT_UHJ2CHN_IMA4_SOFT, AL_FORMAT_UHJ2CHN_MSADPCM_SOFT,
+    AL_FORMAT_UHJ3CHN_MULAW_SOFT, AL_FORMAT_UHJ3CHN_ALAW_SOFT,
+    AL_FORMAT_UHJ4CHN_MULAW_SOFT, and AL_FORMAT_UHJ4CHN_ALAW_SOFT may be used
+    for buffering data to functions like alBufferData.
+
+    muLaw and aLaw data are decompressed to 16-bit samples according to the
+    AL_EXT_MULAW and AL_EXT_ALAW extensions.
+
+    IMA4 and MSADPCM data are decompressed to 16-bit samples according to the
+    AL_EXT_IMA4 and AL_SOFT_MSADPCM extensions. As block-based formats, they
+    are also affected by the AL_SOFT_block_alignment extension's block
+    alignment properties, when supported.
+
+Errors
+

@@ -1,0 +1,105 @@
+Name
+
+    AL_SOFT_source_start_delay
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete
+
+Dependencies
+
+    This extension is written against the OpenAL 1.1 specification.
+    This extension requires ALC_SOFT_device_clock.
+
+Overview
+
+    This extension allows applications to play a source at a particular future
+    time. With standard OpenAL, an application can play a source with the
+    alSourcePlay or alSourcePlayv functions which causes sources to start
+    playing as soon as possible, but the actual start time is left to the
+    implementation to deal with (which could be on the next 10ms or 20ms
+    boundary, or whenever the mixer can start processing the source).
+
+    Aside from alSourcePlayv starting all given sources in sync, there is no
+    way to start playing sources at particular times relative to each other,
+    or synchronized to some specific time point.
+
+    This extension adds functionality to start source playback at an absolute
+    device clock time, as well as to start with a relative delay.
+
+Issues
+
+    None.
+
+New Primitive Types
+
+    None.
+
+New Procedures and Functions
+
+    void alSourcePlayAtTimeSOFT(ALuint source, ALint64SOFT start_time);
+
+    void alSourcePlayAtTimevSOFT(ALsizei n, const ALuint *sources,
+                                 ALint64SOFT start_time);
+
+New Tokens
+
+    None.
+
+Additions to Specification
+
+    Starting Source Playback At a Specific Time
+
+    Applications can make a source start playback at a specific device clock
+    time using the function
+
+    void alSourcePlayAtTimeSOFT(ALuint source, ALint64SOFT start_time);
+
+    This promotes the source to AL_PLAYING as with alSourcePlay, but actual
+    playback waits until the context device's clock time reaches the specified
+    start_time, expressed in nanoseconds. A source that is already in an
+    AL_PLAYING state will reset back to the beginning immediately, but wait
+    until the specified start time to restart. The source will be in an
+    AL_PLAYING state while waiting for the start_time to be reached.
+
+    If the specified start_time has already passed, playback will start
+    immediately (there is no attempt to "catch up" for the elapsed time). A
+    negative start_time is invalid and will result in an AL_INVALID_VALUE
+    error.
+
+    To start multiple sources at a specific device time, use the function
+
+    void alSourcePlayAtTimevSOFT(ALsizei n, const ALuint *sources,
+                                 ALint64SOFT start_time);
+
+    Behavior is identical to alSourcePlayAtTimeSOFT, except that it works on a
+    list of sources like alSourcePlayv.
+
+
+    Delayed Source Playback
+
+    A negative source offset value for AL_BYTE_OFFSET, AL_SAMPLE_OFFSET, or
+    AL_SEC_OFFSET may be set to create an initial delay in playback. Samples
+    before offset 0 are considered silent (sample values of 128 for 8-bit
+    samples, 0 for 16-bit, etc), resulting in that amount of silence before
+    playing the buffer samples. For example, setting the source AL_SEC_OFFSET
+    property to -1 will result in 1 extra second of silence, while setting
+    AL_SAMPLE_OFFSET to -1000 will result in 1000 extra samples of silence,
+    before playing the source buffer.
+
+    Be aware that since the source is effectively playing through silent
+    samples, the delay will be altered by pitch, including doppler effects
+    from velocity.
+
+Errors
+
+    An AL_INVALID_VALUE error is generated if alSourcePlayAtTimeSOFT or
+    alSourcePlayAtTimevSOFT is called with a negative start_time value.
