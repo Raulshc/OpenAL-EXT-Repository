@@ -78,7 +78,7 @@ OpenAL Soft 1.23.1
 * EAX5.0
 * EAX-RAM
 
-**If the env var** `__ALSOFT_ENABLE_SUB_DATA_EXT` or the parameter `enable-sub-data-ext` **exists:**
+**If the env var** `__ALSOFT_ENABLE_SUB_DATA_EXT` **or the parameter** `enable-sub-data-ext` **exists:**
 
 * AL_SOFT_buffer_sub_data    
   disabling AL_EXT_SOURCE_RADIUS
