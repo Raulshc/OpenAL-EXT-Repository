@@ -10,7 +10,7 @@ list of extensions available on a specific platform), please issue a pull reques
 Extensions available on specific platforms
 ==========================================
 
-OpenAL Soft 1.23.0
+OpenAL Soft 1.23.1
 ------------------
 
 * AL_EXT_ALAW
@@ -27,11 +27,13 @@ OpenAL Soft 1.23.0
 * AL_EXT_OFFSET
 * AL_EXT_source_distance_model
 * AL_EXT_SOURCE_RADIUS
+* AL_EXT_STATIC_BUFFER
 * AL_EXT_STEREO_ANGLES
 * AL_LOKI_quadriphonic
 * AL_SOFT_bformat_ex
 * AL_SOFTX_bformat_hoa
 * AL_SOFT_block_alignment
+* AL_SOFT_buffer_length_query
 * AL_SOFT_callback_buffer
 * AL_SOFTX_convolution_reverb
 * AL_SOFT_deferred_updates
@@ -48,8 +50,9 @@ OpenAL Soft 1.23.0
 * AL_SOFT_source_length
 * AL_SOFT_source_resampler
 * AL_SOFT_source_spatialize
-* AL_SOFTX_source_start_delay
+* AL_SOFT_source_start_delay
 * AL_SOFT_UHJ
+* AL_SOFT_UHJ_ex
 * ALC_ENUMERATE_ALL_EXT
 * ALC_ENUMERATION_EXT
 * ALC_EXT_CAPTURE
@@ -66,7 +69,7 @@ OpenAL Soft 1.23.0
 * ALC_SOFT_pause_device
 * ALC_SOFT_reopen_device
 
-**If is compiled with** `ALSOFT_EAX` **flag**:
+**If it is compiled with** `ALSOFT_EAX` **flag**:
 
 * EAX
 * EAX2.0
@@ -74,6 +77,11 @@ OpenAL Soft 1.23.0
 * EAX4.0
 * EAX5.0
 * EAX-RAM
+
+**If the env var** `__ALSOFT_ENABLE_SUB_DATA_EXT` or the parameter `enable-sub-data-ext` **exists:**
+
+* AL_SOFT_buffer_sub_data    
+  disabling AL_EXT_SOURCE_RADIUS
 
 Rapture3D v12.9.5
 -----------------
