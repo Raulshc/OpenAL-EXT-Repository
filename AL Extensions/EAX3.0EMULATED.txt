@@ -1,0 +1,5 @@
+EAX3.0EMULATED extension indicates the EAX3 API is supported, but only a subset
+of functionality is implemented via EAX2 translation calls.
+
+As the call functions are supported, but some calls are no-ops, it means a limit
+in the resulting sound behavior.
