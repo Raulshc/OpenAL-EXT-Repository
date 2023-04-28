@@ -142,8 +142,8 @@ OpenAL (native), Mac OS X 10.9.5
 * ALC_EXT_CAPTURE
 * ALC_EXT_MAC_OSX
 
-OpenAL (native), Mac OS X 10.10.5, 10.11.1
-------------------------------------------
+OpenAL (native), Mac OS X 10.10.5, 10.11.1, 12.6.1
+--------------------------------------------------
 
 * AL_EXT_EXPONENT_DISTANCE
 * AL_EXT_float32
