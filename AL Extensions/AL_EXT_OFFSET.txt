@@ -37,7 +37,7 @@ Additions to Specification
 
         Offset
 
-        Table 4.x: Source AL_SEC_OFFSET Attribute
+        Table 4.20: Source AL_SEC_OFFSET Attribute
 
         Name                        Signature  Values           Default
         --------------------------  ---------  ---------------  --------------
@@ -61,7 +61,7 @@ Additions to Specification
         seconds into a buffer having taken only 0.250 seconds to get there if
         the pitch is set to 2.0.
 
-        Table 4.x: Source AL_SAMPLE_OFFSET Attribute
+        Table 4.21: Source AL_SAMPLE_OFFSET Attribute
 
         Name                        Signature  Values           Default
         --------------------------  ---------  ---------------  --------------
@@ -83,7 +83,7 @@ Additions to Specification
         for the source, and any queued buffers traversed by a set call will
         be marked as processed.
 
-        Table 4.x: Source AL_BYTE_OFFSET Attribute
+        Table 4.22: Source AL_BYTE_OFFSET Attribute
 
         Name                        Signature  Values           Default
         --------------------------  ---------  ---------------  --------------
