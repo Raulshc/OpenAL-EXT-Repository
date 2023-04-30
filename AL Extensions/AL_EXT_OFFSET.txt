@@ -1,10 +1,119 @@
-9.2. AL_EXT_OFFSET
+Name
+        EXT_OFFSET
 
-An OpenAL 1.1 implementation will always support the AL_EXT_OFFSET extension.
-This allows an application written to the OpenAL 1.0 specification to access
-the offset abilities expressed in section 4.3.2.
+Name Strings
+        AL_EXT_OFFSET
 
-Offset tokens:
-AL_SEC_OFFSET         0x1024
-AL_SAMPLE_OFFSET      0x1025
-AL_BYTE_OFFSET        0x1026
+Version
+        1.0
+
+Number
+        ??
+
+Dependencies
+        This extension is written against the OpenAL 1.0 specification.
+
+Overview
+        This extension allows an application written to the OpenAL 1.0
+        specification to access the offset abilities.
+
+Issues
+        None.
+
+New Procedures and Functions
+        None.
+
+New Tokens
+        Accepted as the <param> parameter of alSourcei, alSourceiv,
+        alGetSourcei, alGetSourceiv, alSourcef, alSourcefv,
+        alGetSourcef, and alGetSourcefv:
+
+            AL_SEC_OFFSET                           0x1024
+            AL_SAMPLE_OFFSET                        0x1025
+            AL_BYTE_OFFSET                          0x1026
+
+Additions to Specification
+        Append to Section 4.3.2, Source Attributes
+
+        Offset
+
+        Table 4.x: Source AL_SEC_OFFSET Attribute
+
+        Name                        Signature  Values           Default
+        --------------------------  ---------  ---------------  --------------
+        AL_SEC_OFFSET               f,fv,i,iv  [0.0f, any],     N/A
+
+        Description: the playback position, expressed in seconds
+        (the value will loop back to zero for looping sources).
+
+        When setting AL_SEC_OFFSET on a source which is already playing, the
+        playback will jump to the new offset unless the new offset is out of
+        range, in which case an AL_INVALID_VALUE error is set. If the source
+        is not playing, then the offset will be applied on the next
+        alSourcePlay call.
+
+        The position is relative to the beginning of all the queued buffers
+        for the source, and any queued buffers traversed by a set call will
+        be marked as processed.
+
+        This value is based on byte position, so a pitch-shifted source will
+        have an exaggerated playback speed. For example, you can be 0.500
+        seconds into a buffer having taken only 0.250 seconds to get there if
+        the pitch is set to 2.0.
+
+        Table 4.x: Source AL_SAMPLE_OFFSET Attribute
+
+        Name                        Signature  Values           Default
+        --------------------------  ---------  ---------------  --------------
+        AL_SAMPLE_OFFSET            f,fv,i,iv  [0.0f, any],     N/A
+
+        Description: the playback position, expressed in samples (the value
+        will loop back to zero for looping sources). For a compressed format,
+        this value will represent an exact offsetwithin the uncompressed data.
+
+        When setting AL_SAMPLE_OFFSET on a source which is already playing,
+        the playback will jump to the new offset unless the new offset is out
+        of range, in which case an AL_INVALID_VALUE error is set. If the
+        source is not playing, then the offset will be applied on the next
+        alSourcePlay call. An alSourceStop, alSourceRewind, or a second
+        alSourcePlay call will reset the offset to the beginning of the
+        buffer.
+
+        The position is relative to the beginning of all the queued buffers
+        for the source, and any queued buffers traversed by a set call will
+        be marked as processed.
+
+        Table 4.x: Source AL_BYTE_OFFSET Attribute
+
+        Name                        Signature  Values           Default
+        --------------------------  ---------  ---------------  --------------
+        AL_BYTE_OFFSET              f,fv,i,iv  [0.0f, any],     N/A
+
+        Description: the playback position, expressed in bytes (the value
+        will loop back to zero for looping sources). For a compressed format,
+        this value may represent an approximateoffset within the compressed
+        data buffer.
+
+        When setting AL_BYTE_OFFSET on a source which is already playing,
+        the playback will jump to the new offset unless the new offset is out
+        of range, in which case an AL_INVALID_VALUE error is set. If the
+        source is not playing, then the offset will be applied on the next
+        alSourcePlay call. An alSourceStop, alSourceRewind, or a second
+        alSourcePlay call will reset the offset to the beginning of the
+        buffer.
+
+        The position is relative to the beginning of all the queued buffers
+        for the source, and any queued buffers traversed by a set call will
+        be marked as processed.
+
+
+Errors
+        An AL_INVALID_VALUE error is generating if on a source which is
+        already playing, the playback will jump to the new offset that
+        is out of range.
+
+New State
+        None
+
+New Implementation State
+        None
