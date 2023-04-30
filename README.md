@@ -108,6 +108,29 @@ Rapture3D v12.9.5
 * ALC_EXT_EFX
 * ALC_EXT_STATIC_BUFFER
 
+AeonWave-OpenAL 1.1.40
+------------------------
+
+* AL_AAX_distance_delay_model
+* AL_AAX_frequency_filter
+* AL_AAX_reverb
+* AL_EXT_ALAW
+* AL_EXT_DOUBLE
+* AL_EXT_EXPONENT_DISTANCE
+* AL_EXT_FLOAT32
+* AL_EXT_IMA4
+* AL_EXT_LINEAR_DISTANCE
+* AL_EXT_loop_points
+* AL_EXT_MCFORMATS
+* AL_EXT_MULAW
+* AL_EXT_OFFSET
+* AL_EXT_source_distance_model
+* AL_SOFT_block_alignment
+* AL_SOFT_source_latency
+* ALC_AAX_capture_loopback
+* ALC_ENUMERATE_ALL_EXT
+* ALC_ENUMERATION_EXT
+
 OpenAL (native, Creative SB X-Fi), Windows
 ------------------------------------------
 
