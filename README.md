@@ -230,6 +230,7 @@ AL_EXT_STATIC_BUFFER                   | https://opensource.apple.com/source/Ope
 AL_EXT_STEREO_ANGLES                   | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_STEREO_ANGLES
 AL_EXT_double                          | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_float32                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_Float32
+AL_EXT_loop_points                     | https://github.com/adalinbv/libaaxopenal/blob/master/docs/AL_EXT_loop_points.txt
 AL_EXT_mp3                             | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_mp3
 AL_EXT_source_distance_model           | https://www.openal-soft.org/openal-extensions/EXT_source_distance_model.txt
 AL_EXT_vorbis                          | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_vorbis
