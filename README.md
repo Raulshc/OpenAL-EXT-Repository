@@ -237,6 +237,7 @@ AL Extensions
 Extension | Source
 --------- | ------
 AL_AAX_distance_delay_model            | https://github.com/adalinbv/libaaxopenal/blob/master/docs/AL_AAX_distance_delay_model.txt
+AL_AAX_frequency_filter                | https://github.com/adalinbv/libaaxopenal/blob/master/include/AL/alext.h
 AL_EXT_ALAW                            | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_BFORMAT                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_BFORMAT
 AL_EXT_EXPONENT_DISTANCE               | http://openal.org/documentation/openal-1.1-specification.pdf

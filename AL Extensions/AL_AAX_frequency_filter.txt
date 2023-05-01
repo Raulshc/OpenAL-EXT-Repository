@@ -1,0 +1,9 @@
+
+#ifndef AL_AAX_frequency_filter
+#define AL_AAX_frequency_filter 1
+#define AL_FREQUENCY_FILTER_ENABLE_AAX          0x270000
+#define AL_FREQUENCY_FILTER_GAINLF_AAX          0x270001
+#define AL_FREQUENCY_FILTER_GAINHF_AAX          0x270002
+#define AL_FREQUENCY_FILTER_CUTOFF_FREQ_AAX     0x270003
+#define AL_FREQUENCY_FILTER_PARAMS_AAX          0x270004
+#endif
