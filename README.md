@@ -205,6 +205,7 @@ ALC Extensions
 
 Extension | Source
 --------- | ------
+ALC_AAX_capture_loopback               | https://github.com/adalinbv/libaaxopenal/blob/master/include/AL/alcext.h
 ALC_ENUMERATE_ALL_EXT                  | https://www.openal.org/documentation/OpenAL_Programmers_Guide.pdf
 ALC_ENUMERATION_EXT                    | http://openal.org/documentation/openal-1.1-specification.pdf
 ALC_EXT_ASA                            | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
