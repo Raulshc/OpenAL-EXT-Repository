@@ -1,0 +1,134 @@
+Name
+
+    AL_AAX_distance_delay_model
+
+Contributors
+
+    Erik Hofman
+
+Contact
+
+    Erik Hofman (erik.hofman 'at' adalin.com)
+
+Status
+
+    Complete
+
+Dependencies
+
+    This extension is written against the OpenAL 1.1 specification.
+    This extension extends AL_EXT_source_distance_model.
+
+Overview
+
+    This extension allows each source to enable or disable distance delayed
+    property changes that occur due to the maximum speed of sound. It provides
+    a mechanism for applications to enable, or disable, distance delaying
+    when specifying either the default distance model or for every source
+    individually.
+
+Issues
+
+    Q: What is the default behavior?
+    A: Distance delaying is disabled by default.
+
+    Q: What happens if there is an intentional jump in the distance between
+       one or more sources and the listener.
+    A: The implementation does not guess if such an event takes place.
+       As a result the distance delay might get misaligned with the actual
+       situation. It is up to the application to tell the implementation to
+       re-initialize the distance delay parameters if such an event happens.
+
+New Procedures and Functions
+
+    None.
+
+New Tokens
+
+    Accepted by the <target> parameter of alEnable, alDisable, and
+    alIsEnabled and accepted by the <value> parameter of alSourcei or 
+    alSourceiv when parsing AL_SOURCE_STATE as the <param> parameter.
+
+        AL_DISTANCE_DELAY_MODEL_AAX             0x27D000
+
+    Accepted by alDistanceModel and by the <value> parameter of alSourcei
+    or alSourceiv when AL_DISTANCE_MODEL is set as the <param> parameter.
+
+        AL_INVERSE_DISTANCE_DELAY_AAX           0x27D001
+        AL_INVERSE_DISTANCE_DELAY_CLAMPED_AAX   0x27D002
+        AL_LINEAR_DISTANCE_DELAY_AAX            0x27D003
+        AL_LINEAR_DISTANCE_DELAY_CLAMPED_AAX    0x27D004
+        AL_EXPONENT_DISTANCE_DELAY_AAX          0x27D005
+        AL_EXPONENT_DISTANCE_DELAY_CLAMPED_AAX  0x27D006
+
+Additions to Specification
+
+    Append Section 2.8 (Controlling AL Execution, p. 17)
+
+    The table below specifies the acceptable target capabilities:
+
+    Table 2.x: Context capability targets
+
+    Name                         Description
+    ------------------------     -----------------
+    AL_DISTANCE_DELAY_MODEL_AAX  Enables delayed source property changes
+                                 caused by the maximum speed of sound.
+                                 (default is disabled)
+
+
+    Modify Section 3.4 (Attenuation By Distance), p. 24
+
+    (modify starting from fourth paragraph)
+    Legal arguments are AL_NONE, AL_INVERSE_DISTANCE,
+    AL_INVERSE_DISTANCE_DELAY_AAX, AL_INVERSE_DISTANCE_CLAMPED,
+    AL_INVERSE_DISTANCE_DELAY_CLAMPED_AAX,  AL_LINEAR_DISTANCE,
+    AL_LINEAR_DISTANCE_DELAY_AAX, AL_LINEAR_DISTANCE_CLAMPED,
+    AL_LINEAR_DISTANCE_DELAY_CLAMPED_AAX, AL_EXPONENT_DISTANCE,
+    AL_EXPONENT_DISTANCE_DELAY_AAX, AL_EXPONENT_DISTANCE_CLAMPED,
+    and AL_EXPONENT_DISTANCE_DELAY_CLAMPED_AAX.
+
+
+    Add Section 3.5.3 (Distance Dependent Property Changes), p. 30
+
+    In reality property changes at the source location take time to reach
+    the listener because the speed of sound has a maximum value. The time
+    it takes to reach the listener is dependent of the speed of sound and
+    the distance between the source and the listener.
+
+    Actually the time it takes to reach the listener also depends on the
+    motion of the medium (usually air) between the source and the listener
+    but that is not taken into account since it's effect is normally very small.
+
+    SS: AL_SPEED_OF_SOUND - speed of sound (default value 343.3)
+    vsl: source-to-listener vector
+
+    dist: distance between the source and the listener.
+    delay: distance delay in seconds.
+
+    Distance Delay Calculation:
+
+    dist = Mag(vsl);
+    delay = dist/SS;
+
+
+    Modify Section 4.3.2 (Source Attributes)
+
+    (add after subsection Distance Model Attributes, p. 38)
+
+    Distance Delay Attributes
+ 
+    Table 4.x: SOURCE_STATE Attribute
+    Name                         Signature   Values     Default
+    ---------------------------  ---------   ---------  -------
+    AL_DISTANCE_DELAY_MODEL_AAX  i, iv      AL_INITIAL  N/A
+
+    Description: The application can trigger re-initialization of distance
+    delay properties by using alSource with parameter name
+    AL_DISTANCE_DELAY_MODEL_AAX and value name AL_INITIAL. This is required
+    every time the source or the listener makes a sudden, non continuous,
+    jump from one position to another. This is a one time event.
+
+
+Errors
+
+    None.
