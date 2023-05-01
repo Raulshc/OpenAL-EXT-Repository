@@ -130,6 +130,7 @@ AeonWave-OpenAL 1.1.40
 * ALC_AAX_capture_loopback
 * ALC_ENUMERATE_ALL_EXT
 * ALC_ENUMERATION_EXT
+* ALC_EXT_CAPTURE
 
 OpenAL (native, Creative SB X-Fi), Windows
 ------------------------------------------
