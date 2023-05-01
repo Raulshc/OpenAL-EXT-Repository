@@ -1,0 +1,10 @@
+
+#ifndef AL_AAX_reverb
+#define AL_AAX_reverb 1
+#define AL_REVERB_ENABLE_AAX                    0x270008
+#define AL_REVERB_PRE_DELAY_TIME_AAX            0x270009
+#define AL_REVERB_REFLECTION_TIME_AAX           0x27000A
+#define AL_REVERB_REFLECTION_FACTOR_AAX         0x27000B
+#define AL_REVERB_DECAY_TIME_AAX                0x27000C
+#define AL_REVERB_DECAY_TIME_HF_AAX             0x27000D
+#endif
