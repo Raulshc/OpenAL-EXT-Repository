@@ -9,28 +9,3 @@ library with the alBufferData() call. Preconverting the audio data, reduces CPU 
 */
   #define ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING           0xF001
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ALC_EXT_MAC_OSX
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-typedef ALvoid (*alcMacOSXRenderingQualityProcPtr) (ALint value);
-typedef ALvoid (*alMacOSXRenderChannelCountProcPtr) (ALint value);
-typedef ALvoid (*alcMacOSXMixerMaxiumumBussesProcPtr) (ALint value);
-typedef ALvoid (*alcMacOSXMixerOutputRateProcPtr) (ALdouble value);
-
-typedef ALint (*alcMacOSXGetRenderingQualityProcPtr) ();
-typedef ALint (*alMacOSXGetRenderChannelCountProcPtr) ();
-typedef ALint (*alcMacOSXGetMixerMaxiumumBussesProcPtr) ();
-typedef ALdouble (*alcMacOSXGetMixerOutputRateProcPtr) ();
-
-/* Render Quality. Used with alcMacOSXRenderingQuality() */
-  
-  #define ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_HIGH      'rqhi'
-  #define ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_LOW   'rdlo'
-
-/*  
-  Render Channels. Used with alMacOSXRenderChannelCount()
-  Allows a user to force OpenAL to render to stereo, regardless of the audio hardware being used
-*/
-  #define ALC_MAC_OSX_RENDER_CHANNEL_COUNT_STEREO         'rcst'
-  #define ALC_MAC_OSX_RENDER_CHANNEL_COUNT_MULTICHANNEL   'rcmc'
