@@ -12,6 +12,7 @@ Number
 
 Dependencies
         This extension is written against the OpenAL 1.0 specification.
+        This extension trivially interacts with AL_EXT_LINEAR_DISTANCE.
 
 Overview
         This extension allows an application written to the OpenAL 1.0
