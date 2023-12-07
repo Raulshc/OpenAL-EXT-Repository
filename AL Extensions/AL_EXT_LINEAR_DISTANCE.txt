@@ -1,10 +1,134 @@
-9.3. AL_EXT_LINEAR_DISTANCE
+Name
+        EXT_LINEAR_DISTANCE
 
-An OpenAL 1.1 implementation will always support the 
-AL_EXT_LINEAR_DISTANCE extension. This allows an application 
-written to the OpenAL 1.0 specification to access the offset 
-abilities expressed in sections 3.4.3 and 3.4.4.
+Name Strings
+        AL_EXT_LINEAR_DISTANCE
 
-Tokens:
-AL_LINEAR_DISTANCE            0xD003
-AL_LINEAR_DISTANCE_CLAMPED    0xD004
+Version
+        1.0
+
+Number
+        ??
+
+Dependencies
+        This extension is written against the OpenAL 1.0 specification.
+        This extension trivially interacts with AL_EXT_EXPONENT_DISTANCE.
+
+Overview
+        This extension allows an application written to the OpenAL 1.0
+        specification to access the offset abilities expressed in sections
+        3.4.3 and 3.4.4.
+
+Issues
+        None.
+
+New Procedures and Functions
+        None.
+
+New Tokens
+        Accepted as the <value> parameter of alDistanceModel:
+
+            AL_LINEAR_DISTANCE                      0xD003
+            AL_LINEAR_DISTANCE_CLAMPED              0xD004
+
+Additions to Specification
+        Modify Section 3.4, Attenuation By Distance
+        
+        "... might ultimately limit the overall gain to a value below 1.0.
+
+        OpenAL currently supports three modes of operation with respect to
+        distance attenuation,including one that is similar to the IASIG I3DL2
+        model. The application can choose one of these models (or chooses to 
+        disable distance-dependent attenuation) on a per-context basis.
+
+            void alDistanceModel(ALenum modelName);
+
+        Legal arguments are AL_NONE, AL_INVERSE_DISTANCE,
+        AL_INVERSE_DISTANCE_CLAMPED, AL_LINEAR_DISTANCE,
+        AL_LINEAR_DISTANCE_CLAMPED, AL_EXPONENT_DISTANCE, and
+        AL_EXPONENT_DISTANCE_CLAMPED. AL_NONE bypasses all distance
+        attenuation calculation for all sources. The implementation is 
+        expectedto optimize this situation. AL_INVERSE_DISTANCE_CLAMPED is 
+        the IASIG I3DL2 model, with AL_REFERENCE_DISTANCE indicating both
+        the reference distance and the distance below which gain will be
+        clamped. AL_INVERSE_DISTANCE is equivalent to the IASIG I3DL2 model
+        with the exception that AL_REFERENCE_DISTANCE does not imply any 
+        clamping.The linear models are not physically realistic, but do 
+        allow full attenuation of a source beyond a specified distance.
+        The OpenAL implementation is still free to apply any range clamping
+        as necessary. The current distance model chosen can be queried using
+        alGetInteger{v} and AL_DISTANCE_MODEL.
+
+        With all the distance models, if the formula can not be evaluated then
+        the source will not be attenuated. For example, if a linear model is 
+        being used with AL_REFERENCE_DISTANCE equal to AL_MAX_DISTANCE, then
+        the gain equation will have a divide-by-zero error in it. In this case,
+        there is no attenuation for that source.
+
+        The default attenuation model is AL_INVERSE_DISTANCE_CLAMPED."
+
+        Append Section 3.4.3, Linear Distance Rolloff Model
+
+        This models a linear drop-off in gain as distance increases between the
+        source and listener.
+
+            distance = min(distance, AL_MAX_DISTANCE) // avoid negative gain
+            gain = (1 - AL_ROLLOFF_FACTOR * (distance - AL_REFERENCE_DISTANCE) /
+                                            (AL_MAX_DISTANCE - AL_REFERENCE_DISTANCE))
+
+        Append Section 3.4.4, Linear Distance Clamped Model
+
+        This is the linear model, extended to guarantee that for distances below
+        AL_REFERENCE_DISTANCE, gain is clamped.
+
+            distance = max(distance, AL_REFERENCE_DISTANCE)
+            distance = min(distance, AL_MAX_DISTANCE)
+            gain = (1 - AL_ROLLOFF_FACTOR * (distance - AL_REFERENCE_DISTANCE) /
+                                            (AL_MAX_DISTANCE - AL_REFERENCE_DISTANCE))
+
+        ^                       Linear Distance Model
+        |
+        |      Gain
+        |
+        |*
+        |
+        |      *
+        |
+        |...........* (3,1)
+        |
+        |     ^          *
+        |      \    
+        |       \             *
+        |        \
+        |         \                *
+        |          \
+        |           \                   *
+        |            \__ Clamping
+        |                         \          *
+        |                          \__ __ __ __ __ __ __ __
+        |                                         *        \                    
+        |                                                   v               Distance
+        |                                              *................................
+       --------------------------------------------------------------------------------->
+        |                                          (10,0)
+        |
+        |
+        |           AL_REFERENCE_DISTANCE = 3
+        |           AL_MAX_DISTANCE = 10
+        |           AL_ROLLOFF_FACTOR = 1
+        |
+        |
+        |
+
+Errors
+        An AL_INVALID_VALUE error is generating if the specified distance model 
+        is not valid.
+
+        An AL_INVALID_OPERATION error is generating if there is no current 
+        context.
+
+New State
+        None
+
+New Implementation State
+        None
