@@ -26,7 +26,7 @@ New Procedures and Functions
         None.
 
 New Tokens
-        Accepted as the <value> parameter of alDistanceModel:
+        Accepted as the <modelName> parameter of alDistanceModel:
 
             AL_EXPONENT_DISTANCE                    0xD005
             AL_EXPONENT_DISTANCE_CLAMPED            0xD006
