@@ -1,45 +1,76 @@
-**** AL_EXT_SOURCE_NOTIFICATIONS
-This extension provides an alternative to the OpenAL polling mechanism used for obtaining state about Source and Buffer objects. The caller subscribes to
-the notification scheme by providing a callback function for the desired notification type. When a notification is received, the caller should then proceed
-to get the current state using the native OpenAL api calls.
+Name
 
-The available notification types are
+        EXT_SOURCE_NOTIFICATIONS
 
-  AL_SOURCE_STATE   - there is a change in the source's state
-  AL_BUFFERS_PROCESSED  - there is a change in the number of buffers processed
-  AL_QUEUE_HAS_LOOPED   - the buffer queue has looped (if looping is enabled)
+Name Strings
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  AL_EXT_SOURCE_NOTIFICATIONS
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/*
-  Source Notifications
+        AL_EXT_SOURCE_NOTIFICATIONS
 
-  Eliminates the need for continuous polling for source state by providing a
-  mechanism for the application to receive source state change notifications.
-  Upon receiving a notification, the application can retrieve the actual state
-  corresponding to the notification ID for which the notification was sent.
-*/
+Version
 
-#define AL_QUEUE_HAS_LOOPED           0x9000
+        1.0
 
-/*
-  Notification Proc:  ALSourceNotificationProc
- 
-    sid   - source id
+Number
+
+        ??
+
+Dependencies
+
+        None
+
+Overview
+        This extension provides an alternative to the OpenAL polling mechanism used
+        for obtaining state about Source and Buffer objects. The caller subscribes to
+        the notification scheme by providing a callback function for the desired
+        notification type. When a notification is received, the caller should then
+        proceed to get the current state using the native OpenAL api calls.
+
+        The available notification types are
+
+          AL_SOURCE_STATE       - there is a change in the source's state
+          AL_BUFFERS_PROCESSED  - there is a change in the number of buffers processed
+          AL_QUEUE_HAS_LOOPED   - the buffer queue has looped (if looping is enabled)
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        ALenum alSourceAddNotification(ALuint sid, ALuint notificationID,
+                                       alSourceNotificationProc notifyProc, ALvoid* userData);
+
+        ALvoid alSourceRemoveNotification(ALuint sid, ALuint notificationID,
+                                       alSourceNotificationProc notifyProc, ALvoid* userData);
+
+New Types
+
+        typedef ALvoid (*alSourceNotificationProc)(ALuint sid, ALuint notificationID,
+                                                   ALvoid* userData)
+
+New Tokens
+
+        AL_QUEUE_HAS_LOOPED                       0x9000
+
+Additions to Specification
+
+    Eliminates the need for continuous polling for source state by providing a
+    mechanism for the application to receive source state change notifications.
+    Upon receiving a notification, the application can retrieve the actual state
+    corresponding to the notification ID for which the notification was sent.
+
+    Notification Proc:  ALSourceNotificationProc
+
+    sid             - source id
     notificationID  - id of state that has changed
-    userData  - user data provided to alSourceAddNotification()
-*/
-  
-typedef ALvoid (*alSourceNotificationProc)(ALuint sid, ALuint notificationID, ALvoid* __nullable userData);
+    userData        - user data provided to alSourceAddNotification()
 
-/*
-  API: alSourceAddNotification
+    API: alSourceAddNotification
 
-    sid   - source id
-    notificationID  - id of state for which caller wants to be notified of a change           
-    notifyProc  - notification proc
-    userData  - ptr to applications user data, will be returned in the notification proc
+    sid             - source id
+    notificationID  - id of state for which caller wants to be notified of a change
+    notifyProc      - notification proc
+    userData        - ptr to applications user data, will be returned in the notification proc
 
     Returns AL_NO_ERROR if request is successful.
 
@@ -47,15 +78,22 @@ typedef ALvoid (*alSourceNotificationProc)(ALuint sid, ALuint notificationID, AL
       AL_SOURCE_STATE
       AL_BUFFERS_PROCESSED
       AL_QUEUE_HAS_LOOPED - notification sent when a looping source has looped to it's start point
-*/
-typedef ALenum (*alSourceAddNotificationProcPtr) (ALuint sid, ALuint notificationID, alSourceNotificationProc __nonnull notifyProc, ALvoid* __nullable userData);
 
-/*
-  API: alSourceRemoveStateNotification
+    API: alSourceRemoveStateNotification
 
-    sid   - source id
-    notificationID  - id of state for which caller wants to remove an existing notification           
-    notifyProc  - notification proc
-    userData  - ptr to applications user data, will be returned in the notification proc
-*/
-typedef ALvoid (*alSourceRemoveNotificationProcPtr) (ALuint sid, ALuint notificationID, alSourceNotificationProc __nonnull notifyProc, ALvoid* __nullable userData);
+    sid             - source id
+    notificationID  - id of state for which caller wants to remove an existing notification
+    notifyProc      - notification proc
+    userData        - ptr to applications user data, will be returned in the notification proc
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
