@@ -1,37 +1,89 @@
-***** ALC_EXT_MAC_OSX
-The 'Apple Mac OSX Extension' contains various support for controlling aspects of Apple's OpenAL implementation that are specific to the platform.
-The extension provides settings for:
+  Name
 
-  Rendering Quality   -   The Rendering Quality setting enables the application to specify from a number of available stereo/multi-channel 
-          rendering algorithms.
-  Channel Count     -   Apple's OpenAL implementation will render to stereo or multi-channel audio hardware based on the users system setup. 
-          This setting can be used to force stereo rendering on a multi speaker audio system.
-  Maximum Buses     -   This sets a maximum number of buses allocated by the system's 3DMixer AudioUnit, which provides the spatialized mixing of OpenAL
-  Output Rate     -   Allows the application to optimize audio mixing performance based on the sampling rate of its audio assets (files)
+        EXT_MAC_OSX
 
+Name Strings
 
-  /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ALC_EXT_MAC_OSX
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        ALC_EXT_MAC_OSX
 
-typedef ALvoid (*alcMacOSXRenderingQualityProcPtr) (ALint value);
-typedef ALvoid (*alMacOSXRenderChannelCountProcPtr) (ALint value);
-typedef ALvoid (*alcMacOSXMixerMaxiumumBussesProcPtr) (ALint value);
-typedef ALvoid (*alcMacOSXMixerOutputRateProcPtr) (ALdouble value);
+Version
 
-typedef ALint (*alcMacOSXGetRenderingQualityProcPtr) ();
-typedef ALint (*alMacOSXGetRenderChannelCountProcPtr) ();
-typedef ALint (*alcMacOSXGetMixerMaxiumumBussesProcPtr) ();
-typedef ALdouble (*alcMacOSXGetMixerOutputRateProcPtr) ();
+        1.0
 
-/* Render Quality. Used with alcMacOSXRenderingQuality() */
-  
-  #define ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_HIGH      'rqhi'
-  #define ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_LOW   'rdlo'
+Number
 
-/*  
-  Render Channels. Used with alMacOSXRenderChannelCount()
-  Allows a user to force OpenAL to render to stereo, regardless of the audio hardware being used
-*/
-  #define ALC_MAC_OSX_RENDER_CHANNEL_COUNT_STEREO         'rcst'
-  #define ALC_MAC_OSX_RENDER_CHANNEL_COUNT_MULTICHANNEL   'rcmc'
+        ??
+
+Dependencies
+
+        This extension is written against the OpenAL 1.1 specification.
+
+Overview
+
+        The 'Apple Mac OSX Extension' contains various support for controlling
+        aspects of Apple's OpenAL implementation that are specific to the 
+        platform.
+        The extension provides settings for:
+
+         Rendering Quality   -   The Rendering Quality setting enables the
+                                 application to specify from a number of
+                                 available stereo/multi-channel rendering
+                                 algorithms.
+
+         Channel Count       -   Apple's OpenAL implementation will render to
+                                 stereo or multi-channel audio hardware based
+                                 on the users system setup.This setting can be
+                                 used to force stereo rendering on a multi speaker
+                                 audio system.
+
+         Maximum Buses       -   This sets a maximum number of buses allocated by
+                                 the system's 3DMixer AudioUnit, which provides
+                                 the spatialized mixing of OpenAL.
+
+         Output Rate         -   Allows the application to optimize audio mixing
+                                 performance based on the sampling rate of its audio
+                                 assets (files)
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        ALvoid alcMacOSXRenderingQuality(ALint value);
+        ALvoid alMacOSXRenderChannelCount(ALint value);
+        ALvoid alcMacOSXMixerMaxiumumBusses(ALint value);
+        ALvoid alcMacOSXMixerOutputRate(ALdouble value);
+
+        ALint    alcMacOSXGetRenderingQuality();
+        ALint    alMacOSXGetRenderChannelCount();
+        ALint    alcMacOSXGetMixerMaxiumumBusses();
+        ALdouble alcMacOSXGetMixerOutputRate();
+
+New Tokens
+
+        Accepted as the <value> parameter of alcMacOSXRenderingQuality:
+
+          ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_HIGH      'rqhi'
+          ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_LOW       'rdlo'
+
+        Accepted as the <value> parameter of alMacOSXRenderChannelCount:
+
+          ALC_MAC_OSX_RENDER_CHANNEL_COUNT_STEREO         'rcst'
+          ALC_MAC_OSX_RENDER_CHANNEL_COUNT_MULTICHANNEL   'rcmc'
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
