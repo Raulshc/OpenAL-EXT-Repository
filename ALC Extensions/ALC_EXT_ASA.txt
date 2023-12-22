@@ -1,64 +1,172 @@
-***** ALC_EXT_ASA
-The ASA (Apple Spatial Audio) extension currently provides three main effects: reverb, occlusion and obstruction.
+Name
 
-  Reverb:   A reverb effect with multiple presets and quality settings. Post EQ settings available for additional tonal control.
+        EXT_ASA
 
-  Occlusion:  An effect that applies a low pass filter to an OpenAL source object for simulating objects 
-      in different 'spaces' from the listener (post EQ, causing send to reverb to also be filtered)
+Name Strings
 
-  Obstruction:  An effect that applies a low pass filter to an OpenAL source object for simulating objects being 'obstructed' 
-      from the listener (pre-EQ, allowing high frequencies of source object to remain in the reverb)
+        ALC_EXT_ASA
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ALC_EXT_ASA : Apple Spatial Audio Extension
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/*
-  Used with the ASA API calls: alcASAGetSource(), alcASASetSource(), alcASAGetListener(), alcASASetListener()
-*/
+Version
 
-typedef ALenum  (*alcASAGetSourceProcPtr) (ALuint property, ALuint source, ALvoid* __nonnull data, ALuint* __nonnull dataSize);
-typedef ALenum  (*alcASASetSourceProcPtr) (ALuint property, ALuint source, ALvoid* __nonnull data, ALuint dataSize);
-typedef ALenum  (*alcASAGetListenerProcPtr) (ALuint property, ALvoid* __nonnull data, ALuint* __nonnull dataSize);
-typedef ALenum  (*alcASASetListenerProcPtr) (ALuint property, ALvoid* __nonnull data, ALuint dataSize);
+        1.0
 
-  /* listener properties */
-  #define ALC_ASA_REVERB_ON             'rvon'  // type ALuint
-  #define ALC_ASA_REVERB_GLOBAL_LEVEL         'rvgl'  // type ALfloat -40.0 db - 40.0 db
+Number
 
-  #define ALC_ASA_REVERB_ROOM_TYPE          'rvrt'  // type ALint 
-  
-  /* reverb room type presets for the ALC_ASA_REVERB_ROOM_TYPE property */
-  #define ALC_ASA_REVERB_ROOM_TYPE_SmallRoom      0
-  #define ALC_ASA_REVERB_ROOM_TYPE_MediumRoom     1
-  #define ALC_ASA_REVERB_ROOM_TYPE_LargeRoom      2
-  #define ALC_ASA_REVERB_ROOM_TYPE_MediumHall     3
-  #define ALC_ASA_REVERB_ROOM_TYPE_LargeHall      4
-  #define ALC_ASA_REVERB_ROOM_TYPE_Plate        5
-  #define ALC_ASA_REVERB_ROOM_TYPE_MediumChamber    6
-  #define ALC_ASA_REVERB_ROOM_TYPE_LargeChamber   7
-  #define ALC_ASA_REVERB_ROOM_TYPE_Cathedral      8
-  #define ALC_ASA_REVERB_ROOM_TYPE_LargeRoom2     9
-  #define ALC_ASA_REVERB_ROOM_TYPE_MediumHall2    10
-  #define ALC_ASA_REVERB_ROOM_TYPE_MediumHall3    11
-  #define ALC_ASA_REVERB_ROOM_TYPE_LargeHall2     12
+        ??
 
-  #define ALC_ASA_REVERB_PRESET           'rvps'  // type ALchar* - (set only) path to an au preset file
+Dependencies
 
-  #define ALC_ASA_REVERB_EQ_GAIN            'rveg'  // type ALfloat
-  #define ALC_ASA_REVERB_EQ_BANDWITH          'rveb'  // type ALfloat
-  #define ALC_ASA_REVERB_EQ_FREQ            'rvef'  // type ALfloat
+        This extension is written against the OpenAL 1.1 specification.
 
-  #define ALC_ASA_REVERB_QUALITY              'rvqt'  // type ALint
-  
-  /* reverb quality settings for the ALC_ASA_REVERB_QUALITY property */
-  #define ALC_ASA_REVERB_QUALITY_Max          0x7F
-  #define ALC_ASA_REVERB_QUALITY_High         0x60
-  #define ALC_ASA_REVERB_QUALITY_Medium       0x40
-  #define ALC_ASA_REVERB_QUALITY_Low          0x20
-  #define ALC_ASA_REVERB_QUALITY_Min          0
-  
-  /* source properties */
-  #define ALC_ASA_REVERB_SEND_LEVEL         'rvsl'  // type ALfloat 0.0 (dry) - 1.0 (wet) (0-100% dry/wet mix, 0.0 default)
-  #define ALC_ASA_OCCLUSION             'occl'  // type ALfloat -100.0 db (most occlusion) - 0.0 db (no occlusion, 0.0 default)
-  #define ALC_ASA_OBSTRUCTION             'obst'  // type ALfloat -100.0 db (most obstruction) - 0.0 db (no obstruction, 0.0 default)
-  
+Overview
+        The ASA (Apple Spatial Audio) extension currently provides three main
+        effects: reverb, occlusion and obstruction.
+
+        Reverb:      A reverb effect with multiple presets and quality settings.
+                     Post EQ settings available for additional tonal control.
+
+        Occlusion:   An effect that applies a low pass filter to an OpenAL
+                     source object for simulating objects in different 'spaces'
+                     from the listener (post EQ, causing send to reverb to also
+                     be filtered)
+
+        Obstruction: An effect that applies a low pass filter to an OpenAL source
+                     object for simulating objects being 'obstructed' from the
+                     listener (pre-EQ, allowing high frequencies of source object
+                     to remain in the reverb)
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        ALenum alcASAGetSource(ALuint property, ALuint source, ALvoid *data,
+                               ALuint *dataSize);
+        ALenum alcASASetSource(ALuint property, ALuint source, ALvoid *data,
+                               ALuint dataSize);
+        ALenum alcASAGetListener(ALuint property, ALvoid *data, ALuint *dataSize);
+        ALenum alcASASetListener(ALuint property, ALvoid *data, ALuint dataSize);
+
+New Tokens
+
+        Accepted as the <property> parameter of alcASASetListener and
+        alcASAGetListener:
+
+        ALC_ASA_REVERB_ON                     'rvon'
+        ALC_ASA_REVERB_GLOBAL_LEVEL           'rvgl'
+        ALC_ASA_REVERB_ROOM_TYPE              'rvrt'
+
+        Accepted as the <data> parameter of alcASASetListener with
+        <property> parameter set to ALC_ASA_REVERB_ROOM_TYPE:
+
+        ALC_ASA_REVERB_ROOM_TYPE_SmallRoom        0
+        ALC_ASA_REVERB_ROOM_TYPE_MediumRoom       1
+        ALC_ASA_REVERB_ROOM_TYPE_LargeRoom        2
+        ALC_ASA_REVERB_ROOM_TYPE_MediumHall       3
+        ALC_ASA_REVERB_ROOM_TYPE_LargeHall        4
+        ALC_ASA_REVERB_ROOM_TYPE_Plate            5
+        ALC_ASA_REVERB_ROOM_TYPE_MediumChamber    6
+        ALC_ASA_REVERB_ROOM_TYPE_LargeChamber     7
+        ALC_ASA_REVERB_ROOM_TYPE_Cathedral        8
+        ALC_ASA_REVERB_ROOM_TYPE_LargeRoom2       9
+        ALC_ASA_REVERB_ROOM_TYPE_MediumHall2     10
+        ALC_ASA_REVERB_ROOM_TYPE_MediumHall3     11
+        ALC_ASA_REVERB_ROOM_TYPE_LargeHall2      12
+
+        Accepted as the <property> parameter of alcASASetListener:
+
+        ALC_ASA_REVERB_PRESET                'rvps'
+
+        Accepted as the <property> parameter of alcASASetListener and
+        alcASAGetListener:
+
+        ALC_ASA_REVERB_EQ_GAIN               'rveg'
+        ALC_ASA_REVERB_EQ_BANDWITH           'rveb'
+        ALC_ASA_REVERB_EQ_FREQ               'rvef'
+
+        Accepted as the <property> parameter of alcASASetListener and
+        alcASAGetListener:
+
+        ALC_ASA_REVERB_QUALITY               'rvqt'
+
+        Accepted as the <data> parameter of alcASASetListener with
+        <property> parameter set to ALC_ASA_REVERB_QUALITY:
+
+        ALC_ASA_REVERB_QUALITY_Max            0x7F
+        ALC_ASA_REVERB_QUALITY_High           0x60
+        ALC_ASA_REVERB_QUALITY_Medium         0x40
+        ALC_ASA_REVERB_QUALITY_Low            0x20
+        ALC_ASA_REVERB_QUALITY_Min            0x00
+
+        Accepted as the <property> parameter of alcASASetSource and
+        alcASAGetSource:
+
+        ALC_ASA_REVERB_SEND_LEVEL            'rvsl'
+        ALC_ASA_OCCLUSION                    'occl'
+        ALC_ASA_OBSTRUCTION                  'obst'
+
+Additions to Specification
+
+        Used with the ASA API calls: alcASAGetSource(), alcASASetSource(),
+        alcASAGetListener(), alcASASetListener()
+
+        listener properties
+
+        ALC_ASA_REVERB_ON             type ALuint
+        ALC_ASA_REVERB_GLOBAL_LEVEL   type ALfloat -40.0 db - 40.0 db
+
+        ALC_ASA_REVERB_ROOM_TYPE      type ALint
+
+        reverb room type presets for the ALC_ASA_REVERB_ROOM_TYPE property
+
+        ALC_ASA_REVERB_ROOM_TYPE_SmallRoom
+        ALC_ASA_REVERB_ROOM_TYPE_MediumRoom
+        ALC_ASA_REVERB_ROOM_TYPE_LargeRoom
+        ALC_ASA_REVERB_ROOM_TYPE_MediumHall
+        ALC_ASA_REVERB_ROOM_TYPE_LargeHall
+        ALC_ASA_REVERB_ROOM_TYPE_Plate
+        ALC_ASA_REVERB_ROOM_TYPE_MediumChamber
+        ALC_ASA_REVERB_ROOM_TYPE_LargeChamber
+        ALC_ASA_REVERB_ROOM_TYPE_Cathedral
+        ALC_ASA_REVERB_ROOM_TYPE_LargeRoom2
+        ALC_ASA_REVERB_ROOM_TYPE_MediumHall2
+        ALC_ASA_REVERB_ROOM_TYPE_MediumHall3
+        ALC_ASA_REVERB_ROOM_TYPE_LargeHall2
+
+        ALC_ASA_REVERB_PRESET         type ALchar* - (set only) path to
+                                      an au preset file
+
+        ALC_ASA_REVERB_EQ_GAIN        type ALfloat
+        ALC_ASA_REVERB_EQ_BANDWITH    type ALfloat
+        ALC_ASA_REVERB_EQ_FREQ        type ALfloat
+
+        ALC_ASA_REVERB_QUALITY        type ALint
+
+        reverb quality settings for the ALC_ASA_REVERB_QUALITY property
+
+        ALC_ASA_REVERB_QUALITY_Max
+        ALC_ASA_REVERB_QUALITY_High
+        ALC_ASA_REVERB_QUALITY_Medium
+        ALC_ASA_REVERB_QUALITY_Low
+        ALC_ASA_REVERB_QUALITY_Min
+
+        source properties
+        ALC_ASA_REVERB_SEND_LEVEL     type ALfloat 0.0 (dry) - 1.0 (wet)
+                                      (0-100% dry/wet mix, 0.0 default)
+        ALC_ASA_OCCLUSION             type ALfloat -100.0 db (most occlusion)
+                                      0.0 db (no occlusion, 0.0 default)
+        ALC_ASA_OBSTRUCTION           type ALfloat -100.0 db (most obstruction)
+                                      0.0 db (no obstruction, 0.0 default)
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
