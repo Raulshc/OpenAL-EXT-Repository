@@ -1,44 +1,133 @@
-**** ALC_EXT_ASA_DISTORTION
-This extension applies a distortion effect to a specified OpenAL source object. Different settings can be used to specify the style and 
-degree of distortion applied.
+Name
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ALC_EXT_ASA_DISTORTION : Apple Spatial Audio Extension for Distortion Effect
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+        EXT_ASA_DISTORTION
 
-/* 
-  Distortion Effect 
-  This Extension will be present when the Distortion Audio Unit is present on the system (10.5 or greater)
-  Use the alcASAGetSource() and alcASASetSource() APIs in the ALC_EXT_ASA extension.
-*/
+Name Strings
 
-  /* source properties */
-  #define ALC_ASA_DISTORTION_ENABLE       'dsen'  // type ALboolean - initializes Distortion for use - returns error if source is not in a Stopped or Initial state
-  #define ALC_ASA_DISTORTION_ON         'dson'  // type ALboolean - set effect on/off (bypass) - default setting is true (on)
-  #define ALC_ASA_DISTORTION_MIX          'dsmx'  // type ALfloat   - mix balance between dry signal and distortion effect - 0.0 (no effect) - 100.0 (all effect)
-  #define ALC_ASA_DISTORTION_TYPE         'dstp'  // type ALint   - choose predefined distortion settings
-  #define ALC_ASA_DISTORTION_PRESET       'dsps'  // type ALchar*   - path to an au preset file (set only)
+        ALC_EXT_ASA_DISTORTION
 
-  /* settings for the ALC_ASA_DISTORTION_TYPE property */
-  #define ALC_ASA_DISTORTION_TYPE_BitBrush      0
-  #define ALC_ASA_DISTORTION_TYPE_BufferBeats     1
-  #define ALC_ASA_DISTORTION_TYPE_LoFi        2
-  #define ALC_ASA_DISTORTION_TYPE_BrokenSpeaker   3
-  #define ALC_ASA_DISTORTION_TYPE_Cellphone     4
-  #define ALC_ASA_DISTORTION_TYPE_Decimated1      5
-  #define ALC_ASA_DISTORTION_TYPE_Decimated2      6
-  #define ALC_ASA_DISTORTION_TYPE_Decimated3      7
-  #define ALC_ASA_DISTORTION_TYPE_Decimated4      8
-  #define ALC_ASA_DISTORTION_TYPE_DistortedFunk   9
-  #define ALC_ASA_DISTORTION_TYPE_DistortionCubed   10
-  #define ALC_ASA_DISTORTION_TYPE_DistortionSquared 11
-  #define ALC_ASA_DISTORTION_TYPE_Echo1       12
-  #define ALC_ASA_DISTORTION_TYPE_Echo2       13
-  #define ALC_ASA_DISTORTION_TYPE_EchoTight1      14
-  #define ALC_ASA_DISTORTION_TYPE_EchoTight2      15
-  #define ALC_ASA_DISTORTION_TYPE_EverythingBroken  16
-  #define ALC_ASA_DISTORTION_TYPE_AlienChatter    17
-  #define ALC_ASA_DISTORTION_TYPE_CosmicInteference 18
-  #define ALC_ASA_DISTORTION_TYPE_GoldenPi      19
-  #define ALC_ASA_DISTORTION_TYPE_RadioTower      20
-  #define ALC_ASA_DISTORTION_TYPE_Waves       21
+Version
+
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        This extension is written against the OpenAL 1.1 specification.
+        This extension requires ALC_EXT_ASA.
+
+Overview
+        This extension applies a distortion effect to a specified OpenAL source
+        object. Different settings can be used to specify the style and degree of
+        distortion applied.
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        None
+
+New Tokens
+
+        Accepted as the <property> parameter of alcASASetSource and
+        alcASAGetSource:
+
+        ALC_ASA_DISTORTION_ENABLE                  'dsen'
+        ALC_ASA_DISTORTION_ON                      'dson'
+        ALC_ASA_DISTORTION_MIX                     'dsmx'
+        ALC_ASA_DISTORTION_TYPE                    'dstp'
+
+        Accepted as the <property> parameter of alcASASetSource:
+
+        ALC_ASA_DISTORTION_PRESET                  'dsps'
+
+        Accepted as the <data> parameter of alcASASetSource with
+        <property> parameter set to ALC_ASA_DISTORTION_TYPE:
+
+        ALC_ASA_DISTORTION_TYPE_BitBrush               0
+        ALC_ASA_DISTORTION_TYPE_BufferBeats            1
+        ALC_ASA_DISTORTION_TYPE_LoFi                   2
+        ALC_ASA_DISTORTION_TYPE_BrokenSpeaker          3
+        ALC_ASA_DISTORTION_TYPE_Cellphone              4
+        ALC_ASA_DISTORTION_TYPE_Decimated1             5
+        ALC_ASA_DISTORTION_TYPE_Decimated2             6
+        ALC_ASA_DISTORTION_TYPE_Decimated3             7
+        ALC_ASA_DISTORTION_TYPE_Decimated4             8
+        ALC_ASA_DISTORTION_TYPE_DistortedFunk          9
+        ALC_ASA_DISTORTION_TYPE_DistortionCubed       10
+        ALC_ASA_DISTORTION_TYPE_DistortionSquared     11
+        ALC_ASA_DISTORTION_TYPE_Echo1                 12
+        ALC_ASA_DISTORTION_TYPE_Echo2                 13
+        ALC_ASA_DISTORTION_TYPE_EchoTight1            14
+        ALC_ASA_DISTORTION_TYPE_EchoTight2            15
+        ALC_ASA_DISTORTION_TYPE_EverythingBroken      16
+        ALC_ASA_DISTORTION_TYPE_AlienChatter          17
+        ALC_ASA_DISTORTION_TYPE_CosmicInteference     18
+        ALC_ASA_DISTORTION_TYPE_GoldenPi              19
+        ALC_ASA_DISTORTION_TYPE_RadioTower            20
+        ALC_ASA_DISTORTION_TYPE_Waves                 21
+
+Additions to Specification
+
+        Apple Spatial Audio Extension for Distortion Effect
+        This Extension will be present when the Distortion Audio Unit is present on
+        the system (10.5 or greater).Use the alcASAGetSource() and alcASASetSource()
+        APIs in the ALC_EXT_ASA extension.
+
+
+        Source properties
+
+        ALC_ASA_DISTORTION_ENABLE       type ALboolean - Initializes Distortion for
+                                        use.Returns error if source is not in a
+                                        Stopped or Initial state.
+        ALC_ASA_DISTORTION_ON           type ALboolean - set effect on/off (bypass).
+                                        default setting is true (on).
+        ALC_ASA_DISTORTION_MIX          type ALfloat - mix balance between dry signal
+                                        and distortion effect. 0.0 (no effect) - 100.0
+                                        (all effect).
+        ALC_ASA_DISTORTION_TYPE         type ALint - choose predefined distortion
+                                        settings.
+        ALC_ASA_DISTORTION_PRESET       type ALchar* - path to an au preset file
+                                        (set only).
+
+        Settings for the ALC_ASA_DISTORTION_TYPE property
+
+        ALC_ASA_DISTORTION_TYPE_BitBrush
+        ALC_ASA_DISTORTION_TYPE_BufferBeats
+        ALC_ASA_DISTORTION_TYPE_LoFi
+        ALC_ASA_DISTORTION_TYPE_BrokenSpeaker
+        ALC_ASA_DISTORTION_TYPE_Cellphone
+        ALC_ASA_DISTORTION_TYPE_Decimated1
+        ALC_ASA_DISTORTION_TYPE_Decimated2
+        ALC_ASA_DISTORTION_TYPE_Decimated3
+        ALC_ASA_DISTORTION_TYPE_Decimated4
+        ALC_ASA_DISTORTION_TYPE_DistortedFunk
+        ALC_ASA_DISTORTION_TYPE_DistortionCubed
+        ALC_ASA_DISTORTION_TYPE_DistortionSquared
+        ALC_ASA_DISTORTION_TYPE_Echo1
+        ALC_ASA_DISTORTION_TYPE_Echo2
+        ALC_ASA_DISTORTION_TYPE_EchoTight1
+        ALC_ASA_DISTORTION_TYPE_EchoTight2
+        ALC_ASA_DISTORTION_TYPE_EverythingBroken
+        ALC_ASA_DISTORTION_TYPE_AlienChatter
+        ALC_ASA_DISTORTION_TYPE_CosmicInteference
+        ALC_ASA_DISTORTION_TYPE_GoldenPi
+        ALC_ASA_DISTORTION_TYPE_RadioTower
+        ALC_ASA_DISTORTION_TYPE_Waves
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
