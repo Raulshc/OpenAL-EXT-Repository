@@ -1,33 +1,111 @@
-**** ALC_EXT_ASA_ROGER_BEEP
-This extension allows use of the Roger Beep effect to simulate effects such as Walkie Talkie noise. Effect is activated when
-the source audio data falls below a specified db threshold for a specified time.
+Name
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ALC_EXT_ASA_ROGER_BEEP : Apple Spatial Audio Extension for Roger Beep Effect
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-  
-/*  
-  Roger Beep : an effect to simulate effects such as Walkie Talkie noise. It is designed to replace the 
-  source audio data with a specific 'tone' when falling below a specified db threshold for a specified time.
-  This Extension will be present when the Roger Beep Audio Unit is present on the system (10.5 or greater)
-  Use the alcASAGetSource() and alcASASetSource() APIs in the ALC_EXT_ASA extension.
-*/
+        EXT_ASA_ROGER_BEEP
 
-  /* source properties */
-  #define ALC_ASA_ROGER_BEEP_ENABLE       'rben'  // type ALboolean - initializes Roger Beep for use - returns error if source is not in a Stopped or Initial state
-  #define ALC_ASA_ROGER_BEEP_ON         'rbon'  // type ALboolean - set effect on/off (bypass) - default setting is true (on)
-  #define ALC_ASA_ROGER_BEEP_GAIN         'rbgn'  // type ALfloat   - 20.0 (db) apply maximum effect :  -80.0(db) apply minimum effect amount
-  #define ALC_ASA_ROGER_BEEP_SENSITIVITY      'rbsn'  // type ALint   - specifiy a predefined sensitivity setting
-  #define ALC_ASA_ROGER_BEEP_TYPE         'rbtp'  // type ALint   - choose predefined specific Roger Beep tone
-  #define ALC_ASA_ROGER_BEEP_PRESET       'rbps'  // type ALchar*   - path to an au preset file (set only) 
+Name Strings
 
-  /* settings for the ALC_ASA_ROGER_BEEP_TYPE property */
-  #define ALC_ASA_ROGER_BEEP_TYPE_quindartone     0
-  #define ALC_ASA_ROGER_BEEP_TYPE_whitenoise      1
-  #define ALC_ASA_ROGER_BEEP_TYPE_walkietalkie    2
+        ALC_EXT_ASA_ROGER_BEEP
 
-  /* settings for the ALC_ASA_ROGER_BEEP_SENSITIVITY property */ 
+Version
 
-  #define ALC_ASA_ROGER_BEEP_SENSITIVITY_Light    0
-  #define ALC_ASA_ROGER_BEEP_SENSITIVITY_Medium   1
-  #define ALC_ASA_ROGER_BEEP_SENSITIVITY_Heavy    2
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        This extension is written against the OpenAL 1.1 specification.
+        This extension requires ALC_EXT_ASA.
+
+Overview
+        This extension allows use of the Roger Beep effect to simulate effects such
+        as Walkie Talkie noise. Effect is activated whenthe source audio data falls
+        below a specified db threshold for a specified time.
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        None
+
+New Tokens
+
+        Accepted as the <property> parameter of alcASASetSource and
+        alcASAGetSource:
+
+        ALC_ASA_ROGER_BEEP_ENABLE                  'rben'
+        ALC_ASA_ROGER_BEEP_ON                      'rbon'
+        ALC_ASA_ROGER_BEEP_GAIN                    'rbgn'
+        ALC_ASA_ROGER_BEEP_SENSITIVITY             'rbsn'
+        ALC_ASA_ROGER_BEEP_TYPE                    'rbtp'
+
+        Accepted as the <property> parameter of alcASASetSource:
+
+        ALC_ASA_ROGER_BEEP_PRESET                  'rbps'
+
+        Accepted as the <data> parameter of alcASASetSource with
+        <property> parameter set to ALC_ASA_ROGER_BEEP_SENSITIVITY:
+
+        ALC_ASA_ROGER_BEEP_SENSITIVITY_Light            0
+        ALC_ASA_ROGER_BEEP_SENSITIVITY_Medium           1
+        ALC_ASA_ROGER_BEEP_SENSITIVITY_Heavy            2
+
+        Accepted as the <data> parameter of alcASASetSource with
+        <property> parameter set to ALC_ASA_ROGER_BEEP_TYPE:
+
+        ALC_ASA_ROGER_BEEP_TYPE_quindartone             0
+        ALC_ASA_ROGER_BEEP_TYPE_whitenoise              1
+        ALC_ASA_ROGER_BEEP_TYPE_walkietalkie            2
+
+Additions to Specification
+
+        Apple Spatial Audio Extension for Roger Beep Effect: an effect to simulate
+        effects such as Walkie Talkie noise. It is designed to replace the source
+        audio data with a specific 'tone' when falling below a specified dB
+        threshold for a specified time.This Extension will be present when the
+        Roger Beep Audio Unit is present on the system (10.5 or greater). Use the
+        alcASAGetSource() and alcASASetSource() APIs in the ALC_EXT_ASA extension.
+
+        Source properties:
+
+        ALC_ASA_ROGER_BEEP_ENABLE        type ALboolean - initializes Roger Beep
+                                         for use - returns error if source is not
+                                         in a Stopped or Initial state.
+        ALC_ASA_ROGER_BEEP_ON            type ALboolean - set effect on/off (bypass)
+                                         default setting is true (on).
+        ALC_ASA_ROGER_BEEP_GAIN          type ALfloat - 20.0 (dB) apply maximum
+                                         effect: -80.0(dB) apply minimum effect
+                                         amount.
+        ALC_ASA_ROGER_BEEP_SENSITIVITY   type ALint - specify a predefined sensitivity
+                                         setting.
+        ALC_ASA_ROGER_BEEP_TYPE          type ALint - choose predefined specific
+                                         Roger Beep tone.
+        ALC_ASA_ROGER_BEEP_PRESET        type ALchar* - path to an au preset file (set only) 
+
+        Settings for the ALC_ASA_ROGER_BEEP_TYPE property:
+
+        ALC_ASA_ROGER_BEEP_TYPE_quindartone
+        ALC_ASA_ROGER_BEEP_TYPE_whitenoise
+        ALC_ASA_ROGER_BEEP_TYPE_walkietalkie
+
+        Settings for the ALC_ASA_ROGER_BEEP_SENSITIVITY property:
+
+        ALC_ASA_ROGER_BEEP_SENSITIVITY_Light
+        ALC_ASA_ROGER_BEEP_SENSITIVITY_Medium
+        ALC_ASA_ROGER_BEEP_SENSITIVITY_Heavy
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
