@@ -1,34 +1,91 @@
-9.5. ALC_ENUMERATION_EXT
+Name
 
-An OpenAL 1.1 implementation will always support the ALC_ENUMERATION_EXT extension.
-This extension provides for enumeration of the available OpenAL devices through
-alcGetString. An alcGetString query of ALC_DEVICE_SPECIFIER with a NULL device
-passed in will return a list of devices. Each device name will be separated by a
-single NULL character and the list will be terminated with two NULL characters.
+        ENUMERATION_EXT
 
-The Enumeration Extension enables the application developer to retrieve a list of
-device strings identifying the different OpenAL rendering and capture devices present
-on the user's PC. The OpenAL router takes care of querying the user's system to find
-valid device implementations. Any of the strings returned by the enumeration extension
-can be used to create a device during initialization via alcOpenDevice. This extension
-is critical if you want to enable the user to select at run-time which device should
-be used to render your OpenAL audio.
+Name Strings
 
-Naturally device enumeration is a very platform-specific topic. The mechanism might
-not be implemented on platforms such as games consoles with fixed capabilities, where
-multiple rendering devices are unnecessary.
+        ALC_ENUMERATION_EXT
 
-Note that on PC the standard Enumeration Extension will not identify every potential
-OpenAL output path. It will not return all the possible outputs in situations where
-the user has more than one audio device installed, or under Windows Vista where the
-audio system specifies different "endpoints" for sound such as Speakers, S/PDIF, etc...
-If you require complete control over the choice of output path, use the "Enumerate All"
-extension.
+Version
 
-Tokens:
+        1.0
 
-#define ALC_DEFAULT_DEVICE_SPECIFIER             0x1004
-#define ALC_DEVICE_SPECIFIER                     0x1005
+Number
 
-#define ALC_CAPTURE_DEVICE_SPECIFIER             0x310
-#define ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER     0x311
+        ??
+
+Dependencies
+
+        This extension is written against the OpenAL 1.0 specification.
+        This extension interacts with ALC_EXT_CAPTURE.
+
+Overview
+
+        This extension provides for enumeration of the available OpenAL devices
+        through alcGetString. An alcGetString query of ALC_DEVICE_SPECIFIER with a
+        NULL device passed in will return a list of devices. Each device name will
+        be separated by a single NULL character and the list will be terminated
+        with two NULL characters.
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        None
+
+New Tokens
+
+        None
+
+Additions to Specification
+
+        Modify Section 6.3.7, String Query
+
+        "... The application can obtain certain strings from ALC.
+
+            const ALCchar * alcGetString(ALCdevice * deviceHandle, ALCenum token);
+
+        Specifying NULL for deviceHandle when asking for ALC_EXTENSIONS will
+        generate an ALC_INVALID_DEVICE error. The deviceHandle value is ignored when
+        asking for ALC_DEFAULT_DEVICE_SPECIFIER or
+        ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER.
+
+        An alcGetString query of ALC_DEVICE_SPECIFIER or
+        ALC_CAPTURE_DEVICE_SPECIFIER with a NULL device passed in will return a list
+        of available devices. Each device name will be separated by a single NULL
+        character and the list will be terminated with two NULL characters.
+
+        A request for ALC_DEFAULT_DEVICE_SPECIFIER on a system without an audio
+        output device will result in NULL being returned.
+
+        A request for ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER on a system without an
+        audio capture device will result in NULL being returned.
+
+        Table 6.3: String Query Tables
+
+        Name                                  Description
+        ------------------------------------  ------------------------------------------
+        ALC_DEFAULT_DEVICE_SPECIFIER          The specifier string for the default device
+        ALC_DEVICE_SPECIFIER                  The specifier string for the device
+        ALC_EXTENSIONS                        A list of available context extensions
+                                              separated by spaces.
+        ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER  The name of the default capture device
+        ALC_CAPTURE_DEVICE_SPECIFIER          The name of the specified capture device, or
+                                              a list of all available capture devices if
+                                              no capture device is specified.
+
+        In addition, printable error message ..."
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
