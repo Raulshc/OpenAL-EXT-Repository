@@ -1,15 +1,242 @@
-9.1. ALC_EXT_CAPTURE
+Name
 
-An OpenAL 1.1 implementation will always support the ALC_EXT_CAPTURE extension.
-This allows an application written to the OpenAL 1.0 specification to access the
-capture abilities expressed in section 6.4.2.
+        EXT_CAPTURE
 
-Capture Procedures and Functions
-ALCdevice* alcCaptureOpenDevice(const ALCchar *deviceName, ALCuint freq, ALCenum fmt, ALCsizei bufsize);
-ALCboolean alcCaptureCloseDevice(ALCdevice *device);
-void alcCaptureStart(ALCdevice *device);
-void alcCaptureStop(ALCdevice *device);
-void alcCaptureSamples(ALCdevice *device, ALCvoid *buf, ALCsizei samps);
+Name Strings
 
-Capture Tokens
-ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER ALC_CAPTURE_DEVICE_SPECIFIER ALC_CAPTURE_SAMPLES
+        ALC_EXT_CAPTURE
+
+Version
+
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        This extension is written against the OpenAL 1.0 specification.
+
+Overview
+        This extension allows an application written to the OpenAL 1.0 specification
+        to access the capture abilities expressed in section 6.4.2.
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        ALCdevice* alcCaptureOpenDevice(const ALCchar *deviceName, ALCuint freq,
+                                         ALCenum fmt, ALCsizei bufsize);
+        ALCboolean alcCaptureCloseDevice(ALCdevice *device);
+        void alcCaptureStart(ALCdevice *device);
+        void alcCaptureStop(ALCdevice *device);
+        void alcCaptureSamples(ALCdevice *device, ALCvoid *buf, ALCsizei samps);
+
+New Tokens
+
+        Accepted as the <token> parameter of alcGetString:
+
+        ALC_CAPTURE_DEVICE_SPECIFIER                       0x310
+        ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER               0x311
+
+        Accepted as the <token> parameter of alcGetIntegerv:
+
+        ALC_CAPTURE_SAMPLES                                0x312
+
+Additions to Specification
+
+        Modify Section 6.3.7, String Query
+
+        "... The application can obtain certain strings from ALC.
+
+            const ALCchar * alcGetString(ALCdevice * deviceHandle, ALCenum token);
+
+        Specifying NULL for deviceHandle when asking for ALC_EXTENSIONS will
+        generate an ALC_INVALID_DEVICE error. The deviceHandle value is ignored when
+        asking for ALC_DEFAULT_DEVICE_SPECIFIER or
+        ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER.
+
+        An alcGetString query of ALC_DEVICE_SPECIFIER or
+        ALC_CAPTURE_DEVICE_SPECIFIER with a NULL device passed in will return a list
+        of available devices. Each device name will be separated by a single NULL
+        character and the list will be terminated with two NULL characters.
+
+        A request for ALC_DEFAULT_DEVICE_SPECIFIER on a system without an audio
+        output device will result in NULL being returned.
+
+        A request for ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER on a system without an
+        audio capture device will result in NULL being returned.
+
+        Table 6.3: String Query Tables
+
+        Name                                  Description
+        ------------------------------------  ------------------------------------------
+        ALC_DEFAULT_DEVICE_SPECIFIER          The specifier string for the default device
+        ALC_DEVICE_SPECIFIER                  The specifier string for the device
+        ALC_EXTENSIONS                        A list of available context extensions
+                                              separated by spaces.
+        ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER  The name of the default capture device
+        ALC_CAPTURE_DEVICE_SPECIFIER          The name of the specified capture device, or
+                                              a list of all available capture devices if
+                                              no capture device is specified.
+
+        In addition, printable error message ..."
+
+        Modify Section 6.3.8, Integer Query
+
+        "... The application can query ALC for information using an integer query
+        function.
+
+            void alcGetIntegerv(ALCdevice * deviceHandle, ALCenum token, ALCsizei size,
+                    ALCint *dest);
+
+        For some tokens, NULL is a legal deviceHandle. In other cases, specifying a
+        NULL device will generate an ALC_INVALID_DEVICE error. The application has
+        to specify the size of the destination buffer provided (in ALCint values).
+        A NULL destination or a zero size parameter will cause ALC to ignore the
+        query.
+
+        All tokens in table 6.1 (context creation attributes) and table 6.4 (context
+        query types) are valid for this call.
+
+        Table 6.4: Integer Query Types
+
+        Name                    Description
+        ----------------------  ---------------------------------------------------
+        ALC_ATTRIBUTES_SIZE     The size (number of ALCint values) required for a
+                                zero-terminated attributes list, for the current
+                                context. NULL is an invalid device.
+        ALC_ALL_ATTRIBUTES      Expects a destination of ALC_ATTRIBUTES_SIZE, and
+                                provides an attribute list for the current context
+                                of the specified device. NULL is an invalid device.
+        ALC_MAJOR_VERSION       The specification revision for this implementation
+                                (major version). NULL is an acceptable device.
+        ALC_MINOR_VERSION       The specification revision for this implementation
+                                (minor version). NULL is an acceptable device.
+        ALC_CAPTURE_SAMPLES     The number of capture samples available. NULL is an
+                                invalid device.
+
+        ..."
+
+        Append Section 6.4.2, Capture
+
+        Procedures and Functions
+
+            ALCdevice* alcCaptureOpenDevice(const ALCchar *deviceName, ALCuint freq,
+                             ALCenum fmt, ALCsizei bufsize);
+            ALCboolean alcCaptureCloseDevice(ALCdevice *device);
+            void alcCaptureStart(ALCdevice *device);
+            void alcCaptureStop(ALCdevice *device);
+            void alcCaptureSamples(ALCdevice *device, ALCvoid *buf, ALCsizei samps);
+
+        Tokens
+
+            ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER
+            ALC_CAPTURE_DEVICE_SPECIFIER
+            ALC_CAPTURE_SAMPLES
+
+        Separate from traditional output devices, OpenAL may provide facilities for
+        input, or "capture" of audio data from the user's environment. Capture
+        devices run parallel to the rest of the library, and don't contain a context
+        or possess most AL or ALC state. As such, they contain their own entry points
+        that represent a greatly simplified interface. Capture is handled as a
+        polling, non-blocking sub-API within OpenAL.
+
+        The alcCaptureOpenDevice function allows the application to connect to a
+        capture device. To obtain a list of all available capture devices, use
+        alcGetString to retrieve ALC_CAPTURE_DEVICE_SPECIFIER with a NULL device
+        specified - a list of all capture devices will be returned (each name will be
+        NULL-terminated, and the list will be terminated with two NULL characters).
+        Retrieving ALC_CAPTURE_DEVICE_SPECIFIER with a valid capture device specified
+        will result in the name of that device being returned as a single
+        NULL-terminated string.
+
+        ALCdevice* alcCaptureOpenDevice(const ALCchar *deviceName,
+                        ALCuint freq, ALCenum fmt, ALCsizei bufsize);
+
+        If the function returns NULL, then no sound driver/device has been found, or
+        the requested format could not be fulfilled.
+
+        The "deviceName" argument is a null terminated string that requests a certain
+        device or device configuration. If NULL is specified, the implementation will
+        provide an implementation specific default. The "freq" and "fmt" arguments
+        specify the format that audio data will be presented to the application, and
+        match the values that can be passed to alBufferData. The implementation is
+        expected to convert and resample to this format on behalf of the application.
+        The "bufsize" argument specifies the number of sample frames to buffer. For
+        example, requesting a format of AL_FORMAT_STEREO16 and a buffer size of 1024
+        would require the AL to store up to 1024 * 4 bytes of audio data. Note that
+        the implementation may use a larger buffer than requested if it needs to, but
+        the implementation will set up a buffer of at least the requested size.
+
+        Specifying a compressed or extension-supplied format may result in failure,
+        even if the extension is supplied for rendering.
+
+        The alcCaptureCloseDevice function allows the application to disconnect from
+        a capture device.
+
+        ALCboolean alcCaptureCloseDevice(ALCdevice *deviceHandle);
+
+        The return code will be ALC_TRUE or ALC_FALSE, indicating success or failure.
+        If deviceHandle is NULL or invalid, an ALC_INVALID_DEVICE error will be
+        generated. Once closed, a deviceHandle is invalid.
+
+        Audio capture
+
+        Once a capture device has been opened via alcCaptureOpenDevice, it is made to
+        start recording audio via the alcCaptureStart entry point:
+
+        void alcCaptureStart(ALCdevice *device);
+
+        Once started, the device will record audio to an internal ring buffer, the
+        size of which was specified when opening the device.
+
+        The application may query the capture device to discover how much data is
+        currently available via the alcGetInteger with the ALC_CAPTURE_SAMPLES token.
+        This will report the number of sample frames currently available.
+
+        When the application feels there are enough samples available to process, it
+        can obtain them via the alcCaptureSamples entry point:
+
+        void alcCaptureSamples(ALCdevice *device, ALCvoid *buf, ALCsizei samps);
+
+        The "buf" argument specifies an application-allocated buffer that must contain
+        at least "samps" sample frames. Exactly "samps" number of samples will be
+        retrieved by this call and placed in the buffer, without blocking. If fewer
+        than "samps" frames are available, then an ALC_INVALID_VALUE error is set. If
+        more than "samps" frames are available, the extra samples are retained by
+        OpenAL and are available to be retrieved at a later time. The implementation
+        may defer conversion and resampling until this point. Requesting more sample
+        frames than are currently available is an error.
+
+        If the application doesn't need to capture more audio for an amount of time,
+        they can halt the device without closing it via the alcCaptureStop entry
+        point:
+
+        void alcCaptureStop(ALCdevice *device);
+
+        The implementation is encouraged to optimize for this case. The amount of
+        audio samples available after restarting a stopped capture device is reset to
+        zero. The application does not need to stop the capture device to read from it.
+
+Errors
+
+        alcCaptureCloseDevice call will return ALC_TRUE or ALC_FALSE, indicating
+        success or failure. If deviceHandle is NULL or invalid, an ALC_INVALID_DEVICE
+        error will be generated. Once closed, a deviceHandle is invalid.
+
+        Application-allocated buffer in the alcCaptureSamples call must contain at
+        least "samps" sample frames. Exactly "samps" number of samples will be
+        retrieved by this call and placed in the buffer, without blocking. If fewer
+        than "samps" frames are available, then an ALC_INVALID_VALUE error is set.
+
+New State
+
+        None
+
+New Implementation State
+
+        None
