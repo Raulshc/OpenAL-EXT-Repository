@@ -1,42 +1,90 @@
-ALC_ENUMERATE_ALL_EXT
+Name
 
-The Enumerate All Extension enables the application developer to retrieve
-a complete list of device strings identifying all the available OpenAL
-rendering devices and paths present on the user's PC. It works in exactly
-the same manner as the Enumeration Extension, but it detects additional
-audio paths that the standard extension will ignore. For instance, it will
-return all the possible outputs in situations where the user has more than
-one audio device installed, or under Windows Vista where the audio system
-specifies different "endpoints" for sound such as Speakers, S/PDIF, etc...
-If you don't require such complete control over the choice of output path,
-then use the standard Enumeration Extension.
+        ENUMERATE_ALL_EXT
 
-ALC_DEFAULT_ALL_DEVICES_SPECIFIER        0x1012
-ALC_ALL_DEVICES_SPECIFIER                0x1013
+Name Strings
 
+        ALC_ENUMERATE_ALL_EXT
 
-Creative Implementations
-This alternative Enumeration Extension will enumerate all the OpenAL devices 
-on ***all*** the audio devices (including all the 'endpoints' on Windows Vista).
-The original Enumeration Extension would only enumerate generic devices on the
-Default playback device.
+Version
 
-For example, on a Windows XP system with an SB X-Fi card and a SoundMAX Digital Audio
-mother-board chip, the original Enumeration Extension provides a list like this: -
+        1.0
 
-SB X-Fi Audio [9000]
-Generic Hardware
-Generic Software
+Number
 
-The new 'Enumerate All' extension gives a complete list of all the possible output
-configurations, i.e: -
+        ??
 
-SB X-Fi Audio [9000]
-Generic Hardware on SB X-Fi Audio [9000]
-Generic Software on SB X-Fi Audio [9000]
-Generic Hardware on SoundMAX Digital Audio
-Generic Software on SoundMAX Digital Audio
+Dependencies
 
-Note, at the time of writting, the SoundMAX Digital Audio solution does not include 
-a 'native' AL component so the only options are the "Generic Hardware" and 
-"Generic Software" devices. 
+        This extension is written against the OpenAL 1.1 specification.
+
+Overview
+
+        The Enumerate All Extension enables the application developer to retrieve
+        a complete list of device strings identifying all the available OpenAL
+        rendering devices and paths present on the user's PC. It works in exactly
+        the same manner as the Enumeration Extension, but it detects additional
+        audio paths that the standard extension will ignore. For instance, it will
+        return all the possible outputs in situations where the user has more than
+        one audio device installed, or under Windows Vista where the audio system
+        specifies different "endpoints" for sound such as Speakers, S/PDIF, etc...
+        If you don't require such complete control over the choice of output path,
+        then use the standard Enumeration Extension.
+
+Issues
+
+        Creative Implementations
+
+        This alternative Enumeration Extension will enumerate all the OpenAL
+        devices on ***all*** the audio devices (including all the 'endpoints' on
+        Windows Vista).
+        The original Enumeration Extension would only enumerate generic devices
+        on the Default playback device.
+
+        For example, on a Windows XP system with an SB X-Fi card and a SoundMAX
+        Digital Audio mother-board chip, the original Enumeration Extension
+        provides a list like this: -
+
+        SB X-Fi Audio [9000]
+        Generic Hardware
+        Generic Software
+
+        The new 'Enumerate All' extension gives a complete list of all the
+        possible output configurations, i.e: -
+
+        SB X-Fi Audio [9000]
+        Generic Hardware on SB X-Fi Audio [9000]
+        Generic Software on SB X-Fi Audio [9000]
+        Generic Hardware on SoundMAX Digital Audio
+        Generic Software on SoundMAX Digital Audio
+
+        Note, at the time of writting, the SoundMAX Digital Audio solution
+        does not include a 'native' AL component so the only options are the
+        "Generic Hardware" and "Generic Software" devices.
+
+New Procedures and Functions
+
+        None
+
+New Tokens
+
+        Accepted as the <token> parameter of alcGetString:
+
+        ALC_DEFAULT_ALL_DEVICES_SPECIFIER          0x1012
+        ALC_ALL_DEVICES_SPECIFIER                  0x1013
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
