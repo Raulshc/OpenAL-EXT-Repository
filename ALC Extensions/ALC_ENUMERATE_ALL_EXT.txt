@@ -75,7 +75,22 @@ New Tokens
 
 Additions to Specification
 
-        None
+        Retrieving all device names
+
+        The developer can retrieve a string containing NULL-separated device name
+        strings (the list is terminated with two consecutive NULL characters),
+        and a string containing the name of the default device.
+
+        To retrieve the string listing all the devices present, the developer should
+        use the OpenAL function call alcGetString with the name
+        "ALC_ALL_DEVICES_SPECIFIER".
+
+        To retrieve the string containing the name of the default device, the
+        developer should use the OpenAL function call alcGetString with the name
+        "ALC_DEFAULT_ALL_DEVICES_SPECIFIER".
+
+        Any of the strings returned by the Enumerate All extension can be used to
+        create a device during initialization via alcOpenDevice.
 
 Errors
 
