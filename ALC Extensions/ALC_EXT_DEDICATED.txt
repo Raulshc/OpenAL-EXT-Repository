@@ -8,7 +8,7 @@ Name Strings
 
 Version
 
-        1.1
+        1.0
 
 Number
 
