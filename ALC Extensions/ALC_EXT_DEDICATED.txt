@@ -16,17 +16,16 @@ Number
 
 Dependencies
 
-        ALC_EXT_EFX
+        This extension is written against the OpenAL 1.1 specification.
+        This extension requires ALC_EXT_EFX.
 
 Overview
 
-        This extension provides two "routing" EFX effects that allow sounds
-        to be sent to dedicated speaker channels.
+        This extension provides two "routing" EFX effects that allow sounds to be
+        sent to dedicated speaker channels.
         Audio rendered to the dedicated low frequency effect
-        (AL_EFFECT_DEDICATED_LOW_FREQUENCY_EFFECT) is routed to a subwoofer
-        if one is present. Otherwise, it is discarded.
-
-Issues
+        (AL_EFFECT_DEDICATED_LOW_FREQUENCY_EFFECT) is routed to a subwoofer if one
+        is present. Otherwise, it is discarded.
 
         Audio rendered to the dedicated dialogue effect (AL_EFFECT_DEDICATED_DIALOGUE)
         is routed to a front centre speaker if one is present. Otherwise, it is
@@ -34,6 +33,9 @@ Issues
 
         Both effects support a gain control parameter AL_DEDICATED_GAIN, which
         defaults to 1.
+Issues
+
+        None.
 
 New Procedures and Functions
 
@@ -41,9 +43,17 @@ New Procedures and Functions
 
 New Tokens
 
-        AL_DEDICATED_GAIN                         0x0001
-        AL_EFFECT_DEDICATED_DIALOGUE              0x9001
+        Accepted as the <iValue> parameter of alEffecti with <param> parameter
+        set to AL_EFFECT_TYPE:
+
         AL_EFFECT_DEDICATED_LOW_FREQUENCY_EFFECT  0x9000
+        AL_EFFECT_DEDICATED_DIALOGUE              0x9001
+
+        Accepted as the <param> parameter of alEffectf when
+        AL_EFFECT_DEDICATED_LOW_FREQUENCY_EFFECT or
+        AL_EFFECT_DEDICATED_DIALOGUE have been created and selected:
+
+        AL_DEDICATED_GAIN                         0x0001
 
 Additions to Specification
 
