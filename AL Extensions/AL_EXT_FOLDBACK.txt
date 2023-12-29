@@ -16,96 +16,13 @@ Number
 
 Dependencies
 
-        None
+        This extension is written against the OpenAL 1.0 specification.
 
 Overview
 
-        This OpenAL extension provides a "foldback" facility to OpenAL, allowing
-        a mono  or stereo mix of the overall OpenAL output to be fed back to the
+        This OpenAL extension provides a "foldback" facility to OpenAL, allowing a
+        mono or stereo mix of the overall OpenAL output to be fed back to the
         originating software for further processing, recording etc.
-
-        The OpenAL extension can be detected by a call to alIsExtensionPresent
-        requesting extension "AL_EXT_FOLDBACK" (defined by macro AL_EXT_FOLDBACK_NAME).
-
-        If it is present, the calls "alRequestFoldbackStart" and "alRequestFoldbackStop"
-        will be available from alGetProcAddress. These calls control an asynchronous
-        event stream to be handled by a callback function required by alRequestFoldbackStart.
-
-        The calling software is required to provide a range of memory into which
-        foldback data will be written. This range of memory is a circular buffer,
-        divided into fixed-size blocks. Data is interleaved if stereo is required.
-        The callback function indicates when a block of memory is ready for processing.
-        The callbacks are delivered asynchronously and in sequence - it is up to
-        the calling software to keep up with the data flow.
-
-        If the alRequestFoldbackStart call succeeds, the callback function will
-        be fed events.The first event is an AL_FOLDBACK_EVENT_START event indicating
-        that streaming has begun. Subsequent events are zero or more AL_FOLDBACK_EVENT_BLOCK
-        events indicating each block as it becomes ready, with a final AL_FOLDBACK_EVENT_STOP
-        to indicate that processing has ended. The memory region should not be
-        released until an AL_FOLDBACK_EVENT_STOP event has been received (normally
-        this occurs after alRequestFoldbackStop has returned).
-
-        FOLDBACK CALLBACK
-
-        This function has the following type and is provided by the calling
-        software:
-
-        typedef void (AL_APIENTRY *LPALFOLDBACKCALLBACK) ( ALenum event, ALsizei index );
-
-        Three different "event" values are defined:
-
-        AL_FOLDBACK_EVENT_START       indicates that streaming has begun,
-        AL_FOLDBACK_EVENT_BLOCK       indicates a data block is ready
-        AL_FOLDBACK_EVENT_STOP        indicates that streaming has ended.
-
-        The "index" value is defined only where the event is AL_FOLDBACK_EVENT_BLOCK.
-        In this context, it indicates which block (indexed from zero) within the
-        memory region provided to alRequestFoldbackStart is ready. Note that the
-        index value wraps around, returning to zero when the bufferCount is reached.
-
-        REQUEST FOLDBACK START (alRequestFoldbackStart)
-
-        If this call succeeds, then it is guaranteed that the callback function
-        be called at least once with a start event and once with a stop event.
-
-        If this call sets AL_INVALID_VALUE, this may be because the count
-        and length are not large enough for the current renderer, so it may
-        be worth trying a larger value.
-
-        Data is written into the region of memory starting at bufferMemory in
-        sequential blocks of floats with count length, or twice length
-        if stereo is used (data is interleaved). After each block is written, a
-        callback is queued for asynchronous delivery.
-
-        "mode" may be AL_FOLDBACK_MODE_MONO for mono or AL_FOLDBACK_MODE_STEREO
-        for interleaved stereo.
-
-        "count" indicates the number of blocks of audio that should be available
-        at mem. This must be at least two.
-
-        "length" indicates the number of frames of audio that should be available
-        within each block. Note that there will be two samples per frame if stereo
-        is in use.
-
-        "mem" indicates the start of the region of memory, provided by the calling
-        software, which will be used for the shared circular buffer. It is required
-        to allow space for a number of floats: length*count floats if foldbackMode
-        is AL_FOLDBACK_MODE_MONO or 2*length*count floats if foldbackMode is
-        AL_FOLDBACK_MODE_STEREO. The memory is owned by the calling software and
-        should not be deleted until an AL_FOLDBACK_EVENT_STOP eventhas been
-        received.
-
-        "callback" is the pointer to a function provided by the calling software
-        that will handle foldback streaming events (see above).
-
-        REQUEST FOLDBACK STOP (alRequestFoldbackStop)
-
-        This call requests an end to foldback.
-        Note that this call does not stop foldback immediately - any queued blocks
-        must still be processed. A stop event (AL_FOLDBACK_EVENT_STOP) will be
-        received toindicate that the foldback has actually completed and buffer
-        memory should not be freed before then.
 
 Issues
 
@@ -116,25 +33,133 @@ Issues
 
 New Procedures and Functions
 
-        void alRequestFoldbackStart(ALenum mode, ALsizei count, ALsizei length, ALfloat *mem, LPALFOLDBACKCALLBACK callback);
+        void alRequestFoldbackStart(ALenum foldbackMode, ALsizei blockCount,
+                                     ALsizei blockLength, ALfloat *bufferMemory,
+                                     LPALFOLDBACKCALLBACK callback);
         void alRequestFoldbackStop(void);
+
+New Types
+
+        typedef void (*alFoldbackCallback)(ALenum event, ALsizei blockIndex);
 
 New Tokens
 
-        AL_EXT_FOLDBACK_NAME                      "AL_EXT_FOLDBACK"
-        AL_FOLDBACK_EVENT_BLOCK                   0x4112
-        AL_FOLDBACK_EVENT_START                   0x4111
-        AL_FOLDBACK_EVENT_STOP                    0x4113
+        Accepted as the <foldbackMode> parameter of alRequestFoldbackStart:
+
         AL_FOLDBACK_MODE_MONO                     0x4101
         AL_FOLDBACK_MODE_STEREO                   0x4102
 
+        Accepted as the <event> parameter of (*alFoldbackCallback):
+
+        AL_FOLDBACK_EVENT_START                   0x4111
+        AL_FOLDBACK_EVENT_BLOCK                   0x4112
+        AL_FOLDBACK_EVENT_STOP                    0x4113
+
 Additions to Specification
 
-        None
+        The OpenAL extension can be detected by a call to alIsExtensionPresent
+        requesting extension "AL_EXT_FOLDBACK" (defined by macro
+        AL_EXT_FOLDBACK_NAME).
+
+        If it is present, the calls "alRequestFoldbackStart" and
+        "alRequestFoldbackStop" will be available from alGetProcAddress. These calls
+        control an asynchronous event stream to be handled by a callback function
+        required by alRequestFoldbackStart.
+
+        The calling software is required to provide a range of memory into which
+        foldback data will be written. This range of memory is a circular buffer,
+        divided into fixed-size blocks. Data is interleaved if stereo is required.
+        The callback function indicates when a block of memory is ready for
+        processing. The callbacks are delivered asynchronously and in sequence - it
+        is up to the calling software to keep up with the data flow.
+
+        If the alRequestFoldbackStart call succeeds, the callback function will
+        be fed events.The first event is an AL_FOLDBACK_EVENT_START event
+        indicating that streaming has begun. Subsequent events are zero or more
+        AL_FOLDBACK_EVENT_BLOCK events indicating each block as it becomes ready,
+        with a final AL_FOLDBACK_EVENT_STOP to indicate that processing has ended.
+        The memory region should not be released until an AL_FOLDBACK_EVENT_STOP
+        event has been received (normally this occurs after alRequestFoldbackStop
+        has returned).
+
+        FOLDBACK CALLBACK
+
+        This function has the following type and is provided by the calling
+        software:
+
+        typedef void (AL_APIENTRY *LPALFOLDBACKCALLBACK)(ALenum event,
+                         ALsizei blockIndex);
+
+        Three different "event" values are defined:
+
+        AL_FOLDBACK_EVENT_START       indicates that streaming has begun,
+        AL_FOLDBACK_EVENT_BLOCK       indicates a data block is ready
+        AL_FOLDBACK_EVENT_STOP        indicates that streaming has ended.
+
+        The "blockIndex" value is defined only where the event is
+        AL_FOLDBACK_EVENT_BLOCK.In this context, it indicates which block (indexed
+        from zero) within the memory region provided to alRequestFoldbackStart is
+        ready. Note that theindex value wraps around, returning to zero when the
+        bufferCount is reached.
+
+        REQUEST FOLDBACK START (alRequestFoldbackStart)
+
+        This function has the following type:
+
+        typedef void (AL_APIENTRY *LPALREQUESTFOLDBACKSTART)(ALenum foldbackMode,
+                   ALsizei blockCount, ALsizei blockLength, ALfloat *bufferMemory,
+                   LPALFOLDBACKCALLBACK callback);
+
+        If this call succeeds, then it is guaranteed that the callback function be
+        called at least once with a start event and once with a stop event.
+
+        If this call sets AL_INVALID_VALUE, this may be because the count and length
+        are not large enough for the current renderer, so it may be worth trying a
+        larger value.
+
+        Data is written into the region of memory starting at bufferMemory in
+        sequential blocks of floats with count length, or twice length if stereo is
+        used (data is interleaved). After each block is written, a callback is
+        queued for asynchronous delivery.
+
+        "foldbackMode" may be AL_FOLDBACK_MODE_MONO for mono or
+        AL_FOLDBACK_MODE_STEREO for interleaved stereo.
+
+        "blockCount" indicates the number of blocks of audio that should be
+        available at mem. This must be at least two.
+
+        "blockLength" indicates the number of frames of audio that should be
+        available within each block. Note that there will be two samples per frame
+        if stereo is in use.
+
+        "bufferMemory" indicates the start of the region of memory, provided by the
+        callingsoftware, which will be used for the shared circular buffer. It is
+        requiredto allow space for a number of floats: length*count floats if
+        foldbackMode is AL_FOLDBACK_MODE_MONO or 2*length*count floats if
+        foldbackMode is AL_FOLDBACK_MODE_STEREO. The memory is owned by the calling
+        software and should not be deleted until an AL_FOLDBACK_EVENT_STOP event has
+        been received.
+
+        "callback" is the pointer to a function provided by the calling software
+        that will handle foldback streaming events (see above).
+
+        REQUEST FOLDBACK STOP (alRequestFoldbackStop)
+
+        This function has the following type:
+
+        typedef void (AL_APIENTRY *LPALREQUESTFOLDBACKSTOP)(void);
+
+        This call requests an end to foldback.
+        Note that this call does not stop foldback immediately - any queued blocks
+        must still be processed. A stop event (AL_FOLDBACK_EVENT_STOP) will be
+        received to indicate that the foldback has actually completed and buffer
+        memory should not be freed before then.
 
 Errors
 
-        None
+        alRequestFoldbackStart sets AL_INVALID_VALUE, if the count and length are
+        not large enough for the current renderer, so it may be worth trying a
+        larger value.
 
 New State
 
