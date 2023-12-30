@@ -64,13 +64,13 @@ New Tokens
 
         Accepted as the <value> parameter of alcMacOSXRenderingQuality:
 
-          ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_HIGH      'rqhi'
-          ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_LOW       'rdlo'
+            ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_HIGH      'rqhi'
+            ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_LOW       'rdlo'
 
         Accepted as the <value> parameter of alMacOSXRenderChannelCount:
 
-          ALC_MAC_OSX_RENDER_CHANNEL_COUNT_STEREO         'rcst'
-          ALC_MAC_OSX_RENDER_CHANNEL_COUNT_MULTICHANNEL   'rcmc'
+            ALC_MAC_OSX_RENDER_CHANNEL_COUNT_STEREO         'rcst'
+            ALC_MAC_OSX_RENDER_CHANNEL_COUNT_MULTICHANNEL   'rcmc'
 
 Additions to Specification
 

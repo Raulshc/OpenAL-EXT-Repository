@@ -15,17 +15,19 @@ Number
         ??
 
 Dependencies
-        
+
         This extension is written against the OpenAL 1.1 specification.
         This extension interacts with ALC_EXT_MAC_OSX.
 
 Overview
-        Allows the rendering quality to be explicitly set on a source object, overriding
-        the default render quality set via alcMacOSXRenderingQuality(). A subsequent call
-        to alcMacOSXRenderingQuality() resets the render quality of all source objects.
- 
+
+        Allows the rendering quality to be explicitly set on a source object,
+        overriding the default render quality set via alcMacOSXRenderingQuality().
+        A subsequent call to alcMacOSXRenderingQuality() resets the render quality
+        of all source objects.
+
         Uses the same render settings (defined above) as alcMacOSXRenderingQuality():
- 
+
             ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_HIGH
             ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_LOW
 
@@ -40,8 +42,10 @@ New Procedures and Functions
 
 New Tokens
 
-        ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_HIGH           'rqhi'
-        ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_LOW            'rdlo'
+        Accepted as the <value> parameter of alSourceRenderingQuality:
+
+            ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_HIGH           'rqhi'
+            ALC_MAC_OSX_SPATIAL_RENDERING_QUALITY_LOW            'rdlo'
 
 Additions to Specification
 

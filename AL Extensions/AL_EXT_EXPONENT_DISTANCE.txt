@@ -1,39 +1,49 @@
 Name
+
         EXT_EXPONENT_DISTANCE
 
 Name Strings
+
         AL_EXT_EXPONENT_DISTANCE
 
 Version
+
         1.0
 
 Number
+
         ??
 
 Dependencies
+
         This extension is written against the OpenAL 1.0 specification.
         This extension trivially interacts with AL_EXT_LINEAR_DISTANCE.
 
 Overview
+
         This extension allows an application written to the OpenAL 1.0
         specification to access the offset abilities expressed in sections
         3.4.5 and 3.4.6.
 
 Issues
+
         None.
 
 New Procedures and Functions
+
         None.
 
 New Tokens
+
         Accepted as the <modelName> parameter of alDistanceModel:
 
             AL_EXPONENT_DISTANCE                    0xD005
             AL_EXPONENT_DISTANCE_CLAMPED            0xD006
 
 Additions to Specification
+
         Modify Section 3.4, Attenuation By Distance
-        
+
         "... might ultimately limit the overall gain to a value below 1.0.
 
         OpenAL currently supports three modes of operation with respect to
@@ -122,6 +132,7 @@ Additions to Specification
         |
 
 Errors
+
         An AL_INVALID_VALUE error is generating if the specified distance model 
         is not valid.
 
@@ -129,8 +140,9 @@ Errors
         context.
 
 New State
+
         None
 
 New Implementation State
-        None
 
+        None

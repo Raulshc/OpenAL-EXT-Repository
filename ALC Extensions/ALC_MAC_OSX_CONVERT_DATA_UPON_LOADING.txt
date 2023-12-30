@@ -19,11 +19,12 @@ Dependencies
         This extension is written against the OpenAL 1.1 specification.
 
 Overview
-        This extension allows the caller to tell OpenAL to preconvert to the
-        native CoreAudio format, the audio data passed to the library with
-        the alBufferData() call. Preconverting the audio data, reduces CPU
-        usage by removing an audio data conversion (per source) at render
-        time at the expense of a larger memory footprint.
+
+        This extension allows the caller to tell OpenAL to preconvert to the native
+        CoreAudio format, the audio data passed to the library withthe alBufferData()
+        call. Preconverting the audio data, reduces CPU usage by removing an audio
+        data conversion (per source) at render time at the expense of a larger memory
+        footprint.
 
 Issues
 
@@ -34,13 +35,14 @@ New Procedures and Functions
         None
 
 New Tokens
+
         Accepted as the <target> parameter of alEnable and alDisable:
 
             ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING         0xF001
 
 Additions to Specification
 
-        Convert Data When Loading.
+        Convert data when loading.
         Default false, currently applies only to monophonic sounds.
         Use with alEnable()/alDisable() the following token:
 

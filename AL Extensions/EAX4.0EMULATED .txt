@@ -1,4 +1,6 @@
-EAX4.0EMULATED extension indicates the EAX4 API is supported, but only a subset
+EAX4.0EMULATED
+
+This extension indicates the EAX4 API is supported, but only a subset
 of functionality is implemented via EAX2 translation calls.
 
 As some call functions are supported, but some calls are no-ops, it means a limit

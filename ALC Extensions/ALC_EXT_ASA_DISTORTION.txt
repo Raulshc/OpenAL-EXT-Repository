@@ -20,6 +20,7 @@ Dependencies
         This extension requires ALC_EXT_ASA.
 
 Overview
+
         This extension applies a distortion effect to a specified OpenAL source
         object. Different settings can be used to specify the style and degree of
         distortion applied.
@@ -37,40 +38,40 @@ New Tokens
         Accepted as the <property> parameter of alcASASetSource and
         alcASAGetSource:
 
-        ALC_ASA_DISTORTION_ENABLE                  'dsen'
-        ALC_ASA_DISTORTION_ON                      'dson'
-        ALC_ASA_DISTORTION_MIX                     'dsmx'
-        ALC_ASA_DISTORTION_TYPE                    'dstp'
+            ALC_ASA_DISTORTION_ENABLE                  'dsen'
+            ALC_ASA_DISTORTION_ON                      'dson'
+            ALC_ASA_DISTORTION_MIX                     'dsmx'
+            ALC_ASA_DISTORTION_TYPE                    'dstp'
 
         Accepted as the <property> parameter of alcASASetSource:
 
-        ALC_ASA_DISTORTION_PRESET                  'dsps'
+            ALC_ASA_DISTORTION_PRESET                  'dsps'
 
         Accepted as the <data> parameter of alcASASetSource with
         <property> parameter set to ALC_ASA_DISTORTION_TYPE:
 
-        ALC_ASA_DISTORTION_TYPE_BitBrush               0
-        ALC_ASA_DISTORTION_TYPE_BufferBeats            1
-        ALC_ASA_DISTORTION_TYPE_LoFi                   2
-        ALC_ASA_DISTORTION_TYPE_BrokenSpeaker          3
-        ALC_ASA_DISTORTION_TYPE_Cellphone              4
-        ALC_ASA_DISTORTION_TYPE_Decimated1             5
-        ALC_ASA_DISTORTION_TYPE_Decimated2             6
-        ALC_ASA_DISTORTION_TYPE_Decimated3             7
-        ALC_ASA_DISTORTION_TYPE_Decimated4             8
-        ALC_ASA_DISTORTION_TYPE_DistortedFunk          9
-        ALC_ASA_DISTORTION_TYPE_DistortionCubed       10
-        ALC_ASA_DISTORTION_TYPE_DistortionSquared     11
-        ALC_ASA_DISTORTION_TYPE_Echo1                 12
-        ALC_ASA_DISTORTION_TYPE_Echo2                 13
-        ALC_ASA_DISTORTION_TYPE_EchoTight1            14
-        ALC_ASA_DISTORTION_TYPE_EchoTight2            15
-        ALC_ASA_DISTORTION_TYPE_EverythingBroken      16
-        ALC_ASA_DISTORTION_TYPE_AlienChatter          17
-        ALC_ASA_DISTORTION_TYPE_CosmicInteference     18
-        ALC_ASA_DISTORTION_TYPE_GoldenPi              19
-        ALC_ASA_DISTORTION_TYPE_RadioTower            20
-        ALC_ASA_DISTORTION_TYPE_Waves                 21
+            ALC_ASA_DISTORTION_TYPE_BitBrush               0
+            ALC_ASA_DISTORTION_TYPE_BufferBeats            1
+            ALC_ASA_DISTORTION_TYPE_LoFi                   2
+            ALC_ASA_DISTORTION_TYPE_BrokenSpeaker          3
+            ALC_ASA_DISTORTION_TYPE_Cellphone              4
+            ALC_ASA_DISTORTION_TYPE_Decimated1             5
+            ALC_ASA_DISTORTION_TYPE_Decimated2             6
+            ALC_ASA_DISTORTION_TYPE_Decimated3             7
+            ALC_ASA_DISTORTION_TYPE_Decimated4             8
+            ALC_ASA_DISTORTION_TYPE_DistortedFunk          9
+            ALC_ASA_DISTORTION_TYPE_DistortionCubed       10
+            ALC_ASA_DISTORTION_TYPE_DistortionSquared     11
+            ALC_ASA_DISTORTION_TYPE_Echo1                 12
+            ALC_ASA_DISTORTION_TYPE_Echo2                 13
+            ALC_ASA_DISTORTION_TYPE_EchoTight1            14
+            ALC_ASA_DISTORTION_TYPE_EchoTight2            15
+            ALC_ASA_DISTORTION_TYPE_EverythingBroken      16
+            ALC_ASA_DISTORTION_TYPE_AlienChatter          17
+            ALC_ASA_DISTORTION_TYPE_CosmicInteference     18
+            ALC_ASA_DISTORTION_TYPE_GoldenPi              19
+            ALC_ASA_DISTORTION_TYPE_RadioTower            20
+            ALC_ASA_DISTORTION_TYPE_Waves                 21
 
 Additions to Specification
 

@@ -29,7 +29,7 @@ Overview
 
 Issues
 
-        None.
+        None
 
 New Procedures and Functions
 
@@ -38,7 +38,7 @@ New Procedures and Functions
 
 New Tokens
 
-        None.
+        None
 
 Additions to Specification
 

@@ -70,8 +70,8 @@ New Tokens
 
         Accepted as the <token> parameter of alcGetString:
 
-        ALC_DEFAULT_ALL_DEVICES_SPECIFIER          0x1012
-        ALC_ALL_DEVICES_SPECIFIER                  0x1013
+            ALC_DEFAULT_ALL_DEVICES_SPECIFIER          0x1012
+            ALC_ALL_DEVICES_SPECIFIER                  0x1013
 
 Additions to Specification
 

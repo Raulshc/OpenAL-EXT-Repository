@@ -19,6 +19,7 @@ Dependencies
         This extension is written against the OpenAL 1.0 specification.
 
 Overview
+
         This extension allows an application written to the OpenAL 1.0 specification
         to access the capture abilities expressed in section 6.4.2.
 
@@ -39,12 +40,12 @@ New Tokens
 
         Accepted as the <token> parameter of alcGetString:
 
-        ALC_CAPTURE_DEVICE_SPECIFIER                       0x310
-        ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER               0x311
+            ALC_CAPTURE_DEVICE_SPECIFIER                       0x310
+            ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER               0x311
 
         Accepted as the <token> parameter of alcGetIntegerv:
 
-        ALC_CAPTURE_SAMPLES                                0x312
+            ALC_CAPTURE_SAMPLES                                0x312
 
 Additions to Specification
 
@@ -73,7 +74,7 @@ Additions to Specification
         Table 6.3: String Query Tables
 
         Name                                  Description
-        ------------------------------------  ------------------------------------------
+        ------------------------------------  --------------------------------------------
         ALC_DEFAULT_DEVICE_SPECIFIER          The specifier string for the default device
         ALC_DEVICE_SPECIFIER                  The specifier string for the device
         ALC_EXTENSIONS                        A list of available context extensions

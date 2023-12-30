@@ -1,29 +1,38 @@
 Name
+
         EXT_OFFSET
 
 Name Strings
+
         AL_EXT_OFFSET
 
 Version
+
         1.0
 
 Number
+
         ??
 
 Dependencies
+
         This extension is written against the OpenAL 1.0 specification.
 
 Overview
+
         This extension allows an application written to the OpenAL 1.0
         specification to access the offset abilities.
 
 Issues
-        None.
+
+        None
 
 New Procedures and Functions
-        None.
+
+        None
 
 New Tokens
+
         Accepted as the <param> parameter of alSourcei, alSourceiv,
         alGetSourcei, alGetSourceiv, alSourcef, alSourcefv,
         alGetSourcef, and alGetSourcefv:
@@ -33,6 +42,7 @@ New Tokens
             AL_BYTE_OFFSET                          0x1026
 
 Additions to Specification
+
         Append to Section 4.3.2, Source Attributes
 
         Offset
@@ -108,12 +118,15 @@ Additions to Specification
 
 
 Errors
+
         An AL_INVALID_VALUE error is generating if on a source which is
         already playing, the playback will jump to the new offset that
         is out of range.
 
 New State
+
         None
 
 New Implementation State
+
         None

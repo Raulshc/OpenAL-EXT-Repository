@@ -37,29 +37,29 @@ New Tokens
         Accepted as the <property> parameter of alcASASetSource and
         alcASAGetSource:
 
-        ALC_ASA_ROGER_BEEP_ENABLE                  'rben'
-        ALC_ASA_ROGER_BEEP_ON                      'rbon'
-        ALC_ASA_ROGER_BEEP_GAIN                    'rbgn'
-        ALC_ASA_ROGER_BEEP_SENSITIVITY             'rbsn'
-        ALC_ASA_ROGER_BEEP_TYPE                    'rbtp'
+            ALC_ASA_ROGER_BEEP_ENABLE                  'rben'
+            ALC_ASA_ROGER_BEEP_ON                      'rbon'
+            ALC_ASA_ROGER_BEEP_GAIN                    'rbgn'
+            ALC_ASA_ROGER_BEEP_SENSITIVITY             'rbsn'
+            ALC_ASA_ROGER_BEEP_TYPE                    'rbtp'
 
         Accepted as the <property> parameter of alcASASetSource:
 
-        ALC_ASA_ROGER_BEEP_PRESET                  'rbps'
+            ALC_ASA_ROGER_BEEP_PRESET                  'rbps'
 
         Accepted as the <data> parameter of alcASASetSource with
         <property> parameter set to ALC_ASA_ROGER_BEEP_SENSITIVITY:
 
-        ALC_ASA_ROGER_BEEP_SENSITIVITY_Light            0
-        ALC_ASA_ROGER_BEEP_SENSITIVITY_Medium           1
-        ALC_ASA_ROGER_BEEP_SENSITIVITY_Heavy            2
+            ALC_ASA_ROGER_BEEP_SENSITIVITY_Light            0
+            ALC_ASA_ROGER_BEEP_SENSITIVITY_Medium           1
+            ALC_ASA_ROGER_BEEP_SENSITIVITY_Heavy            2
 
         Accepted as the <data> parameter of alcASASetSource with
         <property> parameter set to ALC_ASA_ROGER_BEEP_TYPE:
 
-        ALC_ASA_ROGER_BEEP_TYPE_quindartone             0
-        ALC_ASA_ROGER_BEEP_TYPE_whitenoise              1
-        ALC_ASA_ROGER_BEEP_TYPE_walkietalkie            2
+            ALC_ASA_ROGER_BEEP_TYPE_quindartone             0
+            ALC_ASA_ROGER_BEEP_TYPE_whitenoise              1
+            ALC_ASA_ROGER_BEEP_TYPE_walkietalkie            2
 
 Additions to Specification
 
@@ -72,19 +72,20 @@ Additions to Specification
 
         Source properties:
 
-        ALC_ASA_ROGER_BEEP_ENABLE        type ALboolean - initializes Roger Beep
-                                         for use - returns error if source is not
-                                         in a Stopped or Initial state.
-        ALC_ASA_ROGER_BEEP_ON            type ALboolean - set effect on/off (bypass)
-                                         default setting is true (on).
-        ALC_ASA_ROGER_BEEP_GAIN          type ALfloat - 20.0 (dB) apply maximum
-                                         effect: -80.0(dB) apply minimum effect
-                                         amount.
-        ALC_ASA_ROGER_BEEP_SENSITIVITY   type ALint - specify a predefined sensitivity
-                                         setting.
-        ALC_ASA_ROGER_BEEP_TYPE          type ALint - choose predefined specific
-                                         Roger Beep tone.
-        ALC_ASA_ROGER_BEEP_PRESET        type ALchar* - path to an au preset file (set only) 
+        ALC_ASA_ROGER_BEEP_ENABLE       type ALboolean - initializes Roger Beep
+                                        for use - returns error if source is not
+                                        in a Stopped or Initial state.
+        ALC_ASA_ROGER_BEEP_ON           type ALboolean - set effect on/off (bypass)
+                                        default setting is true (on).
+        ALC_ASA_ROGER_BEEP_GAIN         type ALfloat - 20.0 (dB) apply maximum
+                                        effect: -80.0(dB) apply minimum effect
+                                        amount.
+        ALC_ASA_ROGER_BEEP_SENSITIVITY  type ALint - specify a predefined
+                                        sensitivity setting.
+        ALC_ASA_ROGER_BEEP_TYPE         type ALint - choose predefined specific
+                                        Roger Beep tone.
+        ALC_ASA_ROGER_BEEP_PRESET       type ALchar* - path to an au preset file
+                                        (set only) 
 
         Settings for the ALC_ASA_ROGER_BEEP_TYPE property:
 

@@ -53,72 +53,72 @@ New Tokens
         Accepted as the <property> parameter of alcASASetListener and
         alcASAGetListener:
 
-        ALC_ASA_REVERB_ON                     'rvon'
-        ALC_ASA_REVERB_GLOBAL_LEVEL           'rvgl'
-        ALC_ASA_REVERB_ROOM_TYPE              'rvrt'
+            ALC_ASA_REVERB_ON                     'rvon'
+            ALC_ASA_REVERB_GLOBAL_LEVEL           'rvgl'
+            ALC_ASA_REVERB_ROOM_TYPE              'rvrt'
 
         Accepted as the <data> parameter of alcASASetListener with
         <property> parameter set to ALC_ASA_REVERB_ROOM_TYPE:
 
-        ALC_ASA_REVERB_ROOM_TYPE_SmallRoom        0
-        ALC_ASA_REVERB_ROOM_TYPE_MediumRoom       1
-        ALC_ASA_REVERB_ROOM_TYPE_LargeRoom        2
-        ALC_ASA_REVERB_ROOM_TYPE_MediumHall       3
-        ALC_ASA_REVERB_ROOM_TYPE_LargeHall        4
-        ALC_ASA_REVERB_ROOM_TYPE_Plate            5
-        ALC_ASA_REVERB_ROOM_TYPE_MediumChamber    6
-        ALC_ASA_REVERB_ROOM_TYPE_LargeChamber     7
-        ALC_ASA_REVERB_ROOM_TYPE_Cathedral        8
-        ALC_ASA_REVERB_ROOM_TYPE_LargeRoom2       9
-        ALC_ASA_REVERB_ROOM_TYPE_MediumHall2     10
-        ALC_ASA_REVERB_ROOM_TYPE_MediumHall3     11
-        ALC_ASA_REVERB_ROOM_TYPE_LargeHall2      12
+            ALC_ASA_REVERB_ROOM_TYPE_SmallRoom        0
+            ALC_ASA_REVERB_ROOM_TYPE_MediumRoom       1
+            ALC_ASA_REVERB_ROOM_TYPE_LargeRoom        2
+            ALC_ASA_REVERB_ROOM_TYPE_MediumHall       3
+            ALC_ASA_REVERB_ROOM_TYPE_LargeHall        4
+            ALC_ASA_REVERB_ROOM_TYPE_Plate            5
+            ALC_ASA_REVERB_ROOM_TYPE_MediumChamber    6
+            ALC_ASA_REVERB_ROOM_TYPE_LargeChamber     7
+            ALC_ASA_REVERB_ROOM_TYPE_Cathedral        8
+            ALC_ASA_REVERB_ROOM_TYPE_LargeRoom2       9
+            ALC_ASA_REVERB_ROOM_TYPE_MediumHall2     10
+            ALC_ASA_REVERB_ROOM_TYPE_MediumHall3     11
+            ALC_ASA_REVERB_ROOM_TYPE_LargeHall2      12
 
         Accepted as the <property> parameter of alcASASetListener:
 
-        ALC_ASA_REVERB_PRESET                'rvps'
+            ALC_ASA_REVERB_PRESET                'rvps'
 
         Accepted as the <property> parameter of alcASASetListener and
         alcASAGetListener:
 
-        ALC_ASA_REVERB_EQ_GAIN               'rveg'
-        ALC_ASA_REVERB_EQ_BANDWITH           'rveb'
-        ALC_ASA_REVERB_EQ_FREQ               'rvef'
+            ALC_ASA_REVERB_EQ_GAIN               'rveg'
+            ALC_ASA_REVERB_EQ_BANDWITH           'rveb'
+            ALC_ASA_REVERB_EQ_FREQ               'rvef'
 
         Accepted as the <property> parameter of alcASASetListener and
         alcASAGetListener:
 
-        ALC_ASA_REVERB_QUALITY               'rvqt'
+            ALC_ASA_REVERB_QUALITY               'rvqt'
 
         Accepted as the <data> parameter of alcASASetListener with
         <property> parameter set to ALC_ASA_REVERB_QUALITY:
 
-        ALC_ASA_REVERB_QUALITY_Max            0x7F
-        ALC_ASA_REVERB_QUALITY_High           0x60
-        ALC_ASA_REVERB_QUALITY_Medium         0x40
-        ALC_ASA_REVERB_QUALITY_Low            0x20
-        ALC_ASA_REVERB_QUALITY_Min            0x00
+            ALC_ASA_REVERB_QUALITY_Max            0x7F
+            ALC_ASA_REVERB_QUALITY_High           0x60
+            ALC_ASA_REVERB_QUALITY_Medium         0x40
+            ALC_ASA_REVERB_QUALITY_Low            0x20
+            ALC_ASA_REVERB_QUALITY_Min            0x00
 
         Accepted as the <property> parameter of alcASASetSource and
         alcASAGetSource:
 
-        ALC_ASA_REVERB_SEND_LEVEL            'rvsl'
-        ALC_ASA_OCCLUSION                    'occl'
-        ALC_ASA_OBSTRUCTION                  'obst'
+            ALC_ASA_REVERB_SEND_LEVEL            'rvsl'
+            ALC_ASA_OCCLUSION                    'occl'
+            ALC_ASA_OBSTRUCTION                  'obst'
 
 Additions to Specification
 
         Used with the ASA API calls: alcASAGetSource(), alcASASetSource(),
         alcASAGetListener(), alcASASetListener()
 
-        listener properties
+        Listener properties:
 
         ALC_ASA_REVERB_ON             type ALuint
         ALC_ASA_REVERB_GLOBAL_LEVEL   type ALfloat -40.0 db - 40.0 db
 
         ALC_ASA_REVERB_ROOM_TYPE      type ALint
 
-        reverb room type presets for the ALC_ASA_REVERB_ROOM_TYPE property
+        Reverb room type presets for the ALC_ASA_REVERB_ROOM_TYPE property:
 
         ALC_ASA_REVERB_ROOM_TYPE_SmallRoom
         ALC_ASA_REVERB_ROOM_TYPE_MediumRoom
@@ -143,7 +143,7 @@ Additions to Specification
 
         ALC_ASA_REVERB_QUALITY        type ALint
 
-        reverb quality settings for the ALC_ASA_REVERB_QUALITY property
+        Reverb quality settings for the ALC_ASA_REVERB_QUALITY property:
 
         ALC_ASA_REVERB_QUALITY_Max
         ALC_ASA_REVERB_QUALITY_High
@@ -151,7 +151,8 @@ Additions to Specification
         ALC_ASA_REVERB_QUALITY_Low
         ALC_ASA_REVERB_QUALITY_Min
 
-        source properties
+        Source properties:
+
         ALC_ASA_REVERB_SEND_LEVEL     type ALfloat 0.0 (dry) - 1.0 (wet)
                                       (0-100% dry/wet mix, 0.0 default)
         ALC_ASA_OCCLUSION             type ALfloat -100.0 db (most occlusion)

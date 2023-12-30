@@ -46,14 +46,14 @@ New Tokens
 
         Accepted as the <foldbackMode> parameter of alRequestFoldbackStart:
 
-        AL_FOLDBACK_MODE_MONO                     0x4101
-        AL_FOLDBACK_MODE_STEREO                   0x4102
+            AL_FOLDBACK_MODE_MONO                     0x4101
+            AL_FOLDBACK_MODE_STEREO                   0x4102
 
         Accepted as the <event> parameter of (*alFoldbackCallback):
 
-        AL_FOLDBACK_EVENT_START                   0x4111
-        AL_FOLDBACK_EVENT_BLOCK                   0x4112
-        AL_FOLDBACK_EVENT_STOP                    0x4113
+            AL_FOLDBACK_EVENT_START                   0x4111
+            AL_FOLDBACK_EVENT_BLOCK                   0x4112
+            AL_FOLDBACK_EVENT_STOP                    0x4113
 
 Additions to Specification
 

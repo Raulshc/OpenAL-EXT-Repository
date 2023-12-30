@@ -36,7 +36,7 @@ Issues
 
 New Procedures and Functions
 
-        None.
+        None
 
 New Tokens
 
