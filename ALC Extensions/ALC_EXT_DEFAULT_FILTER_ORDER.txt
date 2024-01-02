@@ -16,7 +16,8 @@ Number
 
 Dependencies
 
-        None
+        This extension is written against the OpenAL 1.1 specification.
+        This extension requires ALC_EXT_EFX.
 
 Overview
 
@@ -24,8 +25,8 @@ Overview
         at context creation time. Attibute ALC_DEFAULT_FILTER_ORDER can be used
         with a value of 1 (for -6dB/oct) or 2 (for -12dB/oct).
 
-        ALC_DEFAULT_FILTER_ORDER can also be used with GetIntegerv to find out the
-        current default filter order.
+        ALC_DEFAULT_FILTER_ORDER can also be used with alcGetIntegerv to find out
+        the current default filter order.
 
 Issues
 
@@ -36,6 +37,9 @@ New Procedures and Functions
         None
 
 New Tokens
+
+        Accepted as the <attrList> parameter of alcCreateContext and the <token>
+        parameter of alcGetIntegerv:
 
         ALC_DEFAULT_FILTER_ORDER                  0x1100
 
