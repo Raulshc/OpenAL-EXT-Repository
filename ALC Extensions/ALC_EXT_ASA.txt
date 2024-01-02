@@ -19,6 +19,7 @@ Dependencies
         This extension is written against the OpenAL 1.1 specification.
 
 Overview
+
         The ASA (Apple Spatial Audio) extension currently provides three main
         effects: reverb, occlusion and obstruction.
 
