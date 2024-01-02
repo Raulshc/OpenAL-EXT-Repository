@@ -98,7 +98,7 @@ New Tokens
 
         Effect properties:
 
-        Reverb effect parameters
+        Reverb effect parameters:
 
             AL_REVERB_DENSITY                        0x0001
             AL_REVERB_DIFFUSION                      0x0002
