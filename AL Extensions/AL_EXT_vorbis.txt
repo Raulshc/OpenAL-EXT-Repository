@@ -16,9 +16,7 @@ Number
 
 Dependencies
 
-        Linux implementation -- LOKI_buffer_data_callback
-        MacOS implementation -- None
-        Windows implementation -- must have libvorbisfile.dll installed separately
+        LOKI_buffer_data_callback
 
 Overview
 
@@ -39,7 +37,7 @@ Issues
 
 New Procedures and Functions
 
-        None.
+        None
 
 New Tokens
 
