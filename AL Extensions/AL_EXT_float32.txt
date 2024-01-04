@@ -16,7 +16,7 @@ Number
 
 Dependencies
 
-        None
+        This extension is written against the OpenAL 1.1 specification.
 
 Overview
 
@@ -34,6 +34,8 @@ New Procedures and Functions
         None
 
 New Tokens
+
+        Accepted as the <format> parameter of alBufferData:
 
         AL_FORMAT_MONO_FLOAT32                      0x10010
         AL_FORMAT_STEREO_FLOAT32                    0x10011
