@@ -37,8 +37,8 @@ New Tokens
 
         Accepted as the <format> parameter of alBufferData:
 
-        AL_FORMAT_MONO_FLOAT32                      0x10010
-        AL_FORMAT_STEREO_FLOAT32                    0x10011
+            AL_FORMAT_MONO_FLOAT32                      0x10010
+            AL_FORMAT_STEREO_FLOAT32                    0x10011
 
 Additions to Specification
 
