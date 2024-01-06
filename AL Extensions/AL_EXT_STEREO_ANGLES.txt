@@ -16,7 +16,7 @@ Number
 
 Dependencies
 
-        None
+        This extension is written against the OpenAL 1.1 specification.
 
 Overview
 
@@ -31,7 +31,7 @@ Issues
         The angles are specified anticlockwise relative to the real front, so
         a normal 60degree front stage is specified with:
 
-        alSourcefv(sid,AL_STEREO_ANGLES,+M_PI/6,-M_PI/6).
+        alSourcefv(sid, AL_STEREO_ANGLES, +M_PI/6, -M_PI/6);
 
 New Procedures and Functions
 
@@ -39,7 +39,9 @@ New Procedures and Functions
 
 New Tokens
 
-        AL_STEREO_ANGLES                          0x1030
+        Accepted as the <param> parameter of alSourcefv and alGetSourcefv:
+
+            AL_STEREO_ANGLES                          0x1030
 
 
 Additions to Specification
