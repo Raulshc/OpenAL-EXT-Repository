@@ -41,7 +41,7 @@ New Tokens
         Accepted as the <attrList> parameter of alcCreateContext and the <token>
         parameter of alcGetIntegerv:
 
-        ALC_DEFAULT_FILTER_ORDER                  0x1100
+            ALC_DEFAULT_FILTER_ORDER                  0x1100
 
 Additions to Specification
 
