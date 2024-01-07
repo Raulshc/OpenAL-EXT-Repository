@@ -20,8 +20,8 @@ Dependencies
 
 Overview
 
-        This extension allows any stereo source to be "steered" by setting
-        the angles at which the left and right channels should play.
+        This extension allows any stereo source to be "steered" by setting the
+        angles at which the left and right channels should play.
 
 Issues
 
@@ -40,10 +40,10 @@ New Tokens
 
 Additions to Specification
 
-        The AL_STEREO_ANGLES tag can be used with alSourcefv() and two angles.
-        The angles are specified anticlockwise relative to the real front
-        (AL_SOURCE_RELATIVE is not supported) and are always specified in
-        radians, so a normal 60degree front stage is specified with:
+        The AL_STEREO_ANGLES tag can be used with alSourcefv() and two angles. The
+        angles are specified anticlockwise relative to the real front
+        (AL_SOURCE_RELATIVE is not supported) and are always specified in radians,
+        so a normal 60degree front stage is specified with:
 
         alSourcefv(sid, AL_STEREO_ANGLES, +M_PI/6, -M_PI/6);
 
