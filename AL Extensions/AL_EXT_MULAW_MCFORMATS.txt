@@ -16,18 +16,17 @@ Number
 
 Dependencies
 
-        EXT_MCFORMATS
-        EXT_MULAW
+        This extension is written against the OpenAL 1.1 specification.
+        This extension extends AL_EXT_MULAW and AL_EXT_MCFORMATS.
 
 Overview
 
-        This extension indicates that a number of multichannel MULAW formats
-        are available beyond the basic mono/stereo set provided by AL_EXT_MULAW.
-        The list is AL_FORMAT_MONO_MULAW, AL_FORMAT_STEREO_MULAW,
-        AL_FORMAT_QUAD_MULAW, AL_FORMAT_REAR_MULAW, AL_FORMAT_51CHN_MULAW,
-        AL_FORMAT_61CHN_MULAW and AL_FORMAT_71CHN_MULAW. Note that the first two
-        have the same enum values as the formats in AL_EXT_MULAW and describe the
-        same format.
+        This extension indicates that a number of multichannel MULAW formats are
+        available beyond the basic mono/stereo set provided by AL_EXT_MULAW. The
+        list is AL_FORMAT_MONO_MULAW, AL_FORMAT_STEREO_MULAW,AL_FORMAT_QUAD_MULAW,
+        AL_FORMAT_REAR_MULAW, AL_FORMAT_51CHN_MULAW,AL_FORMAT_61CHN_MULAW and
+        AL_FORMAT_71CHN_MULAW. Note that the first two have the same enum values
+        as the formats in AL_EXT_MULAW and describe the same format.
 
 Issues
 
@@ -40,13 +39,15 @@ New Procedures and Functions
 
 New Tokens
 
-        AL_FORMAT_MONO_MULAW                      0x10014
-        AL_FORMAT_STEREO_MULAW                    0x10015
-        AL_FORMAT_QUAD_MULAW                      0x10021
-        AL_FORMAT_REAR_MULAW                      0x10022
-        AL_FORMAT_51CHN_MULAW                     0x10023
-        AL_FORMAT_61CHN_MULAW                     0x10024
-        AL_FORMAT_71CHN_MULAW                     0x10025
+        Accepted as the <format> parameter of alBufferData:
+
+            AL_FORMAT_MONO_MULAW                      0x10014
+            AL_FORMAT_STEREO_MULAW                    0x10015
+            AL_FORMAT_QUAD_MULAW                      0x10021
+            AL_FORMAT_REAR_MULAW                      0x10022
+            AL_FORMAT_51CHN_MULAW                     0x10023
+            AL_FORMAT_61CHN_MULAW                     0x10024
+            AL_FORMAT_71CHN_MULAW                     0x10025
 
 Additions to Specification
 
