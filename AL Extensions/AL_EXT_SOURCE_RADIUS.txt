@@ -41,8 +41,8 @@ Additions to Specification
 
         The AL_SOURCE_RADIUS tag can be used with alSourcef() to set the source
         radius. The source has a raised cosine shape. Units are consistent with
-        the coordinate system in use. The valuemust be at least zero. Use a value
-        of zero to reset to a point source.
+        the coordinate system in use. The value must be at least zero. Use a
+        value of zero to reset to a point source.
 
 Errors
 
