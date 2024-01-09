@@ -16,18 +16,19 @@ Number
 
 Dependencies
 
-        EXT_BFORMAT
-        EXT_MULAW
+        This extension is written against the OpenAL 1.1 specification.
+        This extension extends AL_EXT_MULAW and AL_EXT_BFORMAT.
 
 Overview
 
-        This extension implies two MULAW formats are available, based on 2D
-        and 3D Ambisonic B-Format.
+        This extension implies two MULAW formats are available, based on 2D and 3D
+        Ambisonic B-Format.
+
+        See AL_EXT_BFORMAT for a discussion of the channel numberings and meanings.
 
 Issues
 
-        See AL_EXT_BFORMAT for a discussion of the channel numberings and
-        meanings.
+        None
 
 New Procedures and Functions
 
@@ -35,8 +36,10 @@ New Procedures and Functions
 
 New Tokens
 
-        AL_FORMAT_BFORMAT2D_MULAW                 0x10031
-        AL_FORMAT_BFORMAT3D_MULAW                 0x10032
+        Accepted as the <format> parameter of alBufferData:
+
+            AL_FORMAT_BFORMAT2D_MULAW                 0x10031
+            AL_FORMAT_BFORMAT3D_MULAW                 0x10032
 
 Additions to Specification
 
