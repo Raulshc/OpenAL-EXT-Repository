@@ -16,7 +16,7 @@ Number
 
 Dependencies
 
-        None
+        This extension is written against the OpenAL 1.1 specification.
 
 Overview
 
@@ -32,8 +32,10 @@ New Procedures and Functions
 
 New Tokens
 
-        AL_FORMAT_MONO_MULAW_EXT                  0x10014
-        AL_FORMAT_STEREO_MULAW_EXT                0x10015
+        Accepted as the <format> parameter of alBufferData:
+
+            AL_FORMAT_MONO_MULAW_EXT                  0x10014
+            AL_FORMAT_STEREO_MULAW_EXT                0x10015
 
 Additions to Specification
 
