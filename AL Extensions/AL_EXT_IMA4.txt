@@ -16,7 +16,7 @@ Number
 
 Dependencies
 
-        None
+        This extension is written against the OpenAL 1.1 specification.
 
 Overview
 
@@ -28,12 +28,14 @@ Issues
 
 New Procedures and Functions
 
-        None.
+        None
 
 New Tokens
 
-        AL_FORMAT_MONO_IMA4                       0x1300
-        AL_FORMAT_STEREO_IMA4                     0x1301
+        Accepted as the <format> parameter of alBufferData:
+
+            AL_FORMAT_MONO_IMA4                       0x1300
+            AL_FORMAT_STEREO_IMA4                     0x1301
 
 Additions to Specification
 
