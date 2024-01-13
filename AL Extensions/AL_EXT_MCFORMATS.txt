@@ -20,8 +20,8 @@ Dependencies
 
 Overview
 
-        Provides support for surround sound buffer formats with 8, 16, and 32-bit
-        samples.
+        This extension provides support for surround sound buffer formats with 8, 16,
+        and 32-bit samples.
 
         QUAD8:   Unsigned 8-bit, Quadraphonic (Front Left, Front Right, Rear Left,
                  Rear Right).
