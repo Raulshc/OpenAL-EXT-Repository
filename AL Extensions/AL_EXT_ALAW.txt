@@ -16,7 +16,7 @@ Number
 
 Dependencies
 
-        None
+        This extension is written against the OpenAL 1.1 specification.
 
 Overview
 
@@ -24,7 +24,7 @@ Overview
 
 Issues
 
-        ?
+        None
 
 New Procedures and Functions
 
@@ -32,8 +32,10 @@ New Procedures and Functions
 
 New Tokens
 
-        AL_FORMAT_MONO_ALAW_EXT                   0x10016
-        AL_FORMAT_STEREO_ALAW_EXT                 0x10017
+        Accepted as the <format> parameter of alBufferData:
+
+            AL_FORMAT_MONO_ALAW_EXT                   0x10016
+            AL_FORMAT_STEREO_ALAW_EXT                 0x10017
 
 Additions to Specification
 
