@@ -1,10 +1,20 @@
-EAX4.0EMULATED
+Name
 
-This extension indicates the EAX4 API is supported, but only a subset
-of functionality is implemented via EAX2 translation calls.
+        EAX4.0EMULATED
 
-As some call functions are supported, but some calls are no-ops, it means a limit
-in the resulting sound behavior.
+Name Strings
 
-    *Only EAX_REVERB_EFFECT is supported
-    *Only 1 auxiliary send per source is supported.
+        EAX4.0EMULATED
+
+Status
+
+        Complete
+
+NOTE: This extension indicates the EAX4 API is supported, but only a subset
+      of functionality is implemented via EAX2 translation calls.
+
+      As some call functions are supported, but some calls are no-ops, it means a
+      limit in the resulting sound behavior.
+
+      - Only EAX_REVERB_EFFECT is supported
+      - Only 1 auxiliary send per source is supported.
