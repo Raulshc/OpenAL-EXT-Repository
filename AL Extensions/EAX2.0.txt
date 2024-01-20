@@ -1,5 +1,16 @@
-EAX2.0
+Name
 
-Supports EAX 2.0 calls on any sound card supporting this standard.
-Go to http://developer.creative.com/landing.asp?cat=1&sbcat=31
-for more information. 
+        EAX2.0
+
+Name Strings
+
+        EAX2.0
+
+Status
+
+        Complete
+
+NOTE: Supports EAX 2.0 calls on any sound card supporting this standard.
+      This extension has its own specification document.
+      Go to http://developer.creative.com/landing.asp?cat=1&sbcat=31
+      for more information.
