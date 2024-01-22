@@ -1,16 +1,66 @@
-EAX-RAM
+Name
 
-XRAM extension for some Creative cards.
+        EAX-RAM
 
-/*********** X-RAM Function pointer definitions ****************/
+Name Strings
 
-typedef ALboolean (__cdecl *EAXSetBufferMode)(ALsizei n, ALuint *buffers, ALint value);
-typedef ALenum    (__cdecl *EAXGetBufferMode)(ALuint buffer, ALint *value);
+        EAX-RAM
 
- /********** X-RAM enum names **************/
+Version
 
- AL_EAX_RAM_SIZE
- AL_EAX_RAM_FREE
- AL_STORAGE_AUTOMATIC
- AL_STORAGE_HARDWARE
- AL_STORAGE_ACCESSIBLE
+        1.0
+
+Number
+
+        ??
+
+Dependencies
+
+        This extension is written against the OpenAL 1.1 specification.
+
+Overview
+
+        XRAM extension for some Creative cards. This extension has its own
+        specification document. Go to:
+        https://openal.org/documentation/OpenAL_Programmers_Guide.pdf
+        (pages 134-139) for more information.
+
+Issues
+
+        None
+
+New Procedures and Functions
+
+        ALboolean EAXSetBufferMode(ALsizei n, ALuint *buffers, ALint value);
+        ALenum    EAXGetBufferMode(ALuint buffer, ALint *value);
+
+New Tokens
+
+        Accepted as the <paramName> parameter of alGetInteger the returned
+        value of alGetEnumValue with the following string:
+
+            AL_EAX_RAM_SIZE
+            AL_EAX_RAM_FREE
+
+        Accepted as the <value> parameter of EAXSetBufferMode the returned
+        value of alGetEnumValue with the following string:
+
+            AL_STORAGE_AUTOMATIC
+            AL_STORAGE_HARDWARE
+            AL_STORAGE_ACCESSIBLE
+
+Additions to Specification
+
+        None
+
+Errors
+
+        None
+
+New State
+
+        None
+
+New Implementation State
+
+        None
