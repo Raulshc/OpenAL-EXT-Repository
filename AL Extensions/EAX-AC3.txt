@@ -1,4 +1,14 @@
-EAX-AC3
+Name
 
-This was an extension allowing AC3 playback through OpenAL.
--- it is no longer being maintained. 
+        EAX-AC3
+
+Name Strings
+
+        EAX-AC3
+
+Status
+
+        Complete
+
+NOTE: This was an extension allowing AC3 playback through OpenAL.
+      -- it is no longer being maintained.
