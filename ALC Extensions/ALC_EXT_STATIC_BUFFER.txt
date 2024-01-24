@@ -1,4 +1,12 @@
-ALC_EXT_STATIC_BUFFER
+Name
 
-Started as ALC_EXT_STATIC_BUFFER, the extension was renamed
-as AL_EXT_STATIC_BUFFER.
+        EXT_STATIC_BUFFER
+
+Name Strings
+
+        ALC_EXT_STATIC_BUFFER
+
+Status
+
+        Started as ALC_EXT_STATIC_BUFFER, the extension was renamed
+        as AL_EXT_STATIC_BUFFER.
