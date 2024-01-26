@@ -1,8 +1,7 @@
 OpenAL extension repository
 ===========================
 
-An update repository of OpenAL extensions (forked of the unmaintenanced repository openalext), with compile information available from different sources. As for now, a lot of these descriptions
-are only stubs or extracts from headers.
+An update repository of OpenAL extensions (forked of the unmaintenanced repository openalext), with compile information available from different sources.
 
 If you have more detailed description of a specific OpenAL extension (or would like to provide
 list of extensions available on a specific platform), please issue a pull request.
