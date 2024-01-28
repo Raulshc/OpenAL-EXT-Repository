@@ -1,10 +1,19 @@
+Name
 
-#ifndef ALC_AAX_capture_loopback
-# define ALC_AAX_capture_loopback 1
-# define ALC_FORMAT_AAX                 0x270020
-# define ALC_FREQUENCY_AAX              0x1007
-# define ALC_BITS_AAX                   0x2002
-# define ALC_CHANNELS_AAX               0x2003
-ALCEXT_API void ALCEXT_APIENTRY alcCaptureiAAX(ALCdevice * device, ALCenum attrib, ALCint value);
-ALCEXT_API void ALCEXT_APIENTRY alcGetCaptureivAAX(ALCdevice * device, ALCenum attrib, ALCint *value);
-#endif
+        AAX_capture_loopback
+
+Name Strings
+
+        ALC_AAX_capture_loopback
+
+New Procedures and Functions
+
+        void alcCaptureiAAX(ALCdevice * device, ALCenum attrib, ALCint value);
+        void alcGetCaptureivAAX(ALCdevice * device, ALCenum attrib, ALCint *value);
+
+New Tokens
+
+        ALC_FORMAT_AAX                 0x270020
+        ALC_FREQUENCY_AAX              0x1007
+        ALC_BITS_AAX                   0x2002
+        ALC_CHANNELS_AAX               0x2003
