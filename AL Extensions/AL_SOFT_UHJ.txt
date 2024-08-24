@@ -89,15 +89,15 @@ Overview
         than what's typically found, including in those same pages.
 
 
-    Super Stereo (occasionally called Stereo Enhance) is a technique for
-    processing a plain (non-UHJ) stereo signal to derive a B-Format signal.[2]
-    It's backed by the same functionality as UHJ decoding, making it an easy
-    addition on top of UHJ support. Super Stereo has a variable width control,
-    allowing the stereo soundfield to "wrap around" the listener while
-    maintaining a stable center image (a more naive virtual speaker approach
-    would cause the center image to collapse as the soundfield widens). Since
-    this derives a B-Format signal like UHJ, it also allows such sources to be
-    rotated through the source orientation property.
+    Super Stereo is a technique for processing a plain (non-UHJ) stereo signal
+    to derive a B-Format signal.[2] It's backed by the same functionality as
+    UHJ decoding, making it an easy addition on top of UHJ support. Super
+    Stereo has a variable width control, allowing the stereo soundfield to
+    "wrap around" the listener while maintaining a stable center image (a more
+    naive virtual speaker approach would cause the center image to collapse as
+    the soundfield widens). Since this derives a B-Format signal like UHJ, it
+    also allows such sources to be rotated through the source orientation
+    property.
 
     There are various forms of Super Stereo, with varying equations, but a
     good suggested option is:
@@ -105,9 +105,9 @@ Overview
         S = Left + Right
         D = Left - Right
 
-        W = 0.6098637*S - j(0.6896511*w*D)
-        X = 0.8624776*S + j(0.7626955*w*D)
-        Y = 1.6822415*w*D - j(0.2156194*S)
+        W = 0.6098637*S + j(0.6896511*w*D)
+        X = 0.8624776*S - j(0.7626955*w*D)
+        Y = 1.6822415*w*D + j(0.2156194*S)
 
     where w is a variable width factor, in the range [0...0.7]. As with UHJ,
     the resulting W, X, Y, and Z signals are 3dB louder than their FuMa
@@ -264,3 +264,8 @@ Errors
     An AL_INVALID_OPERATION error is generated if an attempt is made to set
     AL_STEREO_MODE_SOFT on a source while it's in an AL_PLAYING or AL_PAUSED
     state.
+
+History
+
+    1) 2024-07-08 - Updated the suggested Super Stereo equation (improved
+                    interaction with UHJ encoding).
