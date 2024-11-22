@@ -1,0 +1,579 @@
+Name
+
+    ALC_EXT_debug
+    AL_EXT_debug
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete.
+
+Dependencies
+
+    This extension is for OpenAL 1.1.
+    This extension interacts with ALC_EXT_EFX.
+
+Overview
+
+    This extension adds functionality to aid application development and
+    debugging. The new functionality allows an application to receive messages
+    for events related to errors, use of deprecated or undefined behavior, and
+    other pertinent library and device behavior.
+
+    The message "stream" can also be annotated with custom messages, as well
+    as group together events that occur within set segments of the
+    application's calls to the AL.
+
+    Additionally, an application can label individual objects (sources,
+    buffers, etc) with custom names. This allows an application to textually
+    identify what each object is, as necessary for debugging.
+
+    The interface is heavily based on GL_KHR_debug, so developers familiar
+    with that API should find this very familiar.
+
+Issues
+
+    Q:
+    A:
+
+New Types
+
+    typedef void (AL_APIENTRY *ALDEBUGPROCEXT)(ALenum source, ALenum type,
+                                               ALuint id, ALenum severity,
+                                               ALsizei length,
+                                               const ALchar *message,
+                                               void *userParam);
+
+New Procedures and Functions
+
+    void AL_APIENTRY alDebugMessageCallbackEXT(ALDEBUGPROCEXT callback,
+                                               void *userParam);
+
+    void AL_APIENTRY alDebugMessageInsertEXT(ALenum source, ALenum type,
+                                             ALuint id, ALenum severity,
+                                             ALsizei length,
+                                             const ALchar *message);
+
+    void AL_APIENTRY alDebugMessageControlEXT(ALenum source, ALenum type,
+                                              ALenum severity, ALsizei count,
+                                              const ALuint *ids,
+                                              ALboolean enable);
+
+    void AL_APIENTRY alPushDebugGroupEXT(ALenum source, ALuint id,
+                                         ALsizei length,
+                                         const ALchar *message);
+
+    void AL_APIENTRY alPopDebugGroupEXT(void);
+
+    ALuint AL_APIENTRY alGetDebugMessageLogEXT(ALuint count,
+                                               ALsizei logBufSize,
+                                               ALenum *sources, ALenum *types,
+                                               ALuint *ids,
+                                               ALenum *severities,
+                                               ALsizei *lengths,
+                                               ALchar *logBuf);
+
+    void AL_APIENTRY alObjectLabelEXT(ALenum identifier, ALuint name,
+                                      ALsizei length, const ALchar *label);
+
+    void AL_APIENTRY alGetObjectLabelEXT(ALenum identifier, ALuint name,
+                                         ALsizei bufSize, ALsizei *length,
+                                         ALchar *label);
+
+    void* AL_APIENTRY alGetPointerEXT(ALenum pname);
+
+    void AL_APIENTRY alGetPointervEXT(ALenum pname, void **values);
+
+New Tokens
+
+    Accepted as an attribute to alcCreateContext:
+
+        ALC_CONTEXT_FLAGS_EXT                    0x19CF
+
+    Accepted as a bitwise-or'd value for the ALC_CONTEXT_FLAGS_EXT context
+    creation attribute value:
+
+        ALC_CONTEXT_DEBUG_BIT_EXT                0x0001
+
+    Accepted as the <pname> parameter of alGetInteger[v]:
+
+        AL_CONTEXT_FLAGS_EXT                     0x19CF
+
+    Returned by alGetInteger[v] when <pname> is AL_CONTEXT_FLAGS_EXT:
+
+        AL_CONTEXT_DEBUG_BIT_EXT                 0x0001
+
+    Accepted as the <target> parameter of alEnable, alDisable, and
+    alIsEnabled:
+
+        AL_DEBUG_OUTPUT_EXT                      0x19B2
+
+    Accepted as the <pname> parameter of alGetPointerEXT and alGetPointervEXT:
+
+        AL_DEBUG_CALLBACK_FUNCTION_EXT           0x19B3
+        AL_DEBUG_CALLBACK_USER_PARAM_EXT         0x19B4
+
+    Accepted or provided by the <source> parameter of
+    alDebugMessageControlEXT, alDebugMessageInsertEXT, and ALDEBUGPROCEXT, and
+    returned by the <sources> parameter of alGetDebugMessageLogEXT:
+
+        AL_DEBUG_SOURCE_API_EXT                  0x19B5
+        AL_DEBUG_SOURCE_AUDIO_SYSTEM_EXT         0x19B6
+        AL_DEBUG_SOURCE_THIRD_PARTY_EXT          0x19B7
+        AL_DEBUG_SOURCE_APPLICATION_EXT          0x19B8
+        AL_DEBUG_SOURCE_OTHER_EXT                0x19B9
+
+    Accepted or provided by the <type> parameter of alDebugMessageControlEXT,
+    alDebugMessageInsertEXT, and ALDEBUGPROCEXT, and returned by the <types>
+    parameter of alGetDebugMessageLogEXT:
+
+        AL_DEBUG_TYPE_ERROR_EXT                  0x19BA
+        AL_DEBUG_TYPE_DEPRECATED_BEHAVIOR_EXT    0x19BB
+        AL_DEBUG_TYPE_UNDEFINED_BEHAVIOR_EXT     0x19BC
+        AL_DEBUG_TYPE_PORTABILITY_EXT            0x19BD
+        AL_DEBUG_TYPE_PERFORMANCE_EXT            0x19BE
+        AL_DEBUG_TYPE_MARKER_EXT                 0x19BF
+        AL_DEBUG_TYPE_OTHER_EXT                  0x19C2
+
+    Accepted or provided by the <type> parameter of alDebugMessageControlEXT
+    and ALDEBUGPROCEXT, and returned by the <types> parameter of
+    alGetDebugMessageLogEXT:
+
+        AL_DEBUG_TYPE_PUSH_GROUP_EXT             0x19C0
+        AL_DEBUG_TYPE_POP_GROUP_EXT              0x19C1
+
+    Accepted or provided by the <severity> parameter of
+    alDebugMessageControlEXT, alDebugMessageInsertEXT, and ALDEBUGPROCEXT, and
+    returned by the <severities> parameter of alGetDebugMessageLogEXT:
+
+        AL_DEBUG_SEVERITY_HIGH_EXT               0x19C3
+        AL_DEBUG_SEVERITY_MEDIUM_EXT             0x19C4
+        AL_DEBUG_SEVERITY_LOW_EXT                0x19C5
+        AL_DEBUG_SEVERITY_NOTIFICATION_EXT       0x19C6
+
+    Accepted as the <source>, <type>, and <severity> parameters of
+    alDebugMessageControlEXT:
+
+        AL_DONT_CARE_EXT                         0x0002
+
+    Accepted as the <pname> parameter of alGetBoolean[v], alGetInteger[v],
+    alGetFloat[v], and alGetDouble[v]:
+
+        AL_DEBUG_LOGGED_MESSAGES_EXT             0x19C7
+        AL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_EXT  0x19C8
+        AL_MAX_DEBUG_MESSAGE_LENGTH_EXT          0x19C9
+        AL_MAX_DEBUG_LOGGED_MESSAGES_EXT         0x19CA
+        AL_MAX_DEBUG_GROUP_STACK_DEPTH_EXT       0x19CB
+        AL_MAX_LABEL_LENGTH_EXT                  0x19CC
+
+    Returned by alGetError:
+
+        AL_STACK_OVERFLOW_EXT                    0x19CD
+        AL_STACK_UNDERFLOW_EXT                   0x19CE
+
+    Accepted by the <identifier> parameter of alObjectLabelEXT and
+    alGetObjectLabelEXT:
+
+        AL_BUFFER_EXT                            0x1009 /* Same as AL_BUFFER */
+        AL_SOURCE_EXT                            0x19D0
+
+    Accepted by the <identifier> parameter of alObjectLabelEXT and
+    alGetObjectLabelEXT if ALC_EXT_EFX is also supported:
+
+        AL_FILTER_EXT                            0x19D1
+        AL_EFFECT_EXT                            0x19D2
+        AL_AUXILIARY_EFFECT_SLOT_EXT             0x19D3
+
+Additions to Specification
+
+    Add to Table 3.1: Numerical Query Definitions
+
+    Name                                     Description
+    =======================================  =================================
+    AL_CONTEXT_FLAGS_EXT                     Context bitflags.
+
+    AL_DEBUG_LOGGED_MESSAGES_EXT             The number of messages currently
+                                             in the debug log.
+
+    AL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_EXT  The number of characters in the
+                                             next logged message, including
+                                             the null-terminator, or 0 for no
+                                             logged messages.
+
+    AL_MAX_DEBUG_MESSAGE_LENGTH_EXT          The maximum length for debug
+                                             messages, including the null-
+                                             terminator.
+
+    AL_MAX_DEBUG_LOGGED_MESSAGES_EXT         The maximum number of messages
+                                             that can be in the debug log.
+
+    AL_MAX_DEBUG_GROUP_STACK_DEPTH_EXT       The maximum number of debug
+                                             groups that can fit on the debug
+                                             group stack.
+
+    AL_MAX_LABEL_LENGTH_EXT                  The maximum length for object 
+                                             labels, including the null-
+                                             terminator.
+
+
+    Debugging
+
+    Application developers can receive more detailed information from the AL
+    runtime regarding generated errors, undefined or ill-defined behavior,
+    deprecated functionality, performance warnings, and other implementation-
+    dependent and useful information. This information cam be retrieved via a
+    callback, or a message queue the application reads and pops messages off
+    from.
+
+    Debug message generation is managed by a context flag and enable state.
+    These provide high-level control for whether debug messages should be
+    generated, with the context flag indicating to the AL whether it should
+    provide a context optimized for debugability or performance, while the
+    enable state allows applications to control whether it's interested in
+    debug messages at the current time. Debug functions will operate without
+    error regardless, so applications do not need to recompile or avoid
+    calling the debug functions when it doesn't want to debug.
+
+    Contexts are created without the debug flag by default. To create a debug
+    context, call alcCreateContext and specify the ALC_CONTEXT_FLAGS_EXT
+    context creation attribute, with ALC_CONTEXT_DEBUG_BIT_EXT or'd into the
+    attribute value.
+
+
+    Table x.1: Additional Context Creation Attributes
+
+    Name                   Description
+    ---------------------  --------------------------------------------------
+    ALC_CONTEXT_FLAGS_EXT  Context flags to set on the newly created context.
+
+
+        ALCint attributes[] = {
+            ALC_CONTEXT_FLAGS_EXT, ALC_CONTEXT_DEBUG_BIT_EXT,
+            0 /* end-of-list */
+        };
+        ALCcontext *context = alcCreateContext(device, attributes);
+
+    Alongside the debug context flag, the debug enable state is used to enable
+    or disable debug messages on an existing context. The debug enable state
+    can be enabled and disabled using alEnable and alDisable respectively, and
+    its current state queried using alIsEnabled, with the AL_DEBUG_OUTPUT_EXT
+    target capability.
+
+
+    Table x.2: Context Capability Targets
+
+    Name                             Description
+    -------------------------------  ---------------------------------
+    AL_DEBUG_OUTPUT_EXT              Enables debug message output
+
+
+    The default state for AL_DEBUG_OUTPUT_EXT is dependent on the debug
+    context flag. For debug contexts, AL_DEBUG_OUTPUT_EXT is enabled by
+    default, and for non-debug contexts, AL_DEBUG_OUTPUT_EXT is disabled by
+    default.
+
+    For debug contexts, if AL_DEBUG_OUTPUT_EXT is disabled, no debug messages
+    will be generated (the callback will not be called, and no messages will
+    be added to the debug log). For non-debug contexts, enabling
+    AL_DEBUG_OUTPUT_EXT is valid, but it is implementation-defined what debug
+    messages are generated (which is allowed to be no debug messages at all).
+    To ensure the maximum amount of debug messages, create a debug context
+    with the ALC_CONTEXT_DEBUG_BIT_EXT flag, and make sure to enable
+    AL_DEBUG_OUTPUT_EXT.
+
+
+    Debug Messages
+
+    Messages are identified by a source and type, and an implementation-
+    dependent 32-bit ID. These three values can uniquely identify each debug
+    message from the AL. Each message also comes with a severity level,
+    indicating what kind of action should be taken.
+
+    Table x.3: Debug Sources
+
+    Source                            Description
+    --------------------------------  ----------------------------------------
+    AL_DEBUG_SOURCE_API_EXT           The AL runtime.
+
+    AL_DEBUG_SOURCE_AUDIO_SYSTEM_EXT  The ALC layer, possibly in response to
+                                      hardware or the audio system (e.g.
+                                      WASAPI, PipeWire, etc).
+
+    AL_DEBUG_SOURCE_THIRD_PARTY_EXT   Third-party libraries, and/or middleware
+                                      between the AL and application.
+
+    AL_DEBUG_SOURCE_APPLICATION_EXT   The application.
+
+    AL_DEBUG_SOURCE_OTHER_EXT         Something else not fitting the other
+                                      sources.
+
+    Table x.4: Debug Types
+
+    Type                                   Description
+    -------------------------------------  -----------------------------------
+    AL_DEBUG_TYPE_ERROR_EXT                Error events.
+
+    AL_DEBUG_TYPE_DEPRECATED_BEHAVIOR_EXT  Functionality that has been
+                                           deprecated in more recent AL
+                                           versions.
+
+    AL_DEBUG_TYPE_UNDEFINED_BEHAVIOR_EXT   Behavior not defined by the
+                                           specification.
+
+    AL_DEBUG_TYPE_PORTABILITY_EXT          Behavior that is not consistent
+                                           between systems.
+
+    AL_DEBUG_TYPE_PERFORMANCE_EXT          Implementation-dependent
+                                           performance issue.
+
+    AL_DEBUG_TYPE_MARKER_EXT               A custom debug message.
+
+    AL_DEBUG_TYPE_PUSH_GROUP_EXT           Entering a new debug message group.
+
+    AL_DEBUG_TYPE_POP_GROUP_EXT            Leaving the top-most debug message
+                                           group.
+
+    AL_DEBUG_TYPE_OTHER_EXT                Something else not fitting the
+                                           other types.
+
+    Table x.5: Debug Severities
+
+    Severity                            Description
+    ----------------------------------  --------------------------------------
+    AL_DEBUG_SEVERITY_HIGH_EXT          AL errors, undefined behaviors that
+                                        can cause severe problems, system or
+                                        hardware fault preventing normal
+                                        operation.
+
+    AL_DEBUG_SEVERITY_MEDIUM_EXT        Notable performance problems,
+                                        deprecated behavior.
+
+    AL_DEBUG_SEVERITY_LOW_EXT           Minor performance issues,
+                                        insignificant undefined behavior.
+
+    AL_DEBUG_SEVERITY_NOTIFICATION_EXT  Informational message, not requiring
+                                        any action.
+
+    Each debug message also comes with a human-readable string describing the
+    issue.
+
+
+    Debug Message Log
+
+    Two options are available to retrieve debug messages. By default, when
+    debug messages are enabled and generated they will be stored in a log for
+    the application to read out. The maximum number of messages that can be
+    stored in the log is indicated by querying alGetInteger[v] with the
+    AL_MAX_DEBUG_LOGGED_MESSAGES_EXT property. Once the log is full, no more
+    messages will be added until the application reads some messages to free
+    up space for more. Any messages generated before then are permanently
+    lost.
+
+    To query the number of messages currently in the log, call alGetInteger[v]
+    with AL_DEBUG_LOGGED_MESSAGES_EXT. The length of the next logged message
+    can be queried with AL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_EXT. To get
+    messages from the log, use the function
+
+        ALuint alGetDebugMessageLogEXT(ALuint count, ALsizei logBufSize,
+                                       ALenum *sources, ALenum *types,
+                                       ALuint *ids, ALenum *severities,
+                                       ALsizei *lengths, ALchar *logBuf);
+
+    <count> is the number of messages to read, and is also the number of
+    elements pointed to by <sources>, <types>, <ids>, <severities>, and
+    <lengths>. <logBufSize> is the total number of characters pointed to by
+    <logBuf>. <sources>, <types>, <ids>, <severities>, and <lengths> are
+    filled in with the source, type, ID, severity, and length (including the
+    null-terminator) of each read message. <logBuf> is filled in with the
+    messages, UTF-8 encoded and separated by null characters. Any pointer may
+    be NULL for parameters the application doesn't care about. If <logBuf> is
+    NULL, <logBufSize> is ignored.
+
+    The return value is the number of messages read, and each read message is
+    removed from the log. Messages are read oldest-first. The return value may
+    be less than <count> if, either, the number of messages in the log is less
+    than the requested count, or when <logBuf> runs out of space to store the
+    next message.
+
+
+    Debug Message Callback
+
+    Alternative to using the message log, messages can be retrieved using a
+    callback function. To specify the callback the AL should call for debug
+    messages, use the function
+
+        void alDebugMessageCallbackEXT(ALDEBUGPROCEXT callback,
+                                       void *userParam);
+
+    With a debug message callback set, the AL will call the callback with the
+    debug message instead of adding it to the log. Setting a NULL callback
+    will cause the AL to place future debug messages into the log.
+
+    The callback should follow the prototype
+
+        typedef void (AL_APIENTRY *ALDEBUGPROCEXT)(ALenum source, ALenum type,
+                                                   ALuint id, ALenum severity,
+                                                   ALsizei length,
+                                                   const ALchar *message,
+                                                   void *userParam);
+
+    When called, <source>, <type>, <id>, and <severity> will be set to the
+    source, type, ID, and severity of the message. <length> will be the number
+    of ALchars pointed to by <message>, *excluding* the null-terminator.
+    <message> will be a human-readable description of the message, UTF-8
+    encoded and null-terminated. <userParam> will be the same <userParam>
+    pointer passed to alDebugMessageCallbackEXT. The callback must not make AL
+    or ALC calls, or wait for such calls to finish.
+
+
+    Debug Message Filters
+
+    In addition to the context flag and enable state, debug messages can be
+    filtered more precisely based on its properties, for instance if you want
+    to filter out AL API errors, or deprecated behavior from a specific
+    function according to its message ID.
+
+    By default, all debug messages with Low severity are disabled, excluding
+    them from the debug message stream. To enable or disable particular debug
+    messages, use the function
+
+        void alDebugMessageControlEXT(ALenum source, ALenum type,
+                                      ALenum severity, ALsizei count,
+                                      const ALuint *ids, ALboolean enable);
+
+    This modifies the message filter for the currently active debug group (see
+    "Custom Debug Messages and Message Groups" below). <source> is the debug
+    source to adjust the filter for, which may be AL_DONT_CARE_EXT to apply it
+    to all debug sources, <type> is the debug type to adjust the filter for,
+    which may be AL_DONT_CARE_EXT to apply it to all debug types, and
+    <severity> is the debug severity to adjust the filter for, which may be
+    AL_DONT_CARE_EXT to apply it to all debug severities.
+
+    <count> is the number of IDs pointed to by <ids>. This may be 0 to adjust
+    the filters for messages irrespective of their ID. If non-0, the call will
+    adjust filters for messages with the given IDs. When doing so, <source>
+    and <type> must not be AL_DONT_CARE_EXT, and <severity> must be
+    AL_DONT_CARE_EXT.
+
+    If <enable> is AL_FALSE, messages covered by the specified parameters will
+    be disabled and excluded from the debug message stream. If AL_TRUE, the
+    specified messages will be enabled.
+
+
+    Custom Debug Messages and Message Groups
+
+    Callers can insert custom debug messages into the message stream, either
+    placing the message into the log, or invoking the callback with it. To do
+    so, use the function
+
+        void alDebugMessageInsertEXT(ALenum source, ALenum type, ALuint id,
+                                     ALenum severity, ALsizei length,
+                                     const ALchar *message);
+
+    <source> must be either AL_DEBUG_SOURCE_THIRD_PARTY_EXT or
+    AL_DEBUG_SOURCE_APPLICATION_EXT. <type>, <id>, and <severity> may be set
+    as appropriate for the message being inserted. <length> is the number of
+    ALchars pointed to by <message>, excluding the null-terminator, or a
+    negative value to have the length calculated as if by strlen. The length
+    of the message, including the null-terminator, must not exceed the limit
+    indicated by the AL_MAX_DEBUG_MESSAGE_LENGTH_EXT query.
+
+    In addition to custom messages, callers can utilize a debug group stack to
+    group together debug messages. A debug group maintains its own set of
+    message filters and can be used to demarcate sections of an update pass in
+    the debug message stream. There is an implicit debug group at the bottom
+    of the stack. A caller can push a new debug group onto the stack and make
+    it the active group by calling the function
+
+        void alPushDebugGroupEXT(ALenum source, ALuint id, ALsizei length,
+                                 const ALchar *message);
+
+    <source> must be either AL_DEBUG_SOURCE_THIRD_PARTY_EXT or
+    AL_DEBUG_SOURCE_APPLICATION_EXT. <id> may be set to any value the caller
+    deems appropriate to identify the group. <length> is the number of ALchars
+    pointed to by <message>, excluding the null-terminator, or negative to
+    have the length calculated as if by strlen. The length of the message,
+    including the null-terminator, must not exceed the limit indicated by the
+    AL_MAX_DEBUG_MESSAGE_LENGTH_EXT query. The given source, ID, and a copy of
+    the message will be associated with the new debug group, which will also
+    inherit the message filters of the previously active debug group. An
+    AL_DEBUG_TYPE_PUSH_GROUP_EXT debug message will be generated for the start
+    of the new group using its associated source, ID, and message.
+
+    The number of debug groups that can be pushed onto the stack is limited.
+    Including the implicit debug group, the number allowed on the stack at one
+    time is indicated by querying AL_MAX_DEBUG_GROUP_STACK_DEPTH_EXT. So the
+    number of groups that can be pushed onto the stack at a given time is one
+    less than the stack depth. Any attempt to push another group onto the
+    stack when it's full will fail and generate an AL_STACK_OVERFLOW_EXT
+    error.
+
+    To pop the active debug group off the stack and revert back to the
+    previously active group, use the function
+
+        void alPopDebugGroupEXT(void);
+
+    An AL_DEBUG_TYPE_POP_GROUP_EXT debug message will be generated using the
+    associated source, ID, and message of the group being removed. The active
+    debug filters will be reset to the filters in the restored group. Any
+    attempt to pop off the implicit debug group will fail and generate an
+    AL_STACK_UNDERFLOW_EXT error.
+
+
+    Object Labels
+
+    In addition to debug messages, applications can apply labels to objects
+    (sources, buffers, etc). These labels can be read back by the caller to
+    identify the object. The label can also be used by the AL runtime to more
+    clearly identify objects when logging or generating debug messages. To set
+    the label of an object, use the function
+
+        void alObjectLabelEXT(ALenum identifier, ALuint name, ALsizei length,
+                              const ALchar *label);
+
+    <identifier> specifies the type of object, which can be AL_SOURCE_EXT or
+    AL_BUFFER_EXT. If ALC_EXT_EFX is supported, it can also be AL_FILTER_EXT,
+    AL_EFFECT_EXT, or AL_AUXILIARY_EFFECT_SLOT_EXT. <name> is the ID of the
+    generated object of the given type (e.g. a Source ID for AL_SOURCE_EXT).
+    <length> is the number of ALchars pointed to by <label>, excluding the
+    null-terminator, or a negative value for the length to be calculated as if
+    by strlen. The label will be copied to internal storage. The label should
+    be UTF-8 encoded. The maximum length of the label, including the null-
+    terminator, must not exceed the limit indicated by querying
+    AL_MAX_LABEL_LENGTH_EXT.
+
+    To retrieve the label of an object, use the function
+
+        void alGetObjectLabelEXT(ALenum identifier, ALuint name,
+                                 ALsizei bufSize, ALsizei *length,
+                                 ALchar *label);
+
+    <identifier> specifies the type of object, which can be AL_SOURCE_EXT or
+    AL_BUFFER_EXT. If ALC_EXT_EFX is supported, it can also be AL_FILTER_EXT,
+    AL_EFFECT_EXT, or AL_AUXILIARY_EFFECT_SLOT_EXT. <name> is the ID of the
+    generated object of the given type (e.g. a Source ID for AL_SOURCE_EXT).
+    <bufSize> is the number of ALchars that can be stored in <label>, and
+    <length> is filled with the number of ALchars written into <label>,
+    excluding the null-terminator.
+
+    If <bufSize> is too short to hold the full label name with the null-
+    terminator, the output will be truncated (a null-terminator will still be
+    written). The length of the label can be queried by specifying NULL for
+    <label>, in which case <bufSize> is ignored and <length> is filled with
+    the number of ALchars that would be written to <label>, excluding the
+    null-terminator.
+
+Errors
+
+    An AL_STACK_OVERFLOW_EXT error is generated if alPushDebugGroupEXT is
+    called when the debug group stack is full.
+
+    An AL_STACK_UNDERFLOW_EXT error is generated if alPopDebugGroupEXT is
+    called when the implicit debug group is the current debug group.
