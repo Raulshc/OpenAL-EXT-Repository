@@ -1,0 +1,205 @@
+Name
+
+    ALC_SOFT_system_events
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete.
+
+Dependencies
+
+    This extension is written against the OpenAL 1.1 specification.
+
+Overview
+
+    This extension allows applications to be notified of system events related
+    to audio devices. In particular, when a new device becomes available, an
+    existing device becomes unavailable, and when the default device changes.
+    Standard OpenAL has no mechanism to detect these events aside from maybe
+    querying the device names and comparing to a previous query, but this
+    requires the application to actively query and compare two lists, and
+    OpenAL makes no guarantee that the device list will change at run-time,
+    and the same goes for the default device name. This extension allows an
+    application to register a callback to be automatically alerted to such
+    changes, providing the appropriate guarantees.
+
+Issues
+
+    Q: Some systems and audio interfaces may not themselves be able to tell
+       OpenAL that these changes occurred, meaning an application still may
+       not be able to rely on seeing these changes. How is this dealt with?
+    A: A query is available to indicate which events the system supports. If a
+       query reports an event being unsupported, the application can known not
+       to expect them, while if it is reported as supported, the app can then
+       expect them to occur along with changes to the appropriate string
+       queries.
+
+New Types
+
+    typedef void (ALC_APIENTRY *ALCEVENTPROCTYPESOFT)(ALCenum eventType,
+                                                      ALCenum deviceType,
+                                                      ALCdevice *device,
+                                                      ALCsizei length,
+                                                      const ALCchar *message,
+                                                      void *userParam);
+
+New Procedures and Functions
+
+    ALCenum ALC_APIENTRY alcEventIsSupportedSOFT(ALCenum eventType,
+                                                 ALCenum deviceType);
+    ALCboolean ALC_APIENTRY alcEventControlSOFT(ALCsizei count,
+                                                const ALCenum *events,
+                                                ALCboolean enable);
+    void ALC_APIENTRY alcEventCallbackSOFT(ALCEVENTPROCTYPESOFT callback,
+                                           void *userParam);
+
+New Tokens
+
+    Accepted as the <eventType> parameter of alcEventIsSupportedSOFT, as an
+    element of the <events> parameter of alcEventControlSOFT, and provided as
+    the <eventType> parameter of ALCEVENTPROCTYPESOFT callback functions:
+
+        ALC_EVENT_TYPE_DEFAULT_DEVICE_CHANGED_SOFT 0x19D6
+        ALC_EVENT_TYPE_DEVICE_ADDED_SOFT         0x19D7
+        ALC_EVENT_TYPE_DEVICE_REMOVED_SOFT       0x19D8
+
+    Accepted as the <deviceType> parameter of alcEventIsSupportedSOFT, and
+    provided as the <deviceType> parameter of ALCEVENTPROCTYPESOFT callback
+    functions:
+
+        ALC_PLAYBACK_DEVICE_SOFT                 0x19D4
+        ALC_CAPTURE_DEVICE_SOFT                  0x19D5
+
+    Returned from alcEventIsSupportedSOFT:
+
+        ALC_EVENT_SUPPORTED_SOFT                 0x19D9
+        ALC_EVENT_NOT_SUPPORTED_SOFT             0x19DA
+
+Additions to Specification
+
+    System Event Notifications
+
+    Applications can opt to receive notifications regarding system audio
+    devices. Such notifications include new audio devices being added, devices
+    being removed, and the default audio device being changed. Upon being
+    notified, the application can query the updated device list or default
+    device name.
+
+    To query whether the system supports notifications of a certain type, use
+    the function
+
+        ALCenum ALC_APIENTRY alcEventIsSupportedSOFT(ALCenum eventType, 
+                                                     ALCenum deviceType);
+
+    If the function returns ALC_EVENT_SUPPORTED_SOFT, notifications for the
+    specified event and device type can be generated, and if the function
+    returns ALC_EVENT_NOT_SUPPORTED_SOFT, notifications for the specified
+    event and device type will not be generated. On error, ALC_FALSE is
+    returned and the ALC error code can be retrieved with alcGetError using a
+    NULL ALCdevice handle.
+
+    Valid event and device types, and their meaning, are given below:
+
+    Event Type                                  Device Type
+    ==========================================  ========================
+
+    ALC_EVENT_TYPE_DEVICE_ADDED_SOFT            ALC_PLAYBACK_DEVICE_SOFT
+    ---------------------------------------------------------------------
+    A new playback device was added to the system and is available.
+
+    ALC_EVENT_TYPE_DEVICE_ADDED_SOFT            ALC_CAPTURE_DEVICE_SOFT
+    --------------------------------------------------------------------
+    A new capture device was added to the system and is available.
+
+    ALC_EVENT_TYPE_DEVICE_REMOVED_SOFT          ALC_PLAYBACK_DEVICE_SOFT
+    ---------------------------------------------------------------------
+    A playback device was removed from the system and is no longer available.
+
+    ALC_EVENT_TYPE_DEVICE_REMOVED_SOFT          ALC_CAPTURE_DEVICE_SOFT
+    --------------------------------------------------------------------
+    A capture device was removed from the system and is no longer available.
+
+    ALC_EVENT_TYPE_DEFAULT_DEVICE_CHANGED_SOFT  ALC_PLAYBACK_DEVICE_SOFT
+    ---------------------------------------------------------------------
+    The system's default playback device has changed.
+
+    ALC_EVENT_TYPE_DEFAULT_DEVICE_CHANGED_SOFT  ALC_CAPTURE_DEVICE_SOFT
+    ---------------------------------------------------------------------
+    The system's default capture device has changed.
+
+
+    Note that if the default device changes, it may be necessary to first re-
+    enumerate devices of the relevant type before the default device name
+    query is updated to reflect the change (some implementations may only
+    update the default device name when enumerating devices, to ensure the
+    default device name will be found in the last returned enumerated device
+    list).
+
+    To enable or disable notifications for certain event types, call the
+    function
+
+        ALCboolean ALC_APIENTRY alcEventControlSOFT(ALCsizei count,
+                                                    const ALCenum *events,
+                                                    ALCboolean enable);
+
+    <count> is the number of ALCenum values pointed to by <events>. If
+    <enable> is ALC_TRUE, notifications will be generated for the specified
+    event types if the system supports them (and be ignored if not). If
+    <enable> is ALC_FALSE, notifications will not be generated for the
+    specified events. The function will return ALC_FALSE on error (e.g. for a
+    negative count or invalid event type).
+
+    To specify the callback to receive the notifications with, call
+
+        void ALC_APIENTRY alcEventCallbackSOFT(ALCEVENTPROCTYPESOFT callback,
+                                               void *userParam);
+
+    Only one callback may be set at a time. Specifying NULL for the callback
+    will disable receiving any notifications. The callback should follow the
+    prototype
+
+        typedef void (ALC_APIENTRY *ALCEVENTPROCTYPESOFT)(ALCenum eventType,
+                                                          ALCenum deviceType,
+                                                          ALCdevice *device,
+                                                          ALCsizei length,
+                                                          const ALCchar *message,
+                                                          void *userParam);
+
+    When an event occurs, the callback will be called with <eventType>
+    specifying the type of event that occurred, <deviceType> specifying the
+    type of device the event is for, and <device> being an existing ALCdevice
+    handle associated with the event, if applicable (none of the events here
+    are associated with open devices, so will be NULL in that case). A human-
+    readable description of the event is provided in the <message> pointer,
+    with <length> as the number of ALCchars in the string (excluding the null-
+    terminator). The string will be UTF-8 encoded and will be null-terminated.
+    <userParam> is the same pointer that was passed to alcEventCallbackSOFT
+    with the callback.
+
+    The callback will be called asynchronously, potentially on a background
+    system thread. As such, there is little guarantee about the state and
+    attributes of the thread (it may be in real-time or idle priority, it may
+    have a small stack size, there may be some global locks being held, etc),
+    so the callback should do as little as possible as quickly as possible
+    before returning. AL and ALC functions may not be called in the callback.
+    If more involved work needs to happen in response to these events, such as
+    re-opening an active device if the default changes or re-enumerating and
+    updating a list of known devices when one is added or removed, it's
+    advisable to set up another thread to wake up and pass the relevant
+    information to when a notification occurs, which can then do the work.
+
+Errors
+
+    An ALC_INVALID_ENUM error is generated if an unknown event type or device
+    type enum is passed to alcEventIsSupportedSOFT.
+
+    An ALC_INVALID_ENUM error is generated if an unknown event type enum is
+    passed to alcEventControlSOFT's <events> array.
