@@ -218,8 +218,10 @@ ALC_EXT_ASA                            | https://opensource.apple.com/source/Ope
 ALC_EXT_ASA_DISTORTION                 | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
 ALC_EXT_ASA_ROGER_BEEP                 | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
 ALC_EXT_CAPTURE                        | http://openal.org/documentation/openal-1.1-specification.pdf
+ALC_EXT_debug                          | https://www.openal-soft.org/openal-extensions/EXT_debug.txt
 ALC_EXT_DEDICATED                      | http://icculus.org/alextreg/wiki/action=printer&id=ALC_EXT_DEDICATED
 ALC_EXT_DEFAULT_FILTER_ORDER           | http://icculus.org/alextreg/wiki/action=printer&id=ALC_EXT_DEFAULT_FILTER_ORDER
+ALC_EXT_direct_context                 | https://www.openal-soft.org/openal-extensions/EXT_direct_context.txt
 ALC_EXT_EFX                            | https://www.openal-soft.org/misc-downloads/Effects%20Extension%20Guide.pdf
 ALC_EXT_MAC_OSX                        | https://opensource.apple.com/source/OpenAL/OpenAL-48.7/Source/OpenAL/READ_ME?txt
 ALC_EXT_OUTPUT_CAPTURER                | https://opensource.apple.com/source/OpenAL/OpenAL-56/Source/OpenAL/MacOSX_OALExtensions.h
@@ -236,6 +238,7 @@ ALC_SOFT_output_limiter                | https://www.openal-soft.org/openal-exte
 ALC_SOFT_output_mode                   | https://www.openal-soft.org/openal-extensions/SOFT_output_mode.txt
 ALC_SOFT_pause_device                  | https://www.openal-soft.org/openal-extensions/SOFT_pause_device.txt
 ALC_SOFT_reopen_device                 | https://www.openal-soft.org/openal-extensions/SOFT_reopen_device.txt
+ALC_SOFT_system_events                 | https://www.openal-soft.org/openal-extensions/SOFT_system_events.txt
 
 AL Extensions
 --------------
@@ -247,6 +250,8 @@ AL_AAX_frequency_filter                | https://github.com/adalinbv/libaaxopena
 AL_AAX_reverb                          | https://github.com/adalinbv/libaaxopenal/blob/master/include/AL/alext.h
 AL_EXT_ALAW                            | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
 AL_EXT_BFORMAT                         | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_BFORMAT
+AL_EXT_debug                           | https://www.openal-soft.org/openal-extensions/EXT_debug.txt
+AL_EXT_direct_context                  | https://www.openal-soft.org/openal-extensions/EXT_direct_context.txt
 AL_EXT_EXPONENT_DISTANCE               | http://openal.org/documentation/openal-1.1-specification.pdf
 AL_EXT_FOLDBACK                        | http://icculus.org/alextreg/wiki/action=printer&id=AL_EXT_FOLDBACK
 AL_EXT_IMA4                            | https://github.com/kcat/openal-soft/blob/master/include/AL/alext.h
