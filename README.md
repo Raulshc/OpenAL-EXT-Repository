@@ -9,11 +9,13 @@ list of extensions available on a specific platform), please issue a pull reques
 Extensions available on specific platforms
 ==========================================
 
-OpenAL Soft 1.23.1
+OpenAL Soft 1.24.0
 ------------------
 
 * AL_EXT_ALAW
 * AL_EXT_BFORMAT
+* AL_EXT_debug
+* AL_EXT_direct_context
 * AL_EXT_DOUBLE
 * AL_EXT_EXPONENT_DISTANCE
 * AL_EXT_FLOAT32
@@ -47,6 +49,7 @@ OpenAL Soft 1.23.1
 * AL_SOFT_MSADPCM
 * AL_SOFT_source_latency
 * AL_SOFT_source_length
+* AL_SOFTX_source_panning
 * AL_SOFT_source_resampler
 * AL_SOFT_source_spatialize
 * AL_SOFT_source_start_delay
@@ -55,7 +58,9 @@ OpenAL Soft 1.23.1
 * ALC_ENUMERATE_ALL_EXT
 * ALC_ENUMERATION_EXT
 * ALC_EXT_CAPTURE
+* ALC_EXT_debug
 * ALC_EXT_DEDICATED
+* ALC_EXT_direct_context
 * ALC_EXT_disconnect
 * ALC_EXT_EFX
 * ALC_EXT_thread_local_context
@@ -67,6 +72,7 @@ OpenAL Soft 1.23.1
 * ALC_SOFT_output_mode
 * ALC_SOFT_pause_device
 * ALC_SOFT_reopen_device
+* ALC_SOFT_system_events
 
 **If it is compiled with** `ALSOFT_EAX` **flag**:
 
