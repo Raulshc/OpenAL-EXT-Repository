@@ -9,7 +9,7 @@ list of extensions available on a specific platform), please issue a pull reques
 Extensions available on specific platforms
 ==========================================
 
-OpenAL Soft 1.24.1
+OpenAL Soft 1.24.2
 ------------------
 
 * AL_EXT_ALAW
@@ -32,7 +32,7 @@ OpenAL Soft 1.24.1
 * AL_EXT_STEREO_ANGLES
 * AL_LOKI_quadriphonic
 * AL_SOFT_bformat_ex
-* AL_SOFTX_bformat_hoa
+* AL_SOFT_bformat_hoa
 * AL_SOFT_block_alignment
 * AL_SOFT_buffer_length_query
 * AL_SOFT_callback_buffer
