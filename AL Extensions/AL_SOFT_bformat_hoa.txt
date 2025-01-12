@@ -1,0 +1,117 @@
+Name
+
+    AL_SOFT_bformat_hoa
+
+Contributors
+
+    Chris Robinson
+
+Contact
+
+    Chris Robinson (chris.kcat 'at' gmail.com)
+
+Status
+
+    Complete.
+
+Dependancies
+
+    This extension depends on AL_EXT_BFORMAT.
+    This extension interacts with AL_EXT_STATIC_BUFFER.
+    This extension interacts with AL_SOFT_bformat_ex.
+    This extension interacts with AL_SOFT_callback_buffer.
+
+Overview
+
+    This extension provides support for B-Format buffers using Higher-Order
+    Ambisonics (HOA). The AL_EXT_BFORMAT extension supports First-Order
+    Ambisonics (FOA), while higher-order ambisonics can produce more precise
+    and less diffuse sound positioning, giving a clearer reproduction of the
+    soundfield.
+
+Issues
+
+    Q: How should the ambisonic order be specified for the buffer data being
+       loaded?
+    A: As an "unpack" buffer property. New format enums would significantly
+       increase the number of enums per additional order, while new loading
+       functions would cause friction with how there are different buffer
+       loading functions available for different purposes. A buffer property
+       is more flexible.
+
+    Q: Does changing the ambisonic order after B-Format data has been buffered
+       affect how the data is interpreted?
+    A: No. The ambisonic order determines the number of channels, so can't be
+       changed for already loaded data. The AL_UNPACK_AMBISONIC_ORDER_SOFT
+       property only has an effect when loading ("unpacking") buffer data and
+       becomes a part of the loaded data's format. Changing the property will
+       only affect future calls to load buffer data.
+
+    Q: Is it allowed to queue buffers with different orders onto a source?
+    A: No. The order affects the effective format, and just as you can't queue
+       a 5.1 buffer with a 7.1 buffer, an 'n'th order B-Format buffer can't be
+       queued with an 'm'th order B-Format buffer, where n != m. Note that the
+       ambisonic order is only applicable to B-Format formats, so the value of
+       the property, before or after loading buffer data, is irrelevant for
+       non-B-Format buffer data.
+
+    Q: What should be the maximum supported order?
+    A: 14th order, which handles up to 225 channels. This is the same limit
+       Opus has, and keeps the number of channels under 256. 15th order would
+       be exactly 256 channels. Opus is also concerned with having possibly 2
+       extra non-diegetic channels, which would put 15th order over 256
+       channels. If we do something similar, it would be good to not support
+       too much. It's largely academic though, I wouldn't expect most uses to
+       be much higher than 3rd order, so supporting 15th over 14th order isn't
+       likely that significant.
+
+    Q: Are implementations required to support 14th order?
+    A: As far as loading it goes, yes. However, for actually playing it back,
+       it doesn't need to support anything higher than it already does. Down-
+       mixing higher-order ambisonics to lower orders is done by simply
+       ignoring the higher-order channels, so it can just ignore the channels
+       it can't play back.
+
+New Procedures and Functions
+
+    None.
+
+New Tokens
+
+    Accepted as the <paramName> parameter of alBufferi, alBufferiv,
+    alGetBufferi, and alGetBufferiv:
+
+        AL_UNPACK_AMBISONIC_ORDER_SOFT           0x199D
+
+Additions to Specification
+
+    Append to Section 5.3.1, Buffer Attributes
+
+    Table 5.x. Buffer AL_UNPACK_AMBISONIC_ORDER_SOFT Attribute
+
+    Name                              Signature  Values     Default
+    --------------------------------  ---------  ---------  --------------
+    AL_UNPACK_AMBISONIC_ORDER_SOFT    i,iv       [1, 14]    1
+
+    Specifies the ambisonic order of the B-Format buffer data being unpacked,
+    during calls to alBufferData. If AL_EXT_STATIC_BUFFER is supported, it
+    specifies the order of the B-Format buffer data provided to calls to
+    alBufferDataStatic. If AL_SOFT_callback_buffer is supported, it specifies
+    the order of the B-Format data expected from the callback function. The
+    attribute is ignored when unpacking non-B-Format buffer data.
+
+    The number of B-Format channels being loaded is defined by the ambisonic
+    order, and is calculated as  num_channels = (order+1) * (order+1)  for
+    BFORMAT3D formats, and  num_channels = order*2 + 1  for BFORMAT2D formats.
+    Changing the attribute has no immediate effect, any already-loaded buffer
+    data will continue being interpreted as it was when loaded, until the next
+    call to unpack B-Format buffer data.
+
+    If AL_SOFT_bformat_ex is supported, and the buffer is currently loaded
+    with B-Format data above third order, attempting to set the
+    AL_AMBISONIC_LAYOUT_SOFT or AL_AMBISONIC_SCALING_SOFT properties to
+    AL_FUMA_SOFT will result in an AL_INVALID_OPERATION error. If either the
+    AL_AMBISONIC_LAYOUT_SOFT or AL_AMBISONIC_SCALING_SOFT properties are set
+    to AL_FUMA_SOFT, attempting to unpack B-Format buffer data with
+    AL_UNPACK_AMBISONIC_ORDER_SOFT above 3 will result in an
+    AL_INVALID_OPERATION error.
