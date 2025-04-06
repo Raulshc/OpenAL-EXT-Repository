@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="registry.rnc"?>
+<registry>
+    <types>
+        <type>typedef char <name>ALboolean</name>;</type>
+        <type>typedef char <name>ALchar</name>;</type>
+        <type>typedef signed char <name>ALbyte</name>;</type>
+        <type>typedef unsigned char <name>ALubyte</name>;</type>
+        <type>typedef short <name>ALshort</name>;</type>
+        <type>typedef unsigned short <name>ALushort</name>;</type>
+        <type>typedef int <name>ALint</name>;</type>
+        <type>typedef unsigned int <name>ALuint</name>;</type>
+        <type>typedef int <name>ALsizei</name>;</type>
+        <type>typedef int <name>ALenum</name>;</type>
+        <type>typedef float <name>ALfloat</name>;</type>
+        <type>typedef double <name>ALdouble</name>;</type>
+        <type>typedef void <name>ALvoid</name>;</type>
+    </types>
+
+    <enums namespace="AL">
+        <enum value="0" name="AL_NONE" group="DistanceModel" />
+        <enum value="0" name="AL_FALSE" />
+        <enum value="1" name="AL_TRUE" />
+        <enum value="0x202" name="AL_SOURCE_RELATIVE" />
+    </enums>
+
+    <enums namespace="AL">
+        <enum value="0x1001" name="AL_CONE_INNER_ANGLE" />
+        <enum value="0x1002" name="AL_CONE_OUTER_ANGLE" />
+        <enum value="0x1003" name="AL_PITCH" />
+        <enum value="0x1004" name="AL_POSITION" />
+        <enum value="0x1005" name="AL_DIRECTION" />
+        <enum value="0x1006" name="AL_VELOCITY" />
+        <enum value="0x1007" name="AL_LOOPING" />
+        <enum value="0x1009" name="AL_BUFFER" />
+        <enum value="0x100A" name="AL_GAIN" />
+        <enum value="0x100D" name="AL_MIN_GAIN" />
+        <enum value="0x100E" name="AL_MAX_GAIN" />
+        <enum value="0x100F" name="AL_ORIENTATION" />
+        <enum value="0x1010" name="AL_SOURCE_STATE" />
+        <enum value="0x1011" name="AL_INITIAL" group="SourceState" />
+        <enum value="0x1012" name="AL_PLAYING" group="SourceState" />
+        <enum value="0x1013" name="AL_PAUSED" group="SourceState" />
+        <enum value="0x1014" name="AL_STOPPED" group="SourceState" />
+        <enum value="0x1015" name="AL_BUFFERS_QUEUED" />
+        <enum value="0x1016" name="AL_BUFFERS_PROCESSED" />
+        <enum value="0x1020" name="AL_REFERENCE_DISTANCE" />
+        <enum value="0x1021" name="AL_ROLLOFF_FACTOR" />
+        <enum value="0x1022" name="AL_CONE_OUTER_GAIN" />
+        <enum value="0x1023" name="AL_MAX_DISTANCE" />
+        <enum value="0x1024" name="AL_SEC_OFFSET" />
+        <enum value="0x1025" name="AL_SAMPLE_OFFSET" />
+        <enum value="0x1026" name="AL_BYTE_OFFSET" />
+        <enum value="0x1027" name="AL_SOURCE_TYPE" />
+        <enum value="0x1028" name="AL_STATIC" group="SourceType" />
+        <enum value="0x1029" name="AL_STREAMING" group="SourceType" />
+        <enum value="0x1030" name="AL_UNDETERMINED" group="SourceType" />
+        <enum value="0x1100" name="AL_FORMAT_MONO8" group="Format" />
+        <enum value="0x1101" name="AL_FORMAT_MONO16" group="Format" />
+        <enum value="0x1102" name="AL_FORMAT_STEREO8" group="Format" />
+        <enum value="0x1103" name="AL_FORMAT_STEREO16" group="Format" />
+        <enum value="0x2001" name="AL_FREQUENCY" />
+        <enum value="0x2002" name="AL_BITS" />
+        <enum value="0x2003" name="AL_CHANNELS" />
+        <enum value="0x2004" name="AL_SIZE" />
+        <!--<enum value="0x2010" name="AL_UNUSED" />-->
+        <!--<enum value="0x2011" name="AL_PENDING" />-->
+        <!--<enum value="0x2012" name="AL_PROCESSED" />-->
+    </enums>
+
+    <enums namespace="AL" group="ErrorCode">
+        <enum value="0" name="AL_NO_ERROR"/>
+        <enum value="0xA001" name="AL_INVALID_NAME"/>
+        <enum value="0xA002" name="AL_INVALID_ENUM"/>
+        <enum value="0xA003" name="AL_INVALID_VALUE"/>
+        <enum value="0xA004" name="AL_INVALID_OPERATION"/>
+        <enum value="0xA005" name="AL_OUT_OF_MEMORY"/>
+    </enums>
+
+    <enums namespace="AL" group="StringName">
+        <enum value="0xB001" name="AL_VENDOR" group="StringName" />
+        <enum value="0xB002" name="AL_VERSION" group="StringName" />
+        <enum value="0xB003" name="AL_RENDERER" group="StringName" />
+        <enum value="0xB004" name="AL_EXTENSIONS" group="StringName" />
+    </enums>
+
+    <enums namespace="AL">
+        <enum value="0xC000" name="AL_DOPPLER_FACTOR" />
+        <enum value="0xC001" name="AL_DOPPLER_VELOCITY" />
+        <enum value="0xC003" name="AL_SPEED_OF_SOUND" />
+        <enum value="0xD000" name="AL_DISTANCE_MODEL" />
+    </enums>
+
+    <enums namespace="AL" group="DistanceModel">
+        <enum value="0xD001" name="AL_INVERSE_DISTANCE" />
+        <enum value="0xD002" name="AL_INVERSE_DISTANCE_CLAMPED" />
+        <enum value="0xD003" name="AL_LINEAR_DISTANCE" />
+        <enum value="0xD004" name="AL_LINEAR_DISTANCE_CLAMPED" />
+        <enum value="0xD005" name="AL_EXPONENT_DISTANCE" />
+        <enum value="0xD006" name="AL_EXPONENT_DISTANCE_CLAMPED" />
+    </enums>
+
+    <commands namespace="AL">
+        <command>
+            <proto><ptype>void</ptype> <name>alEnable</name></proto>
+            <param group="EnableCap"><ptype>ALenum</ptype> <name>capability</name></param>
+        </command>
+        <command>
+            <proto><ptype>void</ptype> <name>alDisable</name></proto>
+            <param group="EnableCap"><ptype>ALenum</ptype> <name>capability</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALboolean</ptype> <name>alIsEnabled</name></proto>
+            <param group="EnableCap"><ptype>ALenum</ptype> <name>capability</name></param>
+        </command>
+        <command>
+            <proto>void <name>alDopperFactor</name></proto>
+            <param><ptype>ALfloat</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alDopperVelocity</name></proto>
+            <param><ptype>ALfloat</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSpeedOfSound</name></proto>
+            <param><ptype>ALfloat</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alDistanceModel</name></proto>
+            <param group="DistanceModel"><ptype>ALenum</ptype> <name>distanceModel</name></param>
+        </command>
+        <command>
+            <proto>const <ptype>ALchar</ptype> *<name>alGetString</name></proto>
+            <param group="StringName"><ptype>ALenum</ptype> <name>param</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetBooleanv</name></proto>
+            <param group="GetPName"><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALboolean</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetIntegerv</name></proto>
+            <param group="GetPName"><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetFloatv</name></proto>
+            <param group="GetPName"><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetDoublev</name></proto>
+            <param group="GetPName"><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALdouble</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALboolean</ptype> <name>alGetBoolean</name></proto>
+            <param group="GetPName"><ptype>ALenum</ptype> <name>param</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALint</ptype> <name>alGetInteger</name></proto>
+            <param group="GetPName"><ptype>ALenum</ptype> <name>param</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALfloat</ptype> <name>alGetFloat</name></proto>
+            <param group="GetPName"><ptype>ALenum</ptype> <name>param</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALdouble</ptype> <name>alGetDouble</name></proto>
+            <param group="GetPName"><ptype>ALenum</ptype> <name>param</name></param>
+        </command>
+        <command>
+            <proto group="ErrorCode"><ptype>ALenum</ptype> <name>alGetError</name></proto>
+        </command>
+        <command>
+            <proto><ptype>ALboolean</ptype> <name>alIsExtensionPresent</name></proto>
+            <param>const <ptype>ALchar</ptype> *<name>extname</name></param>
+        </command>
+        <command>
+            <proto>void *<name>alGetProcAddress</name></proto>
+            <param>const <ptype>ALchar</ptype> *<name>fname</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALenum</ptype> <name>alGetEnumValue</name></proto>
+            <param>const <ptype>ALchar</ptype> *<name>ename</name></param>
+        </command>
+        <command>
+            <proto>void <name>alListenerf</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alListener3f</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>value1</name></param>
+            <param><ptype>ALfloat</ptype> <name>value2</name></param>
+            <param><ptype>ALfloat</ptype> <name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alListenerfv</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alListeneri</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alListener3i</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>value1</name></param>
+            <param><ptype>ALint</ptype> <name>value2</name></param>
+            <param><ptype>ALint</ptype> <name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alListeneriv</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetListenerf</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetListener3f</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value1</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value2</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetListenerfv</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetListeneri</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetListener3i</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>value1</name></param>
+            <param><ptype>ALint</ptype> *<name>value2</name></param>
+            <param><ptype>ALint</ptype> *<name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetListeneriv</name></proto> 
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGenSources</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param><ptype>ALuint</ptype> *<name>sources</name></param>
+        </command>
+        <command>
+            <proto>void <name>alDeleteSources</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param>const <ptype>ALuint</ptype> *<name>sources</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALboolean</ptype> <name>alIsSource</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourcef</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSource3f</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>value1</name></param>
+            <param><ptype>ALfloat</ptype> <name>value2</name></param>
+            <param><ptype>ALfloat</ptype> <name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourcefv</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param>const <ptype>ALfloat</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourcei</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSource3i</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>value1</name></param>
+            <param><ptype>ALint</ptype> <name>value2</name></param>
+            <param><ptype>ALint</ptype> <name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourceiv</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param>const <ptype>ALint</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetSourcef</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetSource3f</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value1</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value2</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetSourcefv</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetSourcei</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetSource3i</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>value1</name></param>
+            <param><ptype>ALint</ptype> *<name>value2</name></param>
+            <param><ptype>ALint</ptype> *<name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetSourceiv</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>values</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourcePlay</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourceStop</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourceRewind</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourcePause</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourcePlayv</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param>const <ptype>ALuint</ptype> *<name>sources</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourceStopv</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param>const <ptype>ALuint</ptype> *<name>sources</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourceRewindv</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param>const <ptype>ALuint</ptype> *<name>sources</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourcePausev</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param>const <ptype>ALuint</ptype> *<name>sources</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourceQueueBuffers</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALsizei</ptype> <name>nb</name></param>
+            <param>const <ptype>ALuint</ptype> *<name>buffers</name></param>
+        </command>
+        <command>
+            <proto>void <name>alSourceUnqueueBuffers</name></proto>
+            <param><ptype>ALuint</ptype> <name>source</name></param>
+            <param><ptype>ALsizei</ptype> <name>nb</name></param>
+            <param><ptype>ALuint</ptype> *<name>buffer</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGenBuffers</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param><ptype>ALuint</ptype> *<name>buffers</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGenBuffers</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param>const <ptype>ALuint</ptype> *<name>buffers</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALboolean</ptype> <name>alIsBuffer</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+        </command>
+        <command>
+            <proto>void <name>alBufferData</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>format</name></param>
+            <param>const <ptype>ALvoid</ptype> *<name>data</name></param>
+            <param><ptype>ALsizei</ptype> <name>size</name></param>
+            <param><ptype>ALsizei</ptype> <name>samplerate</name></param>
+        </command>
+        <command>
+            <proto>void <name>alBufferf</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alBuffer3f</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>value1</name></param>
+            <param><ptype>ALfloat</ptype> <name>value2</name></param>
+            <param><ptype>ALfloat</ptype> <name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alBufferfv</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param>const <ptype>ALfloat</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alBufferi</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alBuffer3i</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>value1</name></param>
+            <param><ptype>ALint</ptype> <name>value2</name></param>
+            <param><ptype>ALint</ptype> <name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alBufferiv</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param>const <ptype>ALint</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetBufferf</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetBuffer3f</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value1</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value2</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetBufferfv</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetBufferi</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetBuffer3i</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>value1</name></param>
+            <param><ptype>ALint</ptype> *<name>value2</name></param>
+            <param><ptype>ALint</ptype> *<name>value3</name></param>
+        </command>
+        <command>
+            <proto>void <name>alGetBufferiv</name></proto>
+            <param><ptype>ALuint</ptype> <name>buffer</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>value</name></param>
+        </command>
+    </commands>
+
+    <feature api="AL" name="AL_VERSION_1_0" number="1.0">
+        <require>
+            <enum name="AL_NONE" />
+            <enum name="AL_FALSE" />
+            <enum name="AL_TRUE" />
+            <enum name="AL_SOURCE_RELATIVE" />
+            <enum name="AL_CONE_INNER_ANGLE" />
+            <enum name="AL_CONE_OUTER_ANGLE" />
+            <enum name="AL_PITCH" />
+            <enum name="AL_POSITION" />
+            <enum name="AL_DIRECTION" />
+            <enum name="AL_VELOCITY" />
+            <enum name="AL_LOOPING" />
+            <enum name="AL_BUFFER" />
+            <enum name="AL_GAIN" />
+            <enum name="AL_MIN_GAIN" />
+            <enum name="AL_MAX_GAIN" />
+            <enum name="AL_ORIENTATION" />
+            <enum name="AL_SOURCE_STATE" />
+            <enum name="AL_INITIAL" />
+            <enum name="AL_PLAYING" />
+            <enum name="AL_PAUSED" />
+            <enum name="AL_STOPPED" />
+            <enum name="AL_BUFFERS_QUEUED" />
+            <enum name="AL_BUFFERS_PROCESSED" />
+            <enum name="AL_REFERENCE_DISTANCE" />
+            <enum name="AL_ROLLOFF_FACTOR" />
+            <enum name="AL_CONE_OUTER_GAIN" />
+            <enum name="AL_MAX_DISTANCE" />
+            <enum name="AL_SOURCE_TYPE" />
+            <enum name="AL_STATIC" />
+            <enum name="AL_STREAMING" />
+            <enum name="AL_UNDETERMINED" />
+            <enum name="AL_FORMAT_MONO8" />
+            <enum name="AL_FORMAT_MONO16" />
+            <enum name="AL_FORMAT_STEREO8" />
+            <enum name="AL_FORMAT_STEREO16" />
+            <enum name="AL_FREQUENCY" />
+            <enum name="AL_BITS" />
+            <enum name="AL_CHANNELS" />
+            <enum name="AL_SIZE" />
+            <!--<enum name="AL_UNUSED" />-->
+            <!--<enum name="AL_PENDING" />-->
+            <!--<enum name="AL_PROCESSED" />-->
+            <enum name="AL_NO_ERROR"/>
+            <enum name="AL_INVALID_NAME"/>
+            <enum name="AL_INVALID_ENUM"/>
+            <enum name="AL_INVALID_VALUE"/>
+            <enum name="AL_INVALID_OPERATION"/>
+            <enum name="AL_OUT_OF_MEMORY"/>
+            <enum name="AL_VENDOR" />
+            <enum name="AL_VERSION" />
+            <enum name="AL_RENDERER" />
+            <enum name="AL_EXTENSIONS" />
+            <enum name="AL_DOPPLER_FACTOR" />
+            <enum name="AL_DOPPLER_VELOCITY" />
+            <enum name="AL_SPEED_OF_SOUND" />
+            <enum name="AL_DISTANCE_MODEL" />
+            <enum name="AL_INVERSE_DISTANCE" />
+            <enum name="AL_INVERSE_DISTANCE_CLAMPED" />
+            <command name="alEnable" />
+            <command name="alDisable" />
+            <command name="alIsEnabled" />
+            <command name="alDopperFactor" />
+            <command name="alDopperVelocity" />
+            <command name="alSpeedOfSound" />
+            <command name="alDistanceModel" />
+            <command name="alGetString" />
+            <command name="alGetBooleanv" />
+            <command name="alGetIntegerv" />
+            <command name="alGetFloatv" />
+            <command name="alGetDoublev" />
+            <command name="alGetBoolean" />
+            <command name="alGetInteger" />
+            <command name="alGetFloat" />
+            <command name="alGetDouble" />
+            <command name="alGetError" />
+            <command name="alIsExtensionPresent" />
+            <command name="alGetProcAddress" />
+            <command name="alGetEnumValue" />
+            <command name="alListenerf" />
+            <command name="alListener3f" />
+            <command name="alListenerfv" />
+            <command name="alListeneri" />
+            <command name="alListener3i" />
+            <command name="alListeneriv" />
+            <command name="alGetListenerf" />
+            <command name="alGetListener3f" />
+            <command name="alGetListenerfv" />
+            <command name="alGetListeneri" />
+            <command name="alGetListener3i" />
+            <command name="alGetListeneriv" />
+            <command name="alGenSources" />
+            <command name="alDeleteSources" />
+            <command name="alIsSource" />
+            <command name="alSourcef" />
+            <command name="alSource3f" />
+            <command name="alSourcefv" />
+            <command name="alSourcei" />
+            <command name="alSource3i" />
+            <command name="alSourceiv" />
+            <command name="alGetSourcef" />
+            <command name="alGetSource3f" />
+            <command name="alGetSourcefv" />
+            <command name="alGetSourcei" />
+            <command name="alGetSource3i" />
+            <command name="alGetSourceiv" />
+            <command name="alSourcePlay" />
+            <command name="alSourceStop" />
+            <command name="alSourceRewind" />
+            <command name="alSourcePause" />
+            <command name="alSourcePlayv" />
+            <command name="alSourceStopv" />
+            <command name="alSourceRewindv" />
+            <command name="alSourcePausev" />
+            <command name="alSourceQueueBuffers" />
+            <command name="alSourceUnqueueBuffers" />
+            <command name="alGenBuffers" />
+            <command name="alGenBuffers" />
+            <command name="alIsBuffer" />
+            <command name="alBufferData" />
+            <command name="alBufferf" />
+            <command name="alBuffer3f" />
+            <command name="alBufferfv" />
+            <command name="alBufferi" />
+            <command name="alBuffer3i" />
+            <command name="alBufferiv" />
+            <command name="alGetBufferf" />
+            <command name="alGetBuffer3f" />
+            <command name="alGetBufferfv" />
+            <command name="alGetBufferi" />
+            <command name="alGetBuffer3i" />
+            <command name="alGetBufferiv" />
+        </require>
+    </feature>
+
+    <feature api="AL" name="AL_VERSION_1_1" number="1.1">
+        <require comment="Reuse EXT_OFFSET">
+            <enum name="AL_SEC_OFFSET" />
+            <enum name="AL_SAMPLE_OFFSET" />
+            <enum name="AL_BYTE_OFFSET" />
+        </require>
+        <require comment="Reuse EXT_LINEAR_DISTANCE">
+            <enum name="AL_LINEAR_DISTANCE" />
+            <enum name="AL_LINEAR_DISTANCE_CLAMPED" />
+        </require>
+        <require comment="Reuse EXT_EXPONENT_DISTANCE">
+            <enum name="AL_EXPONENT_DISTANCE" />
+            <enum name="AL_EXPONENT_DISTANCE_CLAMPED" />
+        </require>
+    </feature>
+</registry>
