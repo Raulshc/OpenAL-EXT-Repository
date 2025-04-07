@@ -9,7 +9,7 @@ list of extensions available on a specific platform), please issue a pull reques
 Extensions available on specific platforms
 ==========================================
 
-OpenAL Soft 1.24.2
+OpenAL Soft 1.24.3
 ------------------
 
 * AL_EXT_ALAW
