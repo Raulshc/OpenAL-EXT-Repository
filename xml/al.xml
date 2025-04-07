@@ -17,14 +17,14 @@
         <type>typedef void <name>ALvoid</name>;</type>
     </types>
 
-    <enums namespace="AL">
+    <enums>
         <enum value="0" name="AL_NONE" group="DistanceModel" />
         <enum value="0" name="AL_FALSE" />
         <enum value="1" name="AL_TRUE" />
         <enum value="0x202" name="AL_SOURCE_RELATIVE" />
     </enums>
 
-    <enums namespace="AL">
+    <enums>
         <enum value="0x1001" name="AL_CONE_INNER_ANGLE" />
         <enum value="0x1002" name="AL_CONE_OUTER_ANGLE" />
         <enum value="0x1003" name="AL_PITCH" />
@@ -68,7 +68,7 @@
         <!--<enum value="0x2012" name="AL_PROCESSED" />-->
     </enums>
 
-    <enums namespace="AL" group="ErrorCode">
+    <enums group="ErrorCode">
         <enum value="0" name="AL_NO_ERROR"/>
         <enum value="0xA001" name="AL_INVALID_NAME"/>
         <enum value="0xA002" name="AL_INVALID_ENUM"/>
@@ -77,21 +77,21 @@
         <enum value="0xA005" name="AL_OUT_OF_MEMORY"/>
     </enums>
 
-    <enums namespace="AL" group="StringName">
+    <enums group="StringName">
         <enum value="0xB001" name="AL_VENDOR" group="StringName" />
         <enum value="0xB002" name="AL_VERSION" group="StringName" />
         <enum value="0xB003" name="AL_RENDERER" group="StringName" />
         <enum value="0xB004" name="AL_EXTENSIONS" group="StringName" />
     </enums>
 
-    <enums namespace="AL">
+    <enums>
         <enum value="0xC000" name="AL_DOPPLER_FACTOR" />
         <enum value="0xC001" name="AL_DOPPLER_VELOCITY" />
         <enum value="0xC003" name="AL_SPEED_OF_SOUND" />
         <enum value="0xD000" name="AL_DISTANCE_MODEL" />
     </enums>
 
-    <enums namespace="AL" group="DistanceModel">
+    <enums group="DistanceModel">
         <enum value="0xD001" name="AL_INVERSE_DISTANCE" />
         <enum value="0xD002" name="AL_INVERSE_DISTANCE_CLAMPED" />
         <enum value="0xD003" name="AL_LINEAR_DISTANCE" />
@@ -100,7 +100,14 @@
         <enum value="0xD006" name="AL_EXPONENT_DISTANCE_CLAMPED" />
     </enums>
 
-    <commands namespace="AL">
+    <enums group="Format">
+        <enum value="0x10010" name="AL_FORMAT_MONO_FLOAT32" />
+        <enum value="0x10011" name="AL_FORMAT_STEREO_FLOAT32" />
+        <enum value="0x10012" name="AL_FORMAT_MONO_DOUBLE_EXT" />
+        <enum value="0x10013" name="AL_FORMAT_STEREO_DOUBLE_EXT" />
+    </enums>
+
+    <commands>
         <command>
             <proto><ptype>void</ptype> <name>alEnable</name></proto>
             <param group="EnableCap"><ptype>ALenum</ptype> <name>capability</name></param>
@@ -498,155 +505,191 @@
         </command>
     </commands>
 
-    <feature api="AL" name="AL_VERSION_1_0" number="1.0">
-        <require>
-            <enum name="AL_NONE" />
-            <enum name="AL_FALSE" />
-            <enum name="AL_TRUE" />
-            <enum name="AL_SOURCE_RELATIVE" />
-            <enum name="AL_CONE_INNER_ANGLE" />
-            <enum name="AL_CONE_OUTER_ANGLE" />
-            <enum name="AL_PITCH" />
-            <enum name="AL_POSITION" />
-            <enum name="AL_DIRECTION" />
-            <enum name="AL_VELOCITY" />
-            <enum name="AL_LOOPING" />
-            <enum name="AL_BUFFER" />
-            <enum name="AL_GAIN" />
-            <enum name="AL_MIN_GAIN" />
-            <enum name="AL_MAX_GAIN" />
-            <enum name="AL_ORIENTATION" />
-            <enum name="AL_SOURCE_STATE" />
-            <enum name="AL_INITIAL" />
-            <enum name="AL_PLAYING" />
-            <enum name="AL_PAUSED" />
-            <enum name="AL_STOPPED" />
-            <enum name="AL_BUFFERS_QUEUED" />
-            <enum name="AL_BUFFERS_PROCESSED" />
-            <enum name="AL_REFERENCE_DISTANCE" />
-            <enum name="AL_ROLLOFF_FACTOR" />
-            <enum name="AL_CONE_OUTER_GAIN" />
-            <enum name="AL_MAX_DISTANCE" />
-            <enum name="AL_SOURCE_TYPE" />
-            <enum name="AL_STATIC" />
-            <enum name="AL_STREAMING" />
-            <enum name="AL_UNDETERMINED" />
-            <enum name="AL_FORMAT_MONO8" />
-            <enum name="AL_FORMAT_MONO16" />
-            <enum name="AL_FORMAT_STEREO8" />
-            <enum name="AL_FORMAT_STEREO16" />
-            <enum name="AL_FREQUENCY" />
-            <enum name="AL_BITS" />
-            <enum name="AL_CHANNELS" />
-            <enum name="AL_SIZE" />
-            <!--<enum name="AL_UNUSED" />-->
-            <!--<enum name="AL_PENDING" />-->
-            <!--<enum name="AL_PROCESSED" />-->
-            <enum name="AL_NO_ERROR"/>
-            <enum name="AL_INVALID_NAME"/>
-            <enum name="AL_INVALID_ENUM"/>
-            <enum name="AL_INVALID_VALUE"/>
-            <enum name="AL_INVALID_OPERATION"/>
-            <enum name="AL_OUT_OF_MEMORY"/>
-            <enum name="AL_VENDOR" />
-            <enum name="AL_VERSION" />
-            <enum name="AL_RENDERER" />
-            <enum name="AL_EXTENSIONS" />
-            <enum name="AL_DOPPLER_FACTOR" />
-            <enum name="AL_DOPPLER_VELOCITY" />
-            <enum name="AL_SPEED_OF_SOUND" />
-            <enum name="AL_DISTANCE_MODEL" />
-            <enum name="AL_INVERSE_DISTANCE" />
-            <enum name="AL_INVERSE_DISTANCE_CLAMPED" />
-            <command name="alEnable" />
-            <command name="alDisable" />
-            <command name="alIsEnabled" />
-            <command name="alDopperFactor" />
-            <command name="alDopperVelocity" />
-            <command name="alSpeedOfSound" />
-            <command name="alDistanceModel" />
-            <command name="alGetString" />
-            <command name="alGetBooleanv" />
-            <command name="alGetIntegerv" />
-            <command name="alGetFloatv" />
-            <command name="alGetDoublev" />
-            <command name="alGetBoolean" />
-            <command name="alGetInteger" />
-            <command name="alGetFloat" />
-            <command name="alGetDouble" />
-            <command name="alGetError" />
-            <command name="alIsExtensionPresent" />
-            <command name="alGetProcAddress" />
-            <command name="alGetEnumValue" />
-            <command name="alListenerf" />
-            <command name="alListener3f" />
-            <command name="alListenerfv" />
-            <command name="alListeneri" />
-            <command name="alListener3i" />
-            <command name="alListeneriv" />
-            <command name="alGetListenerf" />
-            <command name="alGetListener3f" />
-            <command name="alGetListenerfv" />
-            <command name="alGetListeneri" />
-            <command name="alGetListener3i" />
-            <command name="alGetListeneriv" />
-            <command name="alGenSources" />
-            <command name="alDeleteSources" />
-            <command name="alIsSource" />
-            <command name="alSourcef" />
-            <command name="alSource3f" />
-            <command name="alSourcefv" />
-            <command name="alSourcei" />
-            <command name="alSource3i" />
-            <command name="alSourceiv" />
-            <command name="alGetSourcef" />
-            <command name="alGetSource3f" />
-            <command name="alGetSourcefv" />
-            <command name="alGetSourcei" />
-            <command name="alGetSource3i" />
-            <command name="alGetSourceiv" />
-            <command name="alSourcePlay" />
-            <command name="alSourceStop" />
-            <command name="alSourceRewind" />
-            <command name="alSourcePause" />
-            <command name="alSourcePlayv" />
-            <command name="alSourceStopv" />
-            <command name="alSourceRewindv" />
-            <command name="alSourcePausev" />
-            <command name="alSourceQueueBuffers" />
-            <command name="alSourceUnqueueBuffers" />
-            <command name="alGenBuffers" />
-            <command name="alGenBuffers" />
-            <command name="alIsBuffer" />
-            <command name="alBufferData" />
-            <command name="alBufferf" />
-            <command name="alBuffer3f" />
-            <command name="alBufferfv" />
-            <command name="alBufferi" />
-            <command name="alBuffer3i" />
-            <command name="alBufferiv" />
-            <command name="alGetBufferf" />
-            <command name="alGetBuffer3f" />
-            <command name="alGetBufferfv" />
-            <command name="alGetBufferi" />
-            <command name="alGetBuffer3i" />
-            <command name="alGetBufferiv" />
-        </require>
-    </feature>
+    <features>
+        <feature name="AL_VERSION_1_0" number="1.0">
+            <require>
+                <enum name="AL_NONE" />
+                <enum name="AL_FALSE" />
+                <enum name="AL_TRUE" />
+                <enum name="AL_SOURCE_RELATIVE" />
+                <enum name="AL_CONE_INNER_ANGLE" />
+                <enum name="AL_CONE_OUTER_ANGLE" />
+                <enum name="AL_PITCH" />
+                <enum name="AL_POSITION" />
+                <enum name="AL_DIRECTION" />
+                <enum name="AL_VELOCITY" />
+                <enum name="AL_LOOPING" />
+                <enum name="AL_BUFFER" />
+                <enum name="AL_GAIN" />
+                <enum name="AL_MIN_GAIN" />
+                <enum name="AL_MAX_GAIN" />
+                <enum name="AL_ORIENTATION" />
+                <enum name="AL_SOURCE_STATE" />
+                <enum name="AL_INITIAL" />
+                <enum name="AL_PLAYING" />
+                <enum name="AL_PAUSED" />
+                <enum name="AL_STOPPED" />
+                <enum name="AL_BUFFERS_QUEUED" />
+                <enum name="AL_BUFFERS_PROCESSED" />
+                <enum name="AL_REFERENCE_DISTANCE" />
+                <enum name="AL_ROLLOFF_FACTOR" />
+                <enum name="AL_CONE_OUTER_GAIN" />
+                <enum name="AL_MAX_DISTANCE" />
+                <enum name="AL_SOURCE_TYPE" />
+                <enum name="AL_STATIC" />
+                <enum name="AL_STREAMING" />
+                <enum name="AL_UNDETERMINED" />
+                <enum name="AL_FORMAT_MONO8" />
+                <enum name="AL_FORMAT_MONO16" />
+                <enum name="AL_FORMAT_STEREO8" />
+                <enum name="AL_FORMAT_STEREO16" />
+                <enum name="AL_FREQUENCY" />
+                <enum name="AL_BITS" />
+                <enum name="AL_CHANNELS" />
+                <enum name="AL_SIZE" />
+                <!--<enum name="AL_UNUSED" />-->
+                <!--<enum name="AL_PENDING" />-->
+                <!--<enum name="AL_PROCESSED" />-->
+                <enum name="AL_NO_ERROR"/>
+                <enum name="AL_INVALID_NAME"/>
+                <enum name="AL_INVALID_ENUM"/>
+                <enum name="AL_INVALID_VALUE"/>
+                <enum name="AL_INVALID_OPERATION"/>
+                <enum name="AL_OUT_OF_MEMORY"/>
+                <enum name="AL_VENDOR" />
+                <enum name="AL_VERSION" />
+                <enum name="AL_RENDERER" />
+                <enum name="AL_EXTENSIONS" />
+                <enum name="AL_DOPPLER_FACTOR" />
+                <enum name="AL_DOPPLER_VELOCITY" />
+                <enum name="AL_SPEED_OF_SOUND" />
+                <enum name="AL_DISTANCE_MODEL" />
+                <enum name="AL_INVERSE_DISTANCE" />
+                <enum name="AL_INVERSE_DISTANCE_CLAMPED" />
+                <command name="alEnable" />
+                <command name="alDisable" />
+                <command name="alIsEnabled" />
+                <command name="alDopperFactor" />
+                <command name="alDopperVelocity" />
+                <command name="alSpeedOfSound" />
+                <command name="alDistanceModel" />
+                <command name="alGetString" />
+                <command name="alGetBooleanv" />
+                <command name="alGetIntegerv" />
+                <command name="alGetFloatv" />
+                <command name="alGetDoublev" />
+                <command name="alGetBoolean" />
+                <command name="alGetInteger" />
+                <command name="alGetFloat" />
+                <command name="alGetDouble" />
+                <command name="alGetError" />
+                <command name="alIsExtensionPresent" />
+                <command name="alGetProcAddress" />
+                <command name="alGetEnumValue" />
+                <command name="alListenerf" />
+                <command name="alListener3f" />
+                <command name="alListenerfv" />
+                <command name="alListeneri" />
+                <command name="alListener3i" />
+                <command name="alListeneriv" />
+                <command name="alGetListenerf" />
+                <command name="alGetListener3f" />
+                <command name="alGetListenerfv" />
+                <command name="alGetListeneri" />
+                <command name="alGetListener3i" />
+                <command name="alGetListeneriv" />
+                <command name="alGenSources" />
+                <command name="alDeleteSources" />
+                <command name="alIsSource" />
+                <command name="alSourcef" />
+                <command name="alSource3f" />
+                <command name="alSourcefv" />
+                <command name="alSourcei" />
+                <command name="alSource3i" />
+                <command name="alSourceiv" />
+                <command name="alGetSourcef" />
+                <command name="alGetSource3f" />
+                <command name="alGetSourcefv" />
+                <command name="alGetSourcei" />
+                <command name="alGetSource3i" />
+                <command name="alGetSourceiv" />
+                <command name="alSourcePlay" />
+                <command name="alSourceStop" />
+                <command name="alSourceRewind" />
+                <command name="alSourcePause" />
+                <command name="alSourcePlayv" />
+                <command name="alSourceStopv" />
+                <command name="alSourceRewindv" />
+                <command name="alSourcePausev" />
+                <command name="alSourceQueueBuffers" />
+                <command name="alSourceUnqueueBuffers" />
+                <command name="alGenBuffers" />
+                <command name="alGenBuffers" />
+                <command name="alIsBuffer" />
+                <command name="alBufferData" />
+                <command name="alBufferf" />
+                <command name="alBuffer3f" />
+                <command name="alBufferfv" />
+                <command name="alBufferi" />
+                <command name="alBuffer3i" />
+                <command name="alBufferiv" />
+                <command name="alGetBufferf" />
+                <command name="alGetBuffer3f" />
+                <command name="alGetBufferfv" />
+                <command name="alGetBufferi" />
+                <command name="alGetBuffer3i" />
+                <command name="alGetBufferiv" />
+            </require>
+        </feature>
 
-    <feature api="AL" name="AL_VERSION_1_1" number="1.1">
-        <require comment="Reuse EXT_OFFSET">
-            <enum name="AL_SEC_OFFSET" />
-            <enum name="AL_SAMPLE_OFFSET" />
-            <enum name="AL_BYTE_OFFSET" />
-        </require>
-        <require comment="Reuse EXT_LINEAR_DISTANCE">
-            <enum name="AL_LINEAR_DISTANCE" />
-            <enum name="AL_LINEAR_DISTANCE_CLAMPED" />
-        </require>
-        <require comment="Reuse EXT_EXPONENT_DISTANCE">
-            <enum name="AL_EXPONENT_DISTANCE" />
-            <enum name="AL_EXPONENT_DISTANCE_CLAMPED" />
-        </require>
-    </feature>
+        <feature name="AL_VERSION_1_1" number="1.1">
+            <require comment="Reuse AL_EXT_OFFSET">
+                <enum name="AL_SEC_OFFSET" />
+                <enum name="AL_SAMPLE_OFFSET" />
+                <enum name="AL_BYTE_OFFSET" />
+            </require>
+            <require comment="Reuse AL_EXT_LINEAR_DISTANCE">
+                <enum name="AL_LINEAR_DISTANCE" />
+                <enum name="AL_LINEAR_DISTANCE_CLAMPED" />
+            </require>
+            <require comment="Reuse AL_EXT_EXPONENT_DISTANCE">
+                <enum name="AL_EXPONENT_DISTANCE" />
+                <enum name="AL_EXPONENT_DISTANCE_CLAMPED" />
+            </require>
+        </feature>
+    </features>
+
+    <extensions>
+        <extension name="AL_EXT_OFFSET">
+            <require>
+                <enum name="AL_SEC_OFFSET"/>
+                <enum name="AL_SAMPLE_OFFSET"/>
+                <enum name="AL_BYTE_OFFSET"/>
+            </require>
+        </extension>
+        <extension name="AL_EXT_LINEAR_DISTANCE">
+            <require>
+                <enum name="AL_LINEAR_DISTANCE" />
+                <enum name="AL_LINEAR_DISTANCE_CLAMPED" />
+            </require>
+        </extension>
+        <extension name="AL_EXT_EXPONENT_DISTANCE">
+            <require>
+                <enum name="AL_EXPONENT_DISTANCE" />
+                <enum name="AL_EXPONENT_DISTANCE_CLAMPED" />
+            </require>
+        </extension>
+        <extension name="AL_EXT_float32">
+            <require>
+                <enum name="AL_FORMAT_MONO_FLOAT32" />
+                <enum name="AL_FORMAT_STEREO_FLOAT32" />
+            </require>
+        </extension>
+        <extension name="AL_EXT_double">
+            <require>
+                <enum name="AL_FORMAT_MONO_DOUBLE_EXT" />
+                <enum name="AL_FORMAT_STEREO_DOUBLE_EXT" />
+            </require>
+        </extension>
+    </extensions>
 </registry>

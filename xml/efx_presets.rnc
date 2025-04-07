@@ -1,0 +1,35 @@
+
+namespace xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
+
+start = element efxpresets {
+    Preset *
+}
+
+Preset = element preset {
+    attribute name { text },
+    attribute density { xsd:float },
+    attribute diffusion { xsd:float },
+    attribute gain { xsd:float },
+    attribute gainHF { xsd:float },
+    attribute gainLF { xsd:float },
+    attribute decayTime { xsd:float },
+    attribute decayHFRatio { xsd:float },
+    attribute decayLFRatio { xsd:float },
+    attribute reflectionsGain { xsd:float },
+    attribute reflectionsDelay { xsd:float },
+    attribute reflectionsPan { list { xsd:float,xsd:float,xsd:float } },
+    attribute lateReverbGain { xsd:float },
+    attribute lateReverbDelay { xsd:float },
+    attribute lateReverbPan { list { xsd:float,xsd:float,xsd:float } },
+    attribute echoTime { xsd:float },
+    attribute echoDepth { xsd:float },
+    attribute modulationTime { xsd:float },
+    attribute modulationDepth { xsd:float },
+    attribute airAbsorptionGainHF { xsd:float },
+    attribute hfReference { xsd:float },
+    attribute lfReference { xsd:float },
+    attribute roomRolloffFactor { xsd:float },
+    attribute decayHFLimit { xsd:boolean }
+}
+
+Comment = attribute comment { text }
