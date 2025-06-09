@@ -7,8 +7,7 @@ start = element registry {
         Enums * |
         Commands * |
         Features |
-        Extensions |
-        EfxPresets
+        Extensions
     ) *
 }
 
@@ -99,37 +98,6 @@ Extension = element extension {
             }
         ) *
     } *
-}
-
-EfxPresets = element efxpresets {
-    Preset *
-}
-
-Preset = element preset {
-    attribute name { text },
-    element density { xsd:float },
-    element diffusion { xsd:float },
-    element gain { xsd:float },
-    element gainHF { xsd:float },
-    element gainLF { xsd:float },
-    element decayTime { xsd:float },
-    element decayHFRatio { xsd:float },
-    element decayLFRatio { xsd:float },
-    element reflectionsGain { xsd:float },
-    element reflectionsDelay { xsd:float },
-    element reflectionsPan { list { xsd:float, xsd:float, xsd:float } },
-    element lateReverbGain { xsd:float },
-    element lateReverbDelay { xsd:float },
-    element lateReverbPan { list { xsd:float, xsd:float, xsd:float } },
-    element echoTime { xsd:float },
-    element echoDepth { xsd:float },
-    element modulationTime { xsd:float },
-    element modulationDepth { xsd:float },
-    element airAbsorptionGainHF { xsd:float },
-    element hfReference { xsd:float },
-    element lfReference { xsd:float },
-    element roomRolloffFactor { xsd:float },
-    element decayHFLimit { xsd:boolean }
 }
 
 TypeName = text
