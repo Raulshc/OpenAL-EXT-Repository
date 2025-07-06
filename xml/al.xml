@@ -21,8 +21,14 @@
         <!-- so this will not work on platforms that don't have that... -->
         <type>typedef int64_t <name>ALint64SOFT</name>;</type>
         <type>typedef uint64_t <name>ALuint64SOFT</name>;</type>
-        <!-- FIXME: ALDEBUGPROCEXT, alFoldbackCallback/LPALFOLDBACKCALLBACK, 
-                alSourceNotificationProc, ALBUFFERCALLBACKTYPESOFT, ALEVENTPROCSOFT -->
+
+        <type>typedef int (<apientry/> *<name>ALDEBUGPROCEXT</name>)(ALenum source, ALenum type, ALuint id, ALenum severity, ALsizei length, const ALchar *message, void *userParam);</type>
+        <type>typedef void (<apientry/> *<name>LPALFOLDBACKCALLBACK</name>)(ALenum event, ALsizei blockIndex);</type>
+        <type>typedef ALvoid (*<name>alSourceNotificationProc</name>)(ALuint sid, ALuint notificationID, ALvoid* userData);</type>
+        <type>typedef ALsizei (<apientry/> *<name>ALBUFFERCALLBACKTYPESOFT</name>)(ALvoid *userptr, ALvoid *sampledata, ALsizei numbytes);</type>
+        <type>typedef void (<apientry/> *<name>ALEVENTPROCSOFT</name>)(ALenum eventType, ALuint object, ALuint param, ALsizei length, const ALchar *message, ALvoid *userParam);</type>
+        <!-- This type is not defined in AL_LOKI_buffer_data_callback but it's needed in the current XML format. -->
+        <type>typedef int (*<name>ALBUFFERDATACALLBACKLOKI</name>)(uint sid, uint bid, void *data, enum format, uint samples);</type>
     </types>
 
     <enums>
@@ -180,7 +186,7 @@
         <enum value="0x19D2" name="AL_EFFECT_EXT" />
         <enum value="0x19D3" name="AL_AUXILIARY_EFFECT_SLOT_EXT" />
     </enums>
-
+    <!-- AL_EXT_direct_context has no enums -->
     <enums group="Format" comment="From AL_EXT_double">
         <enum value="0x10012" name="AL_FORMAT_MONO_DOUBLE_EXT" />
         <enum value="0x10013" name="AL_FORMAT_STEREO_DOUBLE_EXT" />
@@ -453,10 +459,6 @@
             <param><ptype>ALfloat</ptype> <name>value</name></param>
         </command>
         <command>
-            <proto>void <name>alDopperVelocity</name></proto>
-            <param><ptype>ALfloat</ptype> <name>value</name></param>
-        </command>
-        <command>
             <proto>void <name>alSpeedOfSound</name></proto>
             <param><ptype>ALfloat</ptype> <name>value</name></param>
         </command>
@@ -520,70 +522,70 @@
             <param>const <ptype>ALchar</ptype> *<name>ename</name></param>
         </command>
         <command>
-            <proto>void <name>alListenerf</name></proto> 
+            <proto>void <name>alListenerf</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALfloat</ptype> <name>value</name></param>
         </command>
         <command>
-            <proto>void <name>alListener3f</name></proto> 
+            <proto>void <name>alListener3f</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALfloat</ptype> <name>value1</name></param>
             <param><ptype>ALfloat</ptype> <name>value2</name></param>
             <param><ptype>ALfloat</ptype> <name>value3</name></param>
         </command>
         <command>
-            <proto>void <name>alListenerfv</name></proto> 
+            <proto>void <name>alListenerfv</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALfloat</ptype> *<name>values</name></param>
         </command>
         <command>
-            <proto>void <name>alListeneri</name></proto> 
+            <proto>void <name>alListeneri</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALint</ptype> <name>value</name></param>
         </command>
         <command>
-            <proto>void <name>alListener3i</name></proto> 
+            <proto>void <name>alListener3i</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALint</ptype> <name>value1</name></param>
             <param><ptype>ALint</ptype> <name>value2</name></param>
             <param><ptype>ALint</ptype> <name>value3</name></param>
         </command>
         <command>
-            <proto>void <name>alListeneriv</name></proto> 
+            <proto>void <name>alListeneriv</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALint</ptype> *<name>values</name></param>
         </command>
         <command>
-            <proto>void <name>alGetListenerf</name></proto> 
+            <proto>void <name>alGetListenerf</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALfloat</ptype> *<name>value</name></param>
         </command>
         <command>
-            <proto>void <name>alGetListener3f</name></proto> 
+            <proto>void <name>alGetListener3f</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALfloat</ptype> *<name>value1</name></param>
             <param><ptype>ALfloat</ptype> *<name>value2</name></param>
             <param><ptype>ALfloat</ptype> *<name>value3</name></param>
         </command>
         <command>
-            <proto>void <name>alGetListenerfv</name></proto> 
+            <proto>void <name>alGetListenerfv</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALfloat</ptype> *<name>values</name></param>
         </command>
         <command>
-            <proto>void <name>alGetListeneri</name></proto> 
+            <proto>void <name>alGetListeneri</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALint</ptype> *<name>value</name></param>
         </command>
         <command>
-            <proto>void <name>alGetListener3i</name></proto> 
+            <proto>void <name>alGetListener3i</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALint</ptype> *<name>value1</name></param>
             <param><ptype>ALint</ptype> *<name>value2</name></param>
             <param><ptype>ALint</ptype> *<name>value3</name></param>
         </command>
         <command>
-            <proto>void <name>alGetListeneriv</name></proto> 
+            <proto>void <name>alGetListeneriv</name></proto>
             <param><ptype>ALenum</ptype> <name>param</name></param>
             <param><ptype>ALint</ptype> *<name>values</name></param>
         </command>
@@ -735,7 +737,7 @@
             <param><ptype>ALuint</ptype> *<name>buffers</name></param>
         </command>
         <command>
-            <proto>void <name>alGenBuffers</name></proto>
+            <proto>void <name>alDeleteBuffers</name></proto>
             <param><ptype>ALsizei</ptype> <name>n</name></param>
             <param>const <ptype>ALuint</ptype> *<name>buffers</name></param>
         </command>
@@ -998,6 +1000,9 @@
             <param><ptype>void</ptype> **<name>values</name></param>
         </command>
     </commands>
+    <commands comment="From AL_EXT_direct_context">
+        <!-- See comment in AL_EXT_direct_context extension for details about AL_EXT_direct_context functions. -->
+    </commands>
     <commands comment="From AL_EXT_FOLDBACK">
         <command>
             <proto>void <name>alRequestFoldbackStart</name></proto>
@@ -1036,6 +1041,19 @@
         <command>
             <proto><ptype>ALint</ptype> <name>alSourceGetRenderingQuality</name></proto>
             <param><ptype>ALuint</ptype> <name>sid</name></param>
+        </command>
+    </commands>
+    <commands comment="From AL_LOKI_attenuation_scale">
+        <command>
+            <proto>void <name>AttenuationScale_LOKI</name></proto>
+            <param><ptype>float</ptype> <name>value</name></param>
+        </command>
+    </commands>
+    <commands comment="From AL_LOKI_buffer_data_callback">
+        <command>
+            <proto>void <name>BufferDataWithCallback_LOKI</name></proto>
+            <param><ptype>uint</ptype> <name>bid</name></param>
+            <param><ptype>FIXME</ptype> <name>callback</name></param>
         </command>
     </commands>
     <commands comment="From AL_SOFT_buffer_samples">
@@ -1208,7 +1226,6 @@
                 <command name="alDisable" />
                 <command name="alIsEnabled" />
                 <command name="alDopperFactor" />
-                <command name="alDopperVelocity" />
                 <command name="alSpeedOfSound" />
                 <command name="alDistanceModel" />
                 <command name="alGetString" />
@@ -1395,7 +1412,20 @@
                 <command name="alGetPointervEXT" />
             </require>
         </extension>
-        <!-- FIXME: AL_EXT_direct_context -->
+        <extension name="AL_EXT_direct_context">
+            <require>
+                <!-- 
+                    This extension defines a "direct" version of every function in the entire
+                    specification. The naming rules and the added context argument are described in AL_EXT_direct_context.
+                    Because of this we would need to re-define every single API function in the entire API 
+                    here again. This is completely impractical and a maintenance nightmare, so instead these
+                    functions are omitted and a tag <direct_context_commands /> is added to explicitly mark
+                    that these functions functions exist as part of the extension.
+                    - Noggin_bops 2025-07-06
+                -->
+                <direct_context_commands />
+            </require>
+        </extension>
         <extension name="AL_EXT_double">
             <require>
                 <enum name="AL_FORMAT_MONO_DOUBLE_EXT" />
@@ -1531,8 +1561,16 @@
                 <enum name="AL_FORMAT_VORBIS_EXT" />
             </require>
         </extension>
-        <!-- FIXME: AL_LOKI_attenuation_scale -->
-        <!-- FIXME: AL_LOKI_buffer_data_callback -->
+        <extension name="AL_LOKI_attenuation_scale">
+            <require>
+                <command name="AttenuationScale_LOKI" />
+            </require>
+        </extension>
+        <extension name="AL_LOKI_buffer_data_callback">
+            <require>
+                <command name="BufferDataWithCallback_LOKI" />
+            </require>
+        </extension>
         <extension name="AL_LOKI_IMA_ADPCM_format">
             <require>
                 <enum name="AL_FORMAT_IMA_ADPCM_MONO16_EXT" />

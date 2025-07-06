@@ -297,6 +297,14 @@
         <enum value="'rcst'" name="ALC_MAC_OSX_RENDER_CHANNEL_COUNT_STEREO" />
         <enum value="'rcmc'" name="ALC_MAC_OSX_RENDER_CHANNEL_COUNT_MULTICHANNEL" />
     </enums>
+    <enums comment="From ALC_LOKI_audio_channel">
+        <enum value="0x500001" name="ALC_CHAN_MAIN_LOKI" />
+        <enum value="0x500002" name="ALC_CHAN_PCM_LOKI" />
+        <enum value="0x500003" name="ALC_CHAN_CD_LOKI" />
+    </enums>
+    <enums comment="From ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING">
+        <enum value="0xF001" name="ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING" />
+    </enums>
     <enums comment="From ALC_SOFT_device_clock">
         <enum value="0x1600" name="ALC_DEVICE_CLOCK_SOFT" />
         <enum value="0x1601" name="ALC_DEVICE_LATENCY_SOFT" />
@@ -688,6 +696,13 @@
             <param><ptype>ALuint</ptype> <name>dataSize</name></param>
         </command>
     </commands>
+    <commands comment="From ALC_EXT_direct_context">
+        <command>
+            <proto><ptype>ALCvoid</ptype> *<name>alcGetProcAddress2</name></proto>
+            <param><ptype>ALCdevice</ptype> *<name>device</name></param>
+            <param>const <ptype>ALCchar</ptype> *<name>funcName</name></param>
+        </command>
+    </commands>
     <commands comment="From ALC_EXT_MAC_OSX">
         <command>
             <proto><ptype>ALvoid</ptype> <name>alcMacOSXRenderingQuality</name></proto>
@@ -747,6 +762,17 @@
         </command>
         <command>
             <proto><ptype>ALCcontext</ptype> *<name>alcGetThreadContext</name></proto>
+        </command>
+    </commands>
+    <commands comment="From ALC_LOKI_audio_channel">
+        <command>
+            <proto><ptype>float</ptype> <name>GetAudioChannel_LOKI</name></proto>
+            <param><ptype>uint</ptype> <name>channel</name></param>
+        </command>
+        <command>
+            <proto>void <name>SetAudioChannel_LOKI</name></proto>
+            <param><ptype>uint</ptype> <name>channel</name></param>
+            <param><ptype>float</ptype> <name>volume</name></param>
         </command>
     </commands>
     <commands comment="From ALC_SOFT_device_clock">
@@ -1215,8 +1241,20 @@
                 <command name="alcGetThreadContext" />
             </require>
         </extension>
-        <!-- FIXME: ALC_LOKI_audio_channel -->
-        <!-- FIXME: ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING -->
+        <extension name="ALC_LOKI_audio_channel">
+            <require>
+                <enum name="ALC_CHAN_MAIN_LOKI" />
+                <enum name="ALC_CHAN_PCM_LOKI" />
+                <enum name="ALC_CHAN_CD_LOKI" />
+                <command name="GetAudioChannel_LOKI" />
+                <command name="SetAudioChannel_LOKI" />
+            </require>
+        </extension>
+        <extension name="ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING">
+            <require>
+                <enum name="ALC_MAC_OSX_CONVERT_DATA_UPON_LOADING" />
+            </require>
+        </extension>
         <extension name="ALC_SOFT_device_clock">
             <require>
                 <enum name="ALC_DEVICE_CLOCK_SOFT" />
@@ -1335,6 +1373,12 @@
             <require>
                 <enum name="ALC_CONTEXT_FLAGS_EXT" />
                 <enum name="ALC_CONTEXT_DEBUG_BIT_EXT" />
+            </require>
+        </extension>
+        <!-- From AL_EXT_direct_context -->
+        <extension name="ALC_EXT_direct_context">
+            <require>
+                <command name="alcGetProcAddress2" />
             </require>
         </extension>
     </extensions>

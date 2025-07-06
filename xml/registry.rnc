@@ -18,6 +18,8 @@ Types = element types {
 
 Type = element type {
     text,
+    element apientry { text } ?,
+    text,
     element name { TypeName } ?,
     text
 }
@@ -95,7 +97,8 @@ Extension = element extension {
             } |
             element command {
                 attribute name { text }
-            }
+            } |
+            element direct_context_commands { text }
         ) *
     } *
 }
