@@ -441,7 +441,141 @@
         <enum value="0x19A6" name="AL_EVENT_TYPE_DISCONNECTED_SOFT" />
     </enums>
 
-    <commands>
+    <enums comment="From ALC_EXT_EFX">
+        <enum value="0x20004" name="AL_METERS_PER_UNIT" />
+        <enum value="0x20005" name="AL_DIRECT_FILTER" />
+        <enum value="0x20006" name="AL_AUXILIARY_SEND_FILTER" />
+        <enum value="0x20007" name="AL_AIR_ABSORPTION_FACTOR" />
+        <enum value="0x20008" name="AL_ROOM_ROLLOFF_FACTOR" />
+        <enum value="0x20009" name="AL_CONE_OUTER_GAINHF" />
+        <enum value="0x2000A" name="AL_DIRECT_FILTER_GAINHF_AUTO" />
+        <enum value="0x2000B" name="AL_AUXILIARY_SEND_FILTER_GAIN_AUTO" />
+        <enum value="0x2000C" name="AL_AUXILIARY_SEND_FILTER_GAINHF_AUTO" />
+        <enum value="0x0001" name="AL_REVERB_DENSITY" />
+        <enum value="0x0002" name="AL_REVERB_DIFFUSION" />
+        <enum value="0x0003" name="AL_REVERB_GAIN" />
+        <enum value="0x0004" name="AL_REVERB_GAINHF" />
+        <enum value="0x0005" name="AL_REVERB_DECAY_TIME" />
+        <enum value="0x0006" name="AL_REVERB_DECAY_HFRATIO" />
+        <enum value="0x0007" name="AL_REVERB_REFLECTIONS_GAIN" />
+        <enum value="0x0008" name="AL_REVERB_REFLECTIONS_DELAY" />
+        <enum value="0x0009" name="AL_REVERB_LATE_REVERB_GAIN" />
+        <enum value="0x000A" name="AL_REVERB_LATE_REVERB_DELAY" />
+        <enum value="0x000B" name="AL_REVERB_AIR_ABSORPTION_GAINHF" />
+        <enum value="0x000C" name="AL_REVERB_ROOM_ROLLOFF_FACTOR" />
+        <enum value="0x000D" name="AL_REVERB_DECAY_HFLIMIT" />
+        <enum value="0x0001" name="AL_EAXREVERB_DENSITY" />
+        <enum value="0x0002" name="AL_EAXREVERB_DIFFUSION" />
+        <enum value="0x0003" name="AL_EAXREVERB_GAIN" />
+        <enum value="0x0004" name="AL_EAXREVERB_GAINHF" />
+        <enum value="0x0005" name="AL_EAXREVERB_GAINLF" />
+        <enum value="0x0006" name="AL_EAXREVERB_DECAY_TIME" />
+        <enum value="0x0007" name="AL_EAXREVERB_DECAY_HFRATIO" />
+        <enum value="0x0008" name="AL_EAXREVERB_DECAY_LFRATIO" />
+        <enum value="0x0009" name="AL_EAXREVERB_REFLECTIONS_GAIN" />
+        <enum value="0x000A" name="AL_EAXREVERB_REFLECTIONS_DELAY" />
+        <enum value="0x000B" name="AL_EAXREVERB_REFLECTIONS_PAN" />
+        <enum value="0x000C" name="AL_EAXREVERB_LATE_REVERB_GAIN" />
+        <enum value="0x000D" name="AL_EAXREVERB_LATE_REVERB_DELAY" />
+        <enum value="0x000E" name="AL_EAXREVERB_LATE_REVERB_PAN" />
+        <enum value="0x000F" name="AL_EAXREVERB_ECHO_TIME" />
+        <enum value="0x0010" name="AL_EAXREVERB_ECHO_DEPTH" />
+        <enum value="0x0011" name="AL_EAXREVERB_MODULATION_TIME" />
+        <enum value="0x0012" name="AL_EAXREVERB_MODULATION_DEPTH" />
+        <enum value="0x0013" name="AL_EAXREVERB_AIR_ABSORPTION_GAINHF" />
+        <enum value="0x0014" name="AL_EAXREVERB_HFREFERENCE" />
+        <enum value="0x0015" name="AL_EAXREVERB_LFREFERENCE" />
+        <enum value="0x0016" name="AL_EAXREVERB_ROOM_ROLLOFF_FACTOR" />
+        <enum value="0x0017" name="AL_EAXREVERB_DECAY_HFLIMIT" />
+        <enum value="0x0001" name="AL_CHORUS_WAVEFORM" />
+        <enum value="0x0002" name="AL_CHORUS_PHASE" />
+        <enum value="0x0003" name="AL_CHORUS_RATE" />
+        <enum value="0x0004" name="AL_CHORUS_DEPTH" />
+        <enum value="0x0005" name="AL_CHORUS_FEEDBACK" />
+        <enum value="0x0006" name="AL_CHORUS_DELAY" />
+        <enum value="0x0001" name="AL_DISTORTION_EDGE" />
+        <enum value="0x0002" name="AL_DISTORTION_GAIN" />
+        <enum value="0x0003" name="AL_DISTORTION_LOWPASS_CUTOFF" />
+        <enum value="0x0004" name="AL_DISTORTION_EQCENTER" />
+        <enum value="0x0005" name="AL_DISTORTION_EQBANDWIDTH" />
+        <enum value="0x0001" name="AL_ECHO_DELAY" />
+        <enum value="0x0002" name="AL_ECHO_LRDELAY" />
+        <enum value="0x0003" name="AL_ECHO_DAMPING" />
+        <enum value="0x0004" name="AL_ECHO_FEEDBACK" />
+        <enum value="0x0005" name="AL_ECHO_SPREAD" />
+        <enum value="0x0001" name="AL_FLANGER_WAVEFORM" />
+        <enum value="0x0002" name="AL_FLANGER_PHASE" />
+        <enum value="0x0003" name="AL_FLANGER_RATE" />
+        <enum value="0x0004" name="AL_FLANGER_DEPTH" />
+        <enum value="0x0005" name="AL_FLANGER_FEEDBACK" />
+        <enum value="0x0006" name="AL_FLANGER_DELAY" />
+        <enum value="0x0001" name="AL_FREQUENCY_SHIFTER_FREQUENCY" />
+        <enum value="0x0002" name="AL_FREQUENCY_SHIFTER_LEFT_DIRECTION" />
+        <enum value="0x0003" name="AL_FREQUENCY_SHIFTER_RIGHT_DIRECTION" />
+        <enum value="0x0001" name="AL_VOCAL_MORPHER_PHONEMEA" />
+        <enum value="0x0002" name="AL_VOCAL_MORPHER_PHONEMEA_COARSE_TUNING" />
+        <enum value="0x0003" name="AL_VOCAL_MORPHER_PHONEMEB" />
+        <enum value="0x0004" name="AL_VOCAL_MORPHER_PHONEMEB_COARSE_TUNING" />
+        <enum value="0x0005" name="AL_VOCAL_MORPHER_WAVEFORM" />
+        <enum value="0x0006" name="AL_VOCAL_MORPHER_RATE" />
+        <enum value="0x0001" name="AL_PITCH_SHIFTER_COARSE_TUNE" />
+        <enum value="0x0002" name="AL_PITCH_SHIFTER_FINE_TUNE" />
+        <enum value="0x0001" name="AL_RING_MODULATOR_FREQUENCY" />
+        <enum value="0x0002" name="AL_RING_MODULATOR_HIGHPASS_CUTOFF" />
+        <enum value="0x0003" name="AL_RING_MODULATOR_WAVEFORM" />
+        <enum value="0x0001" name="AL_AUTOWAH_ATTACK_TIME" />
+        <enum value="0x0002" name="AL_AUTOWAH_RELEASE_TIME" />
+        <enum value="0x0003" name="AL_AUTOWAH_RESONANCE" />
+        <enum value="0x0004" name="AL_AUTOWAH_PEAK_GAIN" />
+        <enum value="0x0001" name="AL_COMPRESSOR_ONOFF" />
+        <enum value="0x0001" name="AL_EQUALIZER_LOW_GAIN" />
+        <enum value="0x0002" name="AL_EQUALIZER_LOW_CUTOFF" />
+        <enum value="0x0003" name="AL_EQUALIZER_MID1_GAIN" />
+        <enum value="0x0004" name="AL_EQUALIZER_MID1_CENTER" />
+        <enum value="0x0005" name="AL_EQUALIZER_MID1_WIDTH" />
+        <enum value="0x0006" name="AL_EQUALIZER_MID2_GAIN" />
+        <enum value="0x0007" name="AL_EQUALIZER_MID2_CENTER" />
+        <enum value="0x0008" name="AL_EQUALIZER_MID2_WIDTH" />
+        <enum value="0x0009" name="AL_EQUALIZER_HIGH_GAIN" />
+        <enum value="0x000A" name="AL_EQUALIZER_HIGH_CUTOFF" />
+        <enum value="0x0000" name="AL_EFFECT_FIRST_PARAMETER" />
+        <enum value="0x8000" name="AL_EFFECT_LAST_PARAMETER" />
+        <enum value="0x8001" name="AL_EFFECT_TYPE" />
+        <enum value="0x0000" name="AL_EFFECT_NULL" />
+        <enum value="0x0001" name="AL_EFFECT_REVERB" />
+        <enum value="0x0002" name="AL_EFFECT_CHORUS" />
+        <enum value="0x0003" name="AL_EFFECT_DISTORTION" />
+        <enum value="0x0004" name="AL_EFFECT_ECHO" />
+        <enum value="0x0005" name="AL_EFFECT_FLANGER" />
+        <enum value="0x0006" name="AL_EFFECT_FREQUENCY_SHIFTER" />
+        <enum value="0x0007" name="AL_EFFECT_VOCAL_MORPHER" />
+        <enum value="0x0008" name="AL_EFFECT_PITCH_SHIFTER" />
+        <enum value="0x0009" name="AL_EFFECT_RING_MODULATOR" />
+        <enum value="0x000A" name="AL_EFFECT_AUTOWAH" />
+        <enum value="0x000B" name="AL_EFFECT_COMPRESSOR" />
+        <enum value="0x000C" name="AL_EFFECT_EQUALIZER" />
+        <enum value="0x8000" name="AL_EFFECT_EAXREVERB" />
+        <enum value="0x0001" name="AL_EFFECTSLOT_EFFECT" />
+        <enum value="0x0002" name="AL_EFFECTSLOT_GAIN" />
+        <enum value="0x0003" name="AL_EFFECTSLOT_AUXILIARY_SEND_AUTO" />
+        <enum value="0x0000" name="AL_EFFECTSLOT_NULL" />
+        <enum value="0x0001" name="AL_LOWPASS_GAIN" />
+        <enum value="0x0002" name="AL_LOWPASS_GAINHF" />
+        <enum value="0x0001" name="AL_HIGHPASS_GAIN" />
+        <enum value="0x0002" name="AL_HIGHPASS_GAINLF" />
+        <enum value="0x0001" name="AL_BANDPASS_GAIN" />
+        <enum value="0x0002" name="AL_BANDPASS_GAINLF" />
+        <enum value="0x0003" name="AL_BANDPASS_GAINHF" />
+        <enum value="0x0000" name="AL_FILTER_FIRST_PARAMETER" />
+        <enum value="0x8000" name="AL_FILTER_LAST_PARAMETER" />
+        <enum value="0x8001" name="AL_FILTER_TYPE" />
+        <enum value="0x0000" name="AL_FILTER_NULL" />
+        <enum value="0x0001" name="AL_FILTER_LOWPASS" />
+        <enum value="0x0002" name="AL_FILTER_HIGHPASS" />
+        <enum value="0x0003" name="AL_FILTER_BANDPASS" />
+    </enums>
+
+    <commands comment="From AL 1.0 and 1.1">
         <command>
             <proto><ptype>void</ptype> <name>alEnable</name></proto>
             <param group="EnableCap"><ptype>ALenum</ptype> <name>capability</name></param>
@@ -1053,7 +1187,7 @@
         <command>
             <proto>void <name>BufferDataWithCallback_LOKI</name></proto>
             <param><ptype>uint</ptype> <name>bid</name></param>
-            <param><ptype>FIXME</ptype> <name>callback</name></param>
+            <param><ptype>ALBUFFERDATACALLBACKLOKI</ptype> <name>callback</name></param>
         </command>
     </commands>
     <commands comment="From AL_SOFT_buffer_samples">
@@ -1142,7 +1276,7 @@
         <command>
             <proto>void <name>alEventControlSOFT</name></proto>
             <param><ptype>ALsizei</ptype> <name>count</name></param>
-            <param>cosnt <ptype>ALenum</ptype> *<name>types</name></param>
+            <param>const <ptype>ALenum</ptype> *<name>types</name></param>
             <param><ptype>ALboolean</ptype> <name>enable</name></param>
         </command>
         <command>
@@ -1158,6 +1292,204 @@
             <proto>void <name>alGetPointervSOFT</name></proto>
             <param><ptype>ALenum</ptype> <name>pname</name></param>
             <param><ptype>ALvoid</ptype> **<name>values</name></param>
+        </command>
+    </commands>
+
+    <commands comment="From ALC_EXT_EFX">
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGenEffects</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param><ptype>ALuint</ptype> *<name>effects</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alDeleteEffects</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param><ptype>ALuint</ptype> *<name>effects</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALboolean</ptype> <name>alIsEffect</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alEffecti</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>iValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alEffectiv</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alEffectf</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>flValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alEffectfv</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetEffecti</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetEffectiv</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetEffectf</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetEffectfv</name></proto>
+            <param><ptype>ALuint</ptype> <name>effect</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGenFilters</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param><ptype>ALuint</ptype> *<name>filters</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alDeleteFilters</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param><ptype>ALuint</ptype> *<name>filters</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alIsFilter</name></proto>
+            <param><ptype>ALuint</ptype> <name>filter</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alFilteri</name>
+            </proto><param><ptype>ALuint</ptype> <name>filter</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>iValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alFilteriv</name>
+            </proto><param><ptype>ALuint</ptype> <name>filter</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alFilterf</name>
+            </proto><param><ptype>ALuint</ptype> <name>filter</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>flValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alFilterfv</name>
+            </proto><param><ptype>ALuint</ptype> <name>filter</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetFilteri</name>
+            </proto><param><ptype>ALuint</ptype> <name>filter</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetFilteriv</name>
+            </proto><param><ptype>ALuint</ptype> <name>filter</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetFilterf</name>
+            </proto><param><ptype>ALuint</ptype> <name>filter</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetFilterfv</name>
+            </proto><param><ptype>ALuint</ptype> <name>filter</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGenAuxiliaryEffectSlots</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param><ptype>ALuint</ptype> *<name>effectslots</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alDeleteAuxiliaryEffectSlots</name></proto>
+            <param><ptype>ALsizei</ptype> <name>n</name></param>
+            <param><ptype>ALuint</ptype> *<name>effectslots</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alIsAuxiliaryEffectSlot</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alAuxiliaryEffectSloti</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> <name>iValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alAuxiliaryEffectSlotiv</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alAuxiliaryEffectSlotf</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> <name>flValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alAuxiliaryEffectSlotfv</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetAuxiliaryEffectSloti</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetAuxiliaryEffectSlotiv</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALint</ptype> *<name>piValues</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetAuxiliaryEffectSlotf</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValue</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alGetAuxiliaryEffectSlotfv</name></proto>
+            <param><ptype>ALuint</ptype> <name>effectslot</name></param>
+            <param><ptype>ALenum</ptype> <name>param</name></param>
+            <param><ptype>ALfloat</ptype> *<name>pflValues</name></param>
+        </command>
+    </commands>
+    <commands comment="From ALC_EXT_MAC_OSX">
+        <command>
+            <proto><ptype>ALvoid</ptype> <name>alMacOSXRenderChannelCount</name></proto>
+            <param><ptype>ALint</ptype> <name>value</name></param>
+        </command>
+        <command>
+            <proto><ptype>ALint</ptype> <name>alMacOSXGetRenderChannelCount</name></proto>
         </command>
     </commands>
 
@@ -1279,7 +1611,7 @@
                 <command name="alSourceQueueBuffers" />
                 <command name="alSourceUnqueueBuffers" />
                 <command name="alGenBuffers" />
-                <command name="alGenBuffers" />
+                <command name="alDeleteBuffers" />
                 <command name="alIsBuffer" />
                 <command name="alBufferData" />
                 <command name="alBufferf" />
@@ -1817,5 +2149,181 @@
                 <enum name="AL_FORMAT_UHJ2CHN_MSADPCM_SOFT" />
             </require>
         </extension>
+
+        <!-- From ALC_EXT_EFX -->
+         <extension name="ALC_EXT_EFX">
+            <require>
+                <enum name="AL_METERS_PER_UNIT" />
+                <enum name="AL_DIRECT_FILTER" />
+                <enum name="AL_AUXILIARY_SEND_FILTER" />
+                <enum name="AL_AIR_ABSORPTION_FACTOR" />
+                <enum name="AL_ROOM_ROLLOFF_FACTOR" />
+                <enum name="AL_CONE_OUTER_GAINHF" />
+                <enum name="AL_DIRECT_FILTER_GAINHF_AUTO" />
+                <enum name="AL_AUXILIARY_SEND_FILTER_GAIN_AUTO" />
+                <enum name="AL_AUXILIARY_SEND_FILTER_GAINHF_AUTO" />
+                <enum name="AL_REVERB_DENSITY" />
+                <enum name="AL_REVERB_DIFFUSION" />
+                <enum name="AL_REVERB_GAIN" />
+                <enum name="AL_REVERB_GAINHF" />
+                <enum name="AL_REVERB_DECAY_TIME" />
+                <enum name="AL_REVERB_DECAY_HFRATIO" />
+                <enum name="AL_REVERB_REFLECTIONS_GAIN" />
+                <enum name="AL_REVERB_REFLECTIONS_DELAY" />
+                <enum name="AL_REVERB_LATE_REVERB_GAIN" />
+                <enum name="AL_REVERB_LATE_REVERB_DELAY" />
+                <enum name="AL_REVERB_AIR_ABSORPTION_GAINHF" />
+                <enum name="AL_REVERB_ROOM_ROLLOFF_FACTOR" />
+                <enum name="AL_REVERB_DECAY_HFLIMIT" />
+                <enum name="AL_EAXREVERB_DENSITY" />
+                <enum name="AL_EAXREVERB_DIFFUSION" />
+                <enum name="AL_EAXREVERB_GAIN" />
+                <enum name="AL_EAXREVERB_GAINHF" />
+                <enum name="AL_EAXREVERB_GAINLF" />
+                <enum name="AL_EAXREVERB_DECAY_TIME" />
+                <enum name="AL_EAXREVERB_DECAY_HFRATIO" />
+                <enum name="AL_EAXREVERB_DECAY_LFRATIO" />
+                <enum name="AL_EAXREVERB_REFLECTIONS_GAIN" />
+                <enum name="AL_EAXREVERB_REFLECTIONS_DELAY" />
+                <enum name="AL_EAXREVERB_REFLECTIONS_PAN" />
+                <enum name="AL_EAXREVERB_LATE_REVERB_GAIN" />
+                <enum name="AL_EAXREVERB_LATE_REVERB_DELAY" />
+                <enum name="AL_EAXREVERB_LATE_REVERB_PAN" />
+                <enum name="AL_EAXREVERB_ECHO_TIME" />
+                <enum name="AL_EAXREVERB_ECHO_DEPTH" />
+                <enum name="AL_EAXREVERB_MODULATION_TIME" />
+                <enum name="AL_EAXREVERB_MODULATION_DEPTH" />
+                <enum name="AL_EAXREVERB_AIR_ABSORPTION_GAINHF" />
+                <enum name="AL_EAXREVERB_HFREFERENCE" />
+                <enum name="AL_EAXREVERB_LFREFERENCE" />
+                <enum name="AL_EAXREVERB_ROOM_ROLLOFF_FACTOR" />
+                <enum name="AL_EAXREVERB_DECAY_HFLIMIT" />
+                <enum name="AL_CHORUS_WAVEFORM" />
+                <enum name="AL_CHORUS_PHASE" />
+                <enum name="AL_CHORUS_RATE" />
+                <enum name="AL_CHORUS_DEPTH" />
+                <enum name="AL_CHORUS_FEEDBACK" />
+                <enum name="AL_CHORUS_DELAY" />
+                <enum name="AL_DISTORTION_EDGE" />
+                <enum name="AL_DISTORTION_GAIN" />
+                <enum name="AL_DISTORTION_LOWPASS_CUTOFF" />
+                <enum name="AL_DISTORTION_EQCENTER" />
+                <enum name="AL_DISTORTION_EQBANDWIDTH" />
+                <enum name="AL_ECHO_DELAY" />
+                <enum name="AL_ECHO_LRDELAY" />
+                <enum name="AL_ECHO_DAMPING" />
+                <enum name="AL_ECHO_FEEDBACK" />
+                <enum name="AL_ECHO_SPREAD" />
+                <enum name="AL_FLANGER_WAVEFORM" />
+                <enum name="AL_FLANGER_PHASE" />
+                <enum name="AL_FLANGER_RATE" />
+                <enum name="AL_FLANGER_DEPTH" />
+                <enum name="AL_FLANGER_FEEDBACK" />
+                <enum name="AL_FLANGER_DELAY" />
+                <enum name="AL_FREQUENCY_SHIFTER_FREQUENCY" />
+                <enum name="AL_FREQUENCY_SHIFTER_LEFT_DIRECTION" />
+                <enum name="AL_FREQUENCY_SHIFTER_RIGHT_DIRECTION" />
+                <enum name="AL_VOCAL_MORPHER_PHONEMEA" />
+                <enum name="AL_VOCAL_MORPHER_PHONEMEA_COARSE_TUNING" />
+                <enum name="AL_VOCAL_MORPHER_PHONEMEB" />
+                <enum name="AL_VOCAL_MORPHER_PHONEMEB_COARSE_TUNING" />
+                <enum name="AL_VOCAL_MORPHER_WAVEFORM" />
+                <enum name="AL_VOCAL_MORPHER_RATE" />
+                <enum name="AL_PITCH_SHIFTER_COARSE_TUNE" />
+                <enum name="AL_PITCH_SHIFTER_FINE_TUNE" />
+                <enum name="AL_RING_MODULATOR_FREQUENCY" />
+                <enum name="AL_RING_MODULATOR_HIGHPASS_CUTOFF" />
+                <enum name="AL_RING_MODULATOR_WAVEFORM" />
+                <enum name="AL_AUTOWAH_ATTACK_TIME" />
+                <enum name="AL_AUTOWAH_RELEASE_TIME" />
+                <enum name="AL_AUTOWAH_RESONANCE" />
+                <enum name="AL_AUTOWAH_PEAK_GAIN" />
+                <enum name="AL_COMPRESSOR_ONOFF" />
+                <enum name="AL_EQUALIZER_LOW_GAIN" />
+                <enum name="AL_EQUALIZER_LOW_CUTOFF" />
+                <enum name="AL_EQUALIZER_MID1_GAIN" />
+                <enum name="AL_EQUALIZER_MID1_CENTER" />
+                <enum name="AL_EQUALIZER_MID1_WIDTH" />
+                <enum name="AL_EQUALIZER_MID2_GAIN" />
+                <enum name="AL_EQUALIZER_MID2_CENTER" />
+                <enum name="AL_EQUALIZER_MID2_WIDTH" />
+                <enum name="AL_EQUALIZER_HIGH_GAIN" />
+                <enum name="AL_EQUALIZER_HIGH_CUTOFF" />
+                <enum name="AL_EFFECT_FIRST_PARAMETER" />
+                <enum name="AL_EFFECT_LAST_PARAMETER" />
+                <enum name="AL_EFFECT_TYPE" />
+                <enum name="AL_EFFECT_NULL" />
+                <enum name="AL_EFFECT_REVERB" />
+                <enum name="AL_EFFECT_CHORUS" />
+                <enum name="AL_EFFECT_DISTORTION" />
+                <enum name="AL_EFFECT_ECHO" />
+                <enum name="AL_EFFECT_FLANGER" />
+                <enum name="AL_EFFECT_FREQUENCY_SHIFTER" />
+                <enum name="AL_EFFECT_VOCAL_MORPHER" />
+                <enum name="AL_EFFECT_PITCH_SHIFTER" />
+                <enum name="AL_EFFECT_RING_MODULATOR" />
+                <enum name="AL_EFFECT_AUTOWAH" />
+                <enum name="AL_EFFECT_COMPRESSOR" />
+                <enum name="AL_EFFECT_EQUALIZER" />
+                <enum name="AL_EFFECT_EAXREVERB" />
+                <enum name="AL_EFFECTSLOT_EFFECT" />
+                <enum name="AL_EFFECTSLOT_GAIN" />
+                <enum name="AL_EFFECTSLOT_AUXILIARY_SEND_AUTO" />
+                <enum name="AL_EFFECTSLOT_NULL" />
+                <enum name="AL_LOWPASS_GAIN" />
+                <enum name="AL_LOWPASS_GAINHF" />
+                <enum name="AL_HIGHPASS_GAIN" />
+                <enum name="AL_HIGHPASS_GAINLF" />
+                <enum name="AL_BANDPASS_GAIN" />
+                <enum name="AL_BANDPASS_GAINLF" />
+                <enum name="AL_BANDPASS_GAINHF" />
+                <enum name="AL_FILTER_FIRST_PARAMETER" />
+                <enum name="AL_FILTER_LAST_PARAMETER" />
+                <enum name="AL_FILTER_TYPE" />
+                <enum name="AL_FILTER_NULL" />
+                <enum name="AL_FILTER_LOWPASS" />
+                <enum name="AL_FILTER_HIGHPASS" />
+                <enum name="AL_FILTER_BANDPASS" />
+                <command name="alGenEffects" />
+                <command name="alDeleteEffects" />
+                <command name="alIsEffect" />
+                <command name="alEffecti" />
+                <command name="alEffectiv" />
+                <command name="alEffectf" />
+                <command name="alEffectfv" />
+                <command name="alGetEffecti" />
+                <command name="alGetEffectiv" />
+                <command name="alGetEffectf" />
+                <command name="alGetEffectfv" />
+                <command name="alGenFilters" />
+                <command name="alDeleteFilters" />
+                <command name="alIsFilter" />
+                <command name="alFilteri" />
+                <command name="alFilteriv" />
+                <command name="alFilterf" />
+                <command name="alFilterfv" />
+                <command name="alGetFilteri" />
+                <command name="alGetFilteriv" />
+                <command name="alGetFilterf" />
+                <command name="alGetFilterfv" />
+                <command name="alGenAuxiliaryEffectSlots" />
+                <command name="alDeleteAuxiliaryEffectSlots" />
+                <command name="alIsAuxiliaryEffectSlot" />
+                <command name="alAuxiliaryEffectSloti" />
+                <command name="alAuxiliaryEffectSlotiv" />
+                <command name="alAuxiliaryEffectSlotf" />
+                <command name="alAuxiliaryEffectSlotfv" />
+                <command name="alGetAuxiliaryEffectSloti" />
+                <command name="alGetAuxiliaryEffectSlotiv" />
+                <command name="alGetAuxiliaryEffectSlotf" />
+                <command name="alGetAuxiliaryEffectSlotfv" />
+            </require>
+         </extension>
+         <extension name="ALC_EXT_MAC_OSX">
+            <require>
+                <command name="alMacOSXRenderChannelCount" />
+                <command name="alMacOSXGetRenderChannelCount" />
+            </require>
+         </extension>
     </extensions>
 </registry>
