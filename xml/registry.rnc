@@ -1,0 +1,108 @@
+
+namespace xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
+
+start = element registry {
+    (
+        Types * |
+        Enums * |
+        Commands * |
+        Features |
+        Extensions
+    ) *
+}
+
+Types = element types {
+    Comment ?,
+    Type *
+}
+
+Type = element type {
+    text,
+    element apientry { text } ?,
+    text,
+    element name { TypeName } ?,
+    text
+}
+
+Enums = element enums {
+    attribute group { text } ?,
+    Comment ?,
+    Enum *
+}
+
+Enum = element enum {
+    attribute value { text },
+    attribute name { text },
+    attribute group { text } ?
+}
+
+Commands = element commands {
+    Comment ?,
+    Command *
+}
+
+Command = element command {
+    element proto {
+        attribute group { text } ?,
+        attribute class { text } ?,
+        text,
+        element ptype { text } ?,
+        text,
+        element name { text }
+    },
+    element param {
+        attribute group { text } ?,
+        attribute class { text } ?,
+        text,
+        element ptype { text },
+        text,
+        element name { text }
+    } *
+}
+
+Features = element features {
+    Comment ?,
+    Feature *
+}
+
+Feature = element feature {
+    attribute name { text },
+    attribute number { xsd:float },
+    element require {
+        Comment ?,
+        (
+            element enum {
+                attribute name { text }
+            } |
+            element command {
+                attribute name { text }
+            }
+        ) *
+    } *
+}
+
+Extensions = element extensions {
+    Comment ?,
+    Extension *
+}
+
+Extension = element extension {
+    attribute name { text },
+    Comment ?,
+    element require {
+        Comment ?,
+        (
+            element enum {
+                attribute name { text }
+            } |
+            element command {
+                attribute name { text }
+            } |
+            element direct_context_commands { text }
+        ) *
+    } *
+}
+
+TypeName = text
+
+Comment = attribute comment { text }
