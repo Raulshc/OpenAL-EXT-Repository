@@ -113,7 +113,7 @@ Rapture3D v12.9.5
 * ALC_EXT_EFX
 * ALC_EXT_STATIC_BUFFER
 
-AeonWave-OpenAL 1.1.40
+AeonWave-OpenAL 1.1.51
 ------------------------
 
 * AL_AAX_distance_delay_model
