@@ -317,3 +317,9 @@ ALUT Extensions
 Extension | Source
 --------- | ------
 ALUT_LOKI_buffer_convert_data          | https://github.com/Raulshc/openal-svn-mirror/blob/master/OpenAL-Sample/doc/LOKI_buffer_convert_data
+
+Licensing
+=========
+
+OpenAL-EXT-Repository is released under the OpenAL-EXT-Repository license. For more information, see the `LICENSE` file in the root of the repository.
+
