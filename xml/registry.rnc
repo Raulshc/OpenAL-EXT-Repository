@@ -51,6 +51,7 @@ Command = element command {
         element name { text }
     },
     element param {
+        attribute len { text } ?,
         attribute group { text } ?,
         attribute class { text } ?,
         text,
